@@ -1,4 +1,4 @@
-import { arrayOfElements, noop } from '@proc7ts/primitives';
+import { arrayOfElements, asis, noop } from '@proc7ts/primitives';
 import type { ZOption, ZOptionReader } from './option';
 import type { ZOptionInput } from './option-input';
 import { ZOptionSyntax } from './option-syntax';
@@ -227,11 +227,22 @@ class ZOptionImpl<TOption extends ZOption> {
     return this._recognizedUpto;
   }
 
-  values(rest: boolean, max?: number): readonly string[] {
+  values(
+      rest: boolean,
+      max?: number,
+      condition?: (this: void, arg: string, index: number, args: readonly string[]) => boolean,
+  ): readonly string[] {
+
+    const filter: (result: readonly string[]) => readonly string[] = condition
+        ? filterZOptionValues.bind(this, condition)
+        : asis;
+
     if (this.recognized) {
-      return max != null && max < this.recognized.length
-          ? this.recognized.slice(0, max)
-          : this.recognized;
+      return filter(
+          max != null && max < this.recognized.length
+              ? this.recognized.slice(0, max)
+              : this.recognized,
+      );
     }
 
     const numValues = this._values.length;
@@ -241,10 +252,11 @@ class ZOptionImpl<TOption extends ZOption> {
     }
 
     const valueIndex = this.argIndex + 1;
+    const result = filter(this.args.slice(valueIndex, valueIndex + max));
 
-    this._recognize(valueIndex + max);
+    this._recognize(valueIndex + result.length);
 
-    return this.args.slice(valueIndex, valueIndex + max);
+    return result;
   }
 
   private _recognize(upto: number): void {
@@ -266,6 +278,21 @@ class ZOptionImpl<TOption extends ZOption> {
     };
   }
 
+}
+
+/**
+ * @internal
+ */
+function filterZOptionValues(
+    condition: (this: void, arg: string, index: number, args: readonly string[]) => boolean,
+    result: readonly string[],
+): readonly string[] {
+  for (let i = 0; i < result.length; ++i) {
+    if (!condition(result[i], i, result)) {
+      return result.slice(0, i);
+    }
+  }
+  return result;
 }
 
 /**
@@ -296,8 +323,8 @@ class ZOptionBase<TOption extends ZOption> implements ZOption {
     return this._impl.values(false, max);
   }
 
-  rest(): readonly string[] {
-    return this._impl.values(true, this._impl.args.length);
+  rest(condition?: (this: void, arg: string, index: number, args: readonly string[]) => boolean): readonly string[] {
+    return this._impl.values(true, this._impl.args.length, condition);
   }
 
   defer(whenRecognized?: ZOptionReader<this>): void {
