@@ -11,6 +11,17 @@ describe('parseZOptions', () => {
       '-tVALUE': [],
     });
   });
+  it('recognizes all positional options', async () => {
+
+    const recognized = await parseZOptions(['some', 'other', 'third', '--test', 'val1', 'val2']);
+
+    expect(recognized).toEqual({
+      some: [],
+      other: [],
+      third: [],
+      '--test': ['val1', 'val2'],
+    });
+  });
   it('recognizes `--name=value` syntax', async () => {
 
     const recognized = await parseZOptions(['--name=value']);

@@ -66,7 +66,9 @@ export namespace SimpleZOptionsParser {
 const defaultSimpleZOptions: SupportedZOptions.Map = {
   '--*': readAllZOptionValues,
   '-*': readAllZOptionValues,
-  '*': readAllZOptionValues,
+  '*'(option) {
+    option.values(0);
+  },
 };
 
 /**
