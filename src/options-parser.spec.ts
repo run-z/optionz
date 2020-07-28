@@ -49,6 +49,8 @@ describe('ZOptionsParser', () => {
 
     let values: readonly string[] | undefined;
     let rest: readonly string[] | undefined;
+    let endArgs: readonly string[] | undefined;
+    let endIndex: number | undefined;
     const parser = simpleZOptionsParser({
       options: {
         '--test': option => {
@@ -57,18 +59,22 @@ describe('ZOptionsParser', () => {
         },
         '--end': option => {
           option.rest();
+          endArgs = option.args;
+          endIndex = option.argIndex;
         },
       },
     });
 
-    const recognized = await parser(['--test', 'val1', 'val2', '--end']);
+    const recognized = await parser(['--test', 'val1', 'val2', '--end', '--after-end']);
 
     expect(values).toEqual(['val1', 'val2']);
-    expect(rest).toEqual(['val1', 'val2', '--end']);
+    expect(rest).toEqual(['val1', 'val2', '--end', '--after-end']);
     expect(recognized).toEqual({
       '--test': ['val1', 'val2'],
-      '--end': [],
+      '--end': ['--after-end'],
     });
+    expect(endArgs).toEqual(['--test', 'val1', 'val2', '--end', '--after-end']);
+    expect(endIndex).toEqual(3);
   });
   it('recognizes option with up to the max values', async () => {
 
@@ -551,6 +557,7 @@ describe('ZOptionsParser', () => {
             option.rest();
           },
         },
+        syntax: [ZOptionSyntax.longOptions, ZOptionSyntax.any],
       });
 
       const recognized = await parser(['--test=value', 'rest']);
@@ -574,6 +581,7 @@ describe('ZOptionsParser', () => {
             option.rest();
           },
         },
+        syntax: [ZOptionSyntax.shortOptions, ZOptionSyntax.any],
       });
 
       const recognized = await parser(['-test']);
