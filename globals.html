@@ -1,0 +1,721 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Command Line Options Parser</title>
+	<meta name="description" content="Documentation for Command Line Options Parser">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">Command Line Options Parser</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>Command Line Options Parser</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Namespaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-namespace"><a href="modules/SimpleZOptionsParser.html" class="tsd-kind-icon">SimpleZOptions<wbr>Parser</a></li>
+								<li class="tsd-kind-namespace tsd-has-type-parameter"><a href="modules/SupportedZOptions.html" class="tsd-kind-icon">SupportedZOptions</a></li>
+								<li class="tsd-kind-namespace"><a href="modules/ZOption.html" class="tsd-kind-icon">ZOption</a></li>
+								<li class="tsd-kind-namespace tsd-has-type-parameter"><a href="modules/ZOptionsParser.html" class="tsd-kind-icon">ZOptions<wbr>Parser</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class"><a href="classes/UnknownZOptionError.html" class="tsd-kind-icon">UnknownZOption<wbr>Error</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface"><a href="interfaces/ZOptionInput.html" class="tsd-kind-icon">ZOption<wbr>Input</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#ZOptionReader" class="tsd-kind-icon">ZOption<wbr>Reader</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#ZOptionSyntax" class="tsd-kind-icon">ZOption<wbr>Syntax</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#customZOptionsParser" class="tsd-kind-icon">customZOptions<wbr>Parser</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#parseZOptions" class="tsd-kind-icon">parseZOptions</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#simpleZOptionsParser" class="tsd-kind-icon">simpleZOptions<wbr>Parser</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal"><a href="globals.html#ZOptionInput" class="tsd-kind-icon">ZOption<wbr>Input</a></li>
+								<li class="tsd-kind-object-literal"><a href="globals.html#ZOptionSyntax" class="tsd-kind-icon">ZOption<wbr>Syntax</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
+					<a name="ZOptionReader" class="tsd-anchor"></a>
+					<h3>ZOption<wbr>Reader</h3>
+					<div class="tsd-signature tsd-kind-icon">ZOption<wbr>Reader&lt;TOption, TThis&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TThis</span>, option<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TOption</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option.ts#L154">run-z/optionz/src/option.ts:154</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Option reader signature.</p>
+						</div>
+						<p>A reader accepts a <a href="modules/ZOption.html">command line option</a> corresponding to the key the reader is
+						<a href="interfaces/SupportedZOptions.Map.html">registered for</a> and tries to recognize it.</p>
+					</div>
+					<h4 class="tsd-type-parameters-title">Type parameters</h4>
+					<ul class="tsd-type-parameters">
+						<li>
+							<h4>TOption<span class="tsd-signature-symbol">: </span><a href="modules/ZOption.html" class="tsd-signature-type">ZOption</a></h4>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>A type of command line option representation expected by reader.</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h4>TThis</h4>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>A type of <code>this</code> parameter.</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TThis</span>, option<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TOption</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+										</div>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>this: <span class="tsd-signature-type">TThis</span></h5>
+											</li>
+											<li>
+												<h5>option: <span class="tsd-signature-type">TOption</span></h5>
+												<div class="tsd-comment tsd-typography">
+													<div class="lead">
+														<p>Command line option to recognize.</p>
+													</div>
+												</div>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></h4>
+										<p>Either nothing or promise-like instance resolved when the reader finishes option processing,
+										either recognized or not.</p>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="ZOptionSyntax" class="tsd-anchor"></a>
+					<h3>ZOption<wbr>Syntax</h3>
+					<div class="tsd-signature tsd-kind-icon">ZOption<wbr>Syntax<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/ZOptionInput.html" class="tsd-signature-type">ZOptionInput</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option-syntax.ts#L17">run-z/optionz/src/option-syntax.ts:17</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Supported command line syntax.</p>
+						</div>
+						<p>The syntax is a function that converts raw command line arguments to <a href="interfaces/ZOptionInput.html">option input</a> suitable
+						to be recognized by <a href="globals.html#ZOptionReader">option readers</a>.</p>
+						<p>A syntax should be <a href="interfaces/ZOptionsParser.Config.html#syntax">registered</a> for options parser to respect it.</p>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/ZOptionInput.html" class="tsd-signature-type">ZOptionInput</a><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+										</div>
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>this: <span class="tsd-signature-type">void</span></h5>
+											</li>
+											<li>
+												<h5>args: <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span></h5>
+												<div class="tsd-comment tsd-typography">
+													<div class="lead">
+														<p>An array of command line arguments to process.</p>
+													</div>
+												</div>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/ZOptionInput.html" class="tsd-signature-type">ZOptionInput</a><span class="tsd-signature-symbol">&gt;</span></h4>
+										<p>An iterable of option inputs. May be empty if the command line argument has another syntax.</p>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
+					<a name="customZOptionsParser" class="tsd-anchor"></a>
+					<h3>customZOptions<wbr>Parser</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">customZOptions<wbr>Parser&lt;TOption, TCtx&gt;<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">: </span><a href="interfaces/ZOptionsParser.Config.html" class="tsd-signature-type">Config</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TOption</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TCtx</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="modules/ZOptionsParser.html" class="tsd-signature-type">ZOptionsParser</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCtx</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/options-parser.ts#L77">run-z/optionz/src/options-parser.ts:77</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Builds custom command line options parser.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>TOption<span class="tsd-signature-symbol">: </span><a href="modules/ZOption.html" class="tsd-signature-type">ZOption</a></h4>
+									<div class="tsd-comment tsd-typography">
+										<p>A type of option representation.</p>
+									</div>
+								</li>
+								<li>
+									<h4>TCtx</h4>
+									<div class="tsd-comment tsd-typography">
+										<p>Option processing context required by parser and the type of parser result.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>config: <a href="interfaces/ZOptionsParser.Config.html" class="tsd-signature-type">Config</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TOption</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TCtx</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Parser configuration.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="modules/ZOptionsParser.html" class="tsd-signature-type">ZOptionsParser</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TCtx</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>New options parser.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="parseZOptions" class="tsd-anchor"></a>
+					<h3>parseZOptions</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">parseZOptions<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, fromIndex<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/SimpleZOptionsParser.Result.html" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/parse-options.ts#L20">run-z/optionz/src/parse-options.ts:20</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Parses command line options.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>args: <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Array of command line arguments</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fromIndex: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>An index of command line argument to start processing from.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/SimpleZOptionsParser.Result.html" class="tsd-signature-type">Result</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A promise resolved to a map of recognized option names to arrays of their values.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="simpleZOptionsParser" class="tsd-anchor"></a>
+					<h3>simpleZOptions<wbr>Parser</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">simpleZOptions<wbr>Parser<span class="tsd-signature-symbol">(</span>config<span class="tsd-signature-symbol">?: </span><a href="interfaces/SimpleZOptionsParser.Config.html" class="tsd-signature-type">Config</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="modules/SimpleZOptionsParser.html" class="tsd-signature-type">SimpleZOptionsParser</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/simple-options-parser.ts#L86">run-z/optionz/src/simple-options-parser.ts:86</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Builds a simple command line options parser.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> config: <a href="interfaces/SimpleZOptionsParser.Config.html" class="tsd-signature-type">Config</a><span class="tsd-signature-symbol"> = {}</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Parser configuration.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="modules/SimpleZOptionsParser.html" class="tsd-signature-type">SimpleZOptionsParser</a></h4>
+							<p>New options parser.</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal">
+					<a name="ZOptionInput" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> ZOption<wbr>Input</h3>
+					<div class="tsd-signature tsd-kind-icon">ZOption<wbr>Input<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option-input.ts#L50">run-z/optionz/src/option-input.ts:50</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+						<a name="ZOptionInput.equal" class="tsd-anchor"></a>
+						<h3>equal</h3>
+						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+							<li class="tsd-signature tsd-kind-icon">equal<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, first<span class="tsd-signature-symbol">: </span><a href="interfaces/ZOptionInput.html" class="tsd-signature-type">ZOptionInput</a>, second<span class="tsd-signature-symbol">: </span><a href="interfaces/ZOptionInput.html" class="tsd-signature-type">ZOptionInput</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option-input.ts#L98">run-z/optionz/src/option-input.ts:98</a></li>
+									</ul>
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Checks whether two option inputs are equal to each other.</p>
+									</div>
+								</div>
+								<h4 class="tsd-parameters-title">Parameters</h4>
+								<ul class="tsd-parameters">
+									<li>
+										<h5>this: <span class="tsd-signature-type">void</span></h5>
+									</li>
+									<li>
+										<h5>first: <a href="interfaces/ZOptionInput.html" class="tsd-signature-type">ZOptionInput</a></h5>
+									</li>
+									<li>
+										<h5>second: <a href="interfaces/ZOptionInput.html" class="tsd-signature-type">ZOptionInput</a></h5>
+										<div class="tsd-comment tsd-typography">
+										</div>
+									</li>
+								</ul>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							</li>
+						</ul>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+						<a name="ZOptionInput.isOptionValue" class="tsd-anchor"></a>
+						<h3>is<wbr>Option<wbr>Value</h3>
+						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+							<li class="tsd-signature tsd-kind-icon">is<wbr>Option<wbr>Value<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option-input.ts#L61">run-z/optionz/src/option-input.ts:61</a></li>
+									</ul>
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Checks whether the given command line argument is suitable to be used as option value.</p>
+									</div>
+									<p>This is used by default to find option values.</p>
+								</div>
+								<h4 class="tsd-parameters-title">Parameters</h4>
+								<ul class="tsd-parameters">
+									<li>
+										<h5>this: <span class="tsd-signature-type">void</span></h5>
+									</li>
+									<li>
+										<h5>arg: <span class="tsd-signature-type">string</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<p>Command line argument to check.</p>
+										</div>
+									</li>
+								</ul>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+								<p><code>true</code> unless argument starts with <code>-</code> and not equal to <code>-</code> itself.</p>
+							</li>
+						</ul>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+						<a name="ZOptionInput.valuesOf" class="tsd-anchor"></a>
+						<h3>values<wbr>Of</h3>
+						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+							<li class="tsd-signature tsd-kind-icon">values<wbr>Of<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, fromIndex<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option-input.ts#L75">run-z/optionz/src/option-input.ts:75</a></li>
+									</ul>
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Extracts command line option values.</p>
+									</div>
+									<p>This is used by default to extract option values.</p>
+								</div>
+								<h4 class="tsd-parameters-title">Parameters</h4>
+								<ul class="tsd-parameters">
+									<li>
+										<h5>this: <span class="tsd-signature-type">void</span></h5>
+									</li>
+									<li>
+										<h5>args: <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<p>Command line arguments.</p>
+										</div>
+									</li>
+									<li>
+										<h5><span class="tsd-flag ts-flagDefault value">Default value</span> fromIndex: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<p>First argument index to start extracting values at.</p>
+										</div>
+									</li>
+								</ul>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+								<p>An array of command line <a href="globals.html#ZOptionInput.isOptionValue">option values</a>.</p>
+							</li>
+						</ul>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal">
+					<a name="ZOptionSyntax" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> ZOption<wbr>Syntax</h3>
+					<div class="tsd-signature tsd-kind-icon">ZOption<wbr>Syntax<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option-syntax.ts#L34">run-z/optionz/src/option-syntax.ts:34</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+						<a name="ZOptionSyntax.by" class="tsd-anchor"></a>
+						<h3>by</h3>
+						<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+							<li class="tsd-signature tsd-kind-icon">by<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, syntax<span class="tsd-signature-symbol">: </span><a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">keyof </span><a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option-syntax.ts#L101">run-z/optionz/src/option-syntax.ts:101</a></li>
+									</ul>
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Builds an option syntax supporting other syntaxes.</p>
+									</div>
+								</div>
+								<h4 class="tsd-parameters-title">Parameters</h4>
+								<ul class="tsd-parameters">
+									<li>
+										<h5>this: <span class="tsd-signature-type">void</span></h5>
+									</li>
+									<li>
+										<h5>syntax: <a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">keyof </span><a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a><span class="tsd-signature-symbol">[]</span></h5>
+										<div class="tsd-comment tsd-typography">
+											<p>Either a single syntax, or an array of syntaxes to support.</p>
+										</div>
+									</li>
+								</ul>
+								<h4 class="tsd-returns-title">Returns <a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a></h4>
+								<p>Either a single <code>syntax</code> passed in, or a syntax supporting all of them.</p>
+							</li>
+						</ul>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-object-literal">
+						<a name="ZOptionSyntax.any" class="tsd-anchor"></a>
+						<h3>any</h3>
+						<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-object-literal">
+							<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> any<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option-syntax.ts#L90">run-z/optionz/src/option-syntax.ts:90</a></li>
+									</ul>
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Any command line option syntax.</p>
+									</div>
+									<p>Supports <code>name [value1 [value2 ...]]</code> format. Uses <code>*</code> as a fallback option key.</p>
+									<p>This is used as a fallback <a href="globals.html#ZOptionSyntax.default">by default</a>.</p>
+								</div>
+								<h4 class="tsd-returns-title">Returns <a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a></h4>
+							</li>
+						</ul>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-object-literal">
+						<a name="ZOptionSyntax.default" class="tsd-anchor"></a>
+						<h3>default</h3>
+						<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-object-literal">
+							<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> default<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option-syntax.ts#L45">run-z/optionz/src/option-syntax.ts:45</a></li>
+									</ul>
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Default command line option syntax.</p>
+									</div>
+									<p>Includes support for:</p>
+									<ul>
+										<li><a href="globals.html#ZOptionSyntax.longOptions">long options syntax</a>,</li>
+										<li><a href="globals.html#ZOptionSyntax.shortOptions">short options syntax</a>, and</li>
+										<li><a href="globals.html#ZOptionSyntax.any">any options syntax</a> as a fallback.</li>
+									</ul>
+								</div>
+								<h4 class="tsd-returns-title">Returns <a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a></h4>
+							</li>
+						</ul>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-object-literal">
+						<a name="ZOptionSyntax.longOptions" class="tsd-anchor"></a>
+						<h3>long<wbr>Options</h3>
+						<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-object-literal">
+							<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> longOptions<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option-syntax.ts#L61">run-z/optionz/src/option-syntax.ts:61</a></li>
+									</ul>
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Long command line option syntax.</p>
+									</div>
+									<p>Supports the following option formats:</p>
+									<ul>
+										<li><code>--name=value</code></li>
+										<li><code>--name [value1 [value2 ...]]</code></li>
+									</ul>
+									<p>Option keys should be in <code>--name</code> format. Uses <code>--*</code> as a fallback option key.</p>
+									<p>Enabled <a href="globals.html#ZOptionSyntax.default">by default</a>.</p>
+								</div>
+								<h4 class="tsd-returns-title">Returns <a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a></h4>
+							</li>
+						</ul>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-object-literal">
+						<a name="ZOptionSyntax.shortOptions" class="tsd-anchor"></a>
+						<h3>short<wbr>Options</h3>
+						<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-object-literal">
+							<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> shortOptions<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a></li>
+						</ul>
+						<ul class="tsd-descriptions">
+							<li class="tsd-description">
+								<aside class="tsd-sources">
+									<ul>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option-syntax.ts#L79">run-z/optionz/src/option-syntax.ts:79</a></li>
+									</ul>
+								</aside>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Short command line option syntax.</p>
+									</div>
+									<p>Supports the following option formats:</p>
+									<ul>
+										<li><code>-name=VALUE</code>. Corresponding key should be in <code>-name</code> format.</li>
+										<li><code>-name [value1 [value2 ...]]</code>. Corresponding option key should be in <code>-name</code> format.</li>
+										<li><code>-n[m[o...]][VALUE]</code>. Corresponding option key should be in <code>-n*</code> format.</li>
+									</ul>
+									<p>Uses <code>-?</code> as a fallback key for one-letter options.
+									Uses <code>-*</code> as a generic fallback option key.</p>
+									<p>Enabled <a href="globals.html#ZOptionSyntax.default">by default</a>.</p>
+								</div>
+								<h4 class="tsd-returns-title">Returns <a href="globals.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a></h4>
+							</li>
+						</ul>
+					</section>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals current ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/SimpleZOptionsParser.html">SimpleZOptions<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-namespace tsd-has-type-parameter">
+						<a href="modules/SupportedZOptions.html">SupportedZOptions</a>
+					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/ZOption.html">ZOption</a>
+					</li>
+					<li class=" tsd-kind-namespace tsd-has-type-parameter">
+						<a href="modules/ZOptionsParser.html">ZOptions<wbr>Parser</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/UnknownZOptionError.html" class="tsd-kind-icon">UnknownZOption<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ZOptionInput.html" class="tsd-kind-icon">ZOption<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
+						<a href="globals.html#ZOptionReader" class="tsd-kind-icon">ZOption<wbr>Reader</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#ZOptionSyntax" class="tsd-kind-icon">ZOption<wbr>Syntax</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#customZOptionsParser" class="tsd-kind-icon">customZOptions<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#parseZOptions" class="tsd-kind-icon">parseZOptions</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#simpleZOptionsParser" class="tsd-kind-icon">simpleZOptions<wbr>Parser</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#ZOptionInput" class="tsd-kind-icon">ZOption<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#ZOptionSyntax" class="tsd-kind-icon">ZOption<wbr>Syntax</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
