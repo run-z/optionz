@@ -64,10 +64,17 @@ export namespace SimpleZOptionsParser {
  * @internal
  */
 const defaultSimpleZOptions: SupportedZOptions.Map = {
-  '*'(option) {
-    option.values();
-  },
+  '--*': readAllZOptionValues,
+  '-*': readAllZOptionValues,
+  '*': readAllZOptionValues,
 };
+
+/**
+ * @internal
+ */
+function readAllZOptionValues(option: ZOption): void {
+  option.values();
+}
 
 /**
  * Builds a simple command line options parser.

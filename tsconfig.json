@@ -17,7 +17,8 @@
       "ES2018"
     ],
     "types": [
-      "jest"
+      "jest",
+      "node"
     ],
     "outDir": "target/js",
     "sourceMap": true,

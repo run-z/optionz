@@ -146,7 +146,7 @@ function longZOptionSyntax(args: readonly [string, ...string[]]): Iterable<ZOpti
     return [];
   }
 
-  const eqIdx = name.indexOf('=', 2);
+  const eqIdx = name.indexOf('=', 3);
 
   if (eqIdx > 0) {
     // `--name=value` form

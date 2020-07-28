@@ -1,7 +1,6 @@
 import { asis, noop, valueProvider } from '@proc7ts/primitives';
 import type { ZOption, ZOptionReader } from './option';
 import { ZOptionSyntax } from './option-syntax';
-import { parseZOptions } from './parse-options';
 import { SimpleZOptionsParser, simpleZOptionsParser } from './simple-options-parser';
 import type { SupportedZOptions } from './supported-options';
 import { UnknownZOptionError } from './unknown-option-error';
@@ -321,19 +320,6 @@ describe('ZOptionsParser', () => {
 
     expect(recognized).toEqual({
       '--test': ['1', '2'],
-    });
-  });
-
-  describe('simple', () => {
-    it('recognizes all options by default', async () => {
-
-      const recognized = await parseZOptions(['some', '--test', 'val1', 'val2', '-tVALUE', '--test', 'val3']);
-
-      expect(recognized).toEqual({
-        some: [],
-        '--test': ['val1', 'val2', 'val3'],
-        '-tVALUE': [],
-      });
     });
   });
 
