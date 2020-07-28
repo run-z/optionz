@@ -10,7 +10,7 @@
   ],
   "excludeNotExported": true,
   "mode": "file",
-  "name": "Run Z",
+  "name": "Command Line Options Parser",
   "out": "./target/typedoc",
   "tsconfig": "tsconfig.main.json"
 }
