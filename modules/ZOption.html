@@ -118,7 +118,7 @@
 					<div class="tsd-signature tsd-kind-icon">arg<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option.ts#L46">run-z/optionz/src/option.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/cb6da4e/src/option.ts#L46">run-z/optionz/src/option.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -133,7 +133,7 @@
 					<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option.ts#L41">run-z/optionz/src/option.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/cb6da4e/src/option.ts#L41">run-z/optionz/src/option.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -149,7 +149,7 @@
 					<div class="tsd-signature tsd-kind-icon">key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option.ts#L34">run-z/optionz/src/option.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/cb6da4e/src/option.ts#L34">run-z/optionz/src/option.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -166,7 +166,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option.ts#L26">run-z/optionz/src/option.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/cb6da4e/src/option.ts#L26">run-z/optionz/src/option.ts:26</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -189,7 +189,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option.ts#L90">run-z/optionz/src/option.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/cb6da4e/src/option.ts#L95">run-z/optionz/src/option.ts:95</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -216,25 +216,37 @@
 					<a name="rest" class="tsd-anchor"></a>
 					<h3>rest</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-namespace">
-						<li class="tsd-signature tsd-kind-icon">rest<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">rest<span class="tsd-signature-symbol">(</span>condition<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option.ts#L80">run-z/optionz/src/option.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/cb6da4e/src/option.ts#L85">run-z/optionz/src/option.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Reads all of the remaining command line arguments and treat them as option values.</p>
+									<p>Reads the remaining command line arguments satisfying the given condition and treat them as option values.</p>
 								</div>
-								<p>Reads [values] and all command line arguments following them up to the end of command line.</p>
+								<p>Reads [values] and all command line arguments following them up to the end of command line or until the argument
+								does not satisfy the given condition.</p>
 								<p>Calling this method marks all arguments read as recognized. This can be changed by calling any recognition method
 								again.</p>
 								<p>When called on already recognized option this method just returns the values returned to the reader that recognized
 								them.</p>
 							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> condition: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Optional predicate function that checks whether the argument satisfies required condition.
+											This function is called for each argument. It accepts argument value, its index within rest argument array,
+										and rest arguments array itself as parameters.</p>
+									</div>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
 							<p>Command line arguments array.</p>
 						</li>
@@ -250,7 +262,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option.ts#L65">run-z/optionz/src/option.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/cb6da4e/src/option.ts#L65">run-z/optionz/src/option.ts:65</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -289,7 +301,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/1f6ad42/src/option.ts#L101">run-z/optionz/src/option.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/cb6da4e/src/option.ts#L106">run-z/optionz/src/option.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
