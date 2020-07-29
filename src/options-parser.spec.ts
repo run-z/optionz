@@ -101,13 +101,37 @@ describe('ZOptionsParser', () => {
       '--end': [],
     });
   });
-  it('recognizes conditionally-valued option', async () => {
+  it('recognizes option with negative max values', async () => {
+
+    let values: readonly string[] | undefined;
+    let rest: readonly string[] | undefined;
+    const parser = simpleZOptionsParser({
+      options: {
+        '--test': option => {
+          values = option.values(-1);
+        },
+        '*': option => {
+          rest = option.rest();
+        },
+      },
+    });
+
+    const recognized = await parser(['--test', 'val1', 'val2', '--end']);
+
+    expect(values).toEqual([]);
+    expect(rest).toEqual(['val2', '--end']);
+    expect(recognized).toEqual({
+      '--test': [],
+      val1: ['val2', '--end'],
+    });
+  });
+  it('recognizes option with up to the max of rest values', async () => {
 
     let values: readonly string[] | undefined;
     const parser = simpleZOptionsParser({
       options: {
         '--test': option => {
-          values = option.rest(arg => arg !== 'end');
+          values = option.rest(2);
         },
         '*': option => {
           option.values(0);
@@ -122,27 +146,6 @@ describe('ZOptionsParser', () => {
       '--test': ['val1', 'val2'],
       end: [],
       other: [],
-    });
-  });
-  it('recognizes conditionally-valued option with all matching values', async () => {
-
-    let values: readonly string[] | undefined;
-    const parser = simpleZOptionsParser({
-      options: {
-        '--test': option => {
-          values = option.rest(valueProvider(true));
-        },
-        '*': option => {
-          option.values(0);
-        },
-      },
-    });
-
-    const recognized = await parser(['--test', 'val1', 'val2', 'end', 'other']);
-
-    expect(values).toEqual(['val1', 'val2', 'end', 'other']);
-    expect(recognized).toEqual({
-      '--test': ['val1', 'val2', 'end', 'other'],
     });
   });
   it('throws on unrecognized option', async () => {

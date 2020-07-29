@@ -55,8 +55,8 @@ export interface ZOption {
    * Calling this method marks the option and value arguments as recognized. This can be changed by calling any
    * recognition method again.
    *
-   * When called on already recognized option this method just returns the values returned to the reader that recognized
-   * them.
+   * When called on already recognized option this method just returns the values previously returned to the reader
+   * that recognized them.
    *
    * @param max  The maximum number of values to read.
    *
@@ -65,24 +65,21 @@ export interface ZOption {
   values(max?: number): readonly string[];
 
   /**
-   * Reads the remaining command line arguments satisfying the given condition and treat them as option values.
+   * Reads up to the maximum number of the remaining command line arguments and treat them as option values.
    *
-   * Reads [values] and all command line arguments following them up to the end of command line or until the argument
-   * does not satisfy the given condition.
+   * Reads [values] and all command line arguments following them up to the end of command line or their maximum number.
    *
    * Calling this method marks all arguments read as recognized. This can be changed by calling any recognition method
    * again.
    *
-   * When called on already recognized option this method just returns the values returned to the reader that recognized
-   * them.
+   * When called on already recognized option this method just returns the values previously returned to the reader
+   * that recognized them.
    *
-   * @param condition  Optional predicate function that checks whether the argument satisfies required condition.
-   * This function is called for each argument. It accepts argument value, its index within rest argument array,
-   * and rest arguments array itself as parameters.
+   * @param max  The maximum number of arguments to read.
    *
    * @returns Command line arguments array.
    */
-  rest(condition?: (this: void, arg: string, index: number, args: readonly string[]) => boolean): readonly string[];
+  rest(max?: number): readonly string[];
 
   /**
    * Defers the option processing until recognized by another reader available for the same option key.

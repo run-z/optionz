@@ -1,4 +1,4 @@
-import { arrayOfElements, asis, noop } from '@proc7ts/primitives';
+import { arrayOfElements, noop } from '@proc7ts/primitives';
 import type { ZOption, ZOptionReader } from './option';
 import type { ZOptionInput } from './option-input';
 import { ZOptionSyntax } from './option-syntax';
@@ -230,31 +230,23 @@ class ZOptionImpl<TOption extends ZOption> {
   values(
       rest: boolean,
       max?: number,
-      condition?: (this: void, arg: string, index: number, args: readonly string[]) => boolean,
   ): readonly string[] {
-
-    const filter: (result: readonly string[]) => readonly string[] = condition
-        ? filterZOptionValues.bind(this, condition)
-        : asis;
-
+    if (max != null && max < 0) {
+      max = 0;
+    }
     if (this.recognized) {
-      return filter(
-          max != null && max < this.recognized.length
-              ? this.recognized.slice(0, max)
-              : this.recognized,
-      );
+      return max != null && max < this.recognized.length
+          ? this.recognized.slice(0, max)
+          : this.recognized;
     }
 
-    const numValues = this._values.length;
+    const fromIndex = this.argIndex + 1;
+    const toIndex = max != null
+        ? fromIndex + (rest ? max : Math.min(max, this._values.length))
+        : (rest ? this._args.length : fromIndex + this._values.length);
+    const result = this.args.slice(fromIndex, toIndex);
 
-    if (max == null || max < 0 || !rest && max > numValues) {
-      max = numValues;
-    }
-
-    const valueIndex = this.argIndex + 1;
-    const result = filter(this.args.slice(valueIndex, valueIndex + max));
-
-    this._recognize(valueIndex + result.length);
+    this._recognize(fromIndex + result.length);
 
     return result;
   }
@@ -278,21 +270,6 @@ class ZOptionImpl<TOption extends ZOption> {
     };
   }
 
-}
-
-/**
- * @internal
- */
-function filterZOptionValues(
-    condition: (this: void, arg: string, index: number, args: readonly string[]) => boolean,
-    result: readonly string[],
-): readonly string[] {
-  for (let i = 0; i < result.length; ++i) {
-    if (!condition(result[i], i, result)) {
-      return result.slice(0, i);
-    }
-  }
-  return result;
 }
 
 /**
@@ -323,8 +300,8 @@ class ZOptionBase<TOption extends ZOption> implements ZOption {
     return this._impl.values(false, max);
   }
 
-  rest(condition?: (this: void, arg: string, index: number, args: readonly string[]) => boolean): readonly string[] {
-    return this._impl.values(true, this._impl.args.length, condition);
+  rest(max?: number): readonly string[] {
+    return this._impl.values(true, max);
   }
 
   defer(whenRecognized?: ZOptionReader<this>): void {
