@@ -614,6 +614,30 @@ describe('ZOptionsParser', () => {
         rest: [],
       });
     });
+    it('prefers `--*=*` fallback', async () => {
+
+      const parser = simpleZOptionsParser({
+        options: {
+          '--*=*'(option) {
+            option.values();
+          },
+          '--*'(option) {
+            option.rest();
+          },
+          '*'(option) {
+            option.values(0);
+          },
+        },
+        syntax: [ZOptionSyntax.longOptions, ZOptionSyntax.any],
+      });
+
+      const recognized = await parser(['--test=value', 'rest']);
+
+      expect(recognized).toEqual({
+        '--test': ['value'],
+        rest: [],
+      });
+    });
   });
 
   describe('short option', () => {
@@ -746,6 +770,28 @@ describe('ZOptionsParser', () => {
         options: {
           '-?'(option) {
             option.values();
+          },
+          '-*'(option) {
+            option.values(0);
+          },
+        },
+      });
+
+      const recognized = await parser(['-t=some']);
+
+      expect(recognized).toEqual({
+        '-t': ['some'],
+      });
+    });
+    it('prefers `-*=*` fallback', async () => {
+
+      const parser = simpleZOptionsParser({
+        options: {
+          '-*=*'(option) {
+            option.values();
+          },
+          '-?'(option) {
+            option.values(0);
           },
           '-*'(option) {
             option.values(0);

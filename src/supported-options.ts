@@ -36,6 +36,12 @@ export namespace SupportedZOptions {
     readonly [key: string]: ZOptionReader<TOption, this> | undefined;
 
     /**
+     * Fallback option reader consulted when none of the readers recognized the option in.
+     * {@link ZOptionSyntax.longOptions `--name=VALUE` syntax}.
+     */
+    readonly '--*=*'?: ZOptionReader<TOption, this>;
+
+    /**
      * Fallback option reader consulted when none of the readers recognized the option in
      * {@link ZOptionSyntax.longOptions long syntax}.
      */
@@ -46,6 +52,12 @@ export namespace SupportedZOptions {
      * {@link ZOptionSyntax.shortOptions one-letter syntax}.
      */
     readonly '-?'?: ZOptionReader<TOption, this>;
+
+    /**
+     * Fallback option reader consulted when none of the readers recognized the option in
+     * {@link ZOptionSyntax.shortOptions `-name=VALUE` syntax}.
+     */
+    readonly '-*=*'?: ZOptionReader<TOption, this>;
 
     /**
      * Fallback option reader consulted when none of the readers recognized the option in

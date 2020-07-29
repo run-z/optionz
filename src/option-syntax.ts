@@ -51,10 +51,12 @@ export const ZOptionSyntax = {
    *
    * Supports the following option formats:
    *
-   * - `--name=value`
-   * - `--name [value1 [value2 ...]]`
+   * - `--name=VALUE`
+   * - `--name [VALUE [VALUE ...]]`
    *
-   * Option keys should be in `--name` format. Uses `--*` as a fallback option key.
+   * Option keys should be in `--name` format.
+   * Uses `--*=*` as a fallback option key for options -n `--name=VALUE` format.
+   * Uses `--*` as a generic fallback option key.
    *
    * Enabled {@link default by default}.
    */
@@ -68,10 +70,11 @@ export const ZOptionSyntax = {
    * Supports the following option formats:
    *
    * - `-name=VALUE`. Corresponding key should be in `-name` format.
-   * - `-name [value1 [value2 ...]]`. Corresponding option key should be in `-name` format.
+   * - `-name [VALUE [VALUE ...]]`. Corresponding option key should be in `-name` format.
    * - `-n[m[o...]][VALUE]`. Corresponding option key should be in `-n*` format.
    *
-   * Uses `-?` as a fallback key for one-letter options.
+   * Uses `-*=*` as a fallback option key for options in `-name=VALUE` format.
+   * Uses `-?` as a fallback option key for one-letter options.
    * Uses `-*` as a generic fallback option key.
    *
    * Enabled {@link default by default}.
@@ -158,11 +161,12 @@ function longZOptionSyntax(args: readonly [string, ...string[]]): Iterable<ZOpti
 
     return [
       { name, values, tail },
+      { key: '--*=*', name, values, tail },
       { key: '--*', name, values, tail },
     ];
   }
 
-  // `--name value value...` form
+  // `--name [value [value ...]]` form
   const values = ZOptionInput.valuesOf(args, 1);
   const tail = args.slice(values.length + 1);
 
@@ -195,6 +199,7 @@ function shortZOptionSyntax(args: readonly [string, ...string[]]): Iterable<ZOpt
     name = name.substr(0, eqIdx);
 
     result.push({ name, values, tail });
+    result.push({ key: '-*=*', name, values, tail });
     if (name.length === 2) {
       result.push({ key: '-?', name, values, tail });
     }
