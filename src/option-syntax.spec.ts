@@ -11,7 +11,7 @@ describe('ZOptionSyntax', () => {
       const input1: ZOptionInput = { name: '1' };
       const syntax1: ZOptionSyntax = () => [input1];
       const input2: ZOptionInput = { name: '2' };
-      const syntax2:ZOptionSyntax = () => [input2];
+      const syntax2: ZOptionSyntax = () => [input2];
       const combined = ZOptionSyntax.by([syntax1, syntax2]);
 
       expect([...combined(['foo', 'bar'])]).toEqual([input1, input2]);
@@ -23,7 +23,7 @@ describe('ZOptionSyntax', () => {
       const input3: ZOptionInput = { name: '3' };
 
       const syntax1: ZOptionSyntax = () => [input1, input2];
-      const syntax2:ZOptionSyntax = () => [input2, input3];
+      const syntax2: ZOptionSyntax = () => [input2, input3];
       const combined = ZOptionSyntax.by([syntax1, syntax2]);
 
       expect([...combined(['foo', 'bar'])]).toEqual([input1, input2, input3]);
