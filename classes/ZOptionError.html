@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UnknownZOptionError | Command Line Options Parser</title>
+	<title>ZOptionError | Command Line Options Parser</title>
 	<meta name="description" content="Documentation for Command Line Options Parser">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="UnknownZOptionError.html">UnknownZOptionError</a>
+					<a href="ZOptionError.html">ZOptionError</a>
 				</li>
 			</ul>
-			<h1>Class UnknownZOptionError</h1>
+			<h1>Class ZOptionError</h1>
 		</div>
 	</div>
 </header>
@@ -67,7 +67,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>An error thrown by <a href="../modules/ZOptionsParser.html">command line options parser</a> when unrecognized option encountered.</p>
+						<p>An error thrown by <a href="../modules/ZOptionsParser.html">command line options parser</a> when it encounters unrecognized or malformed
+						option.</p>
 					</div>
 				</div>
 			</section>
@@ -75,10 +76,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="UnknownZOptionError.html#Error" class="tsd-signature-type">Error</a>
+						<a href="ZOptionError.html#Error" class="tsd-signature-type">Error</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">UnknownZOptionError</span>
+								<span class="target">ZOptionError</span>
 							</li>
 						</ul>
 					</li>
@@ -91,17 +92,17 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="UnknownZOptionError.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="ZOptionError.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="UnknownZOptionError.html#message" class="tsd-kind-icon">message</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="UnknownZOptionError.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="UnknownZOptionError.html#optionName" class="tsd-kind-icon">option<wbr>Name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="UnknownZOptionError.html#stack" class="tsd-kind-icon">stack</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="UnknownZOptionError.html#Error" class="tsd-kind-icon">Error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="ZOptionError.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="ZOptionError.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ZOptionError.html#optionLocation" class="tsd-kind-icon">option<wbr>Location</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="ZOptionError.html#stack" class="tsd-kind-icon">stack</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="ZOptionError.html#Error" class="tsd-kind-icon">Error</a></li>
 							</ul>
 						</section>
 					</div>
@@ -113,32 +114,32 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>UnknownZOption<wbr>Error<span class="tsd-signature-symbol">(</span>optionName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="UnknownZOptionError.html" class="tsd-signature-type">UnknownZOptionError</a></li>
+						<li class="tsd-signature tsd-kind-icon">new ZOption<wbr>Error<span class="tsd-signature-symbol">(</span>optionLocation<span class="tsd-signature-symbol">: </span><a href="../globals.html#ZOptionLocation" class="tsd-signature-type">ZOptionLocation</a>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="ZOptionError.html" class="tsd-signature-type">ZOptionError</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/c6f92c9/src/unknown-option-error.ts#L9">run-z/optionz/src/unknown-option-error.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/970d1f4/src/option-error.ts#L16">run-z/optionz/src/option-error.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Constructs unknown option error.</p>
+									<p>Constructs option error.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>optionName: <span class="tsd-signature-type">string</span></h5>
+									<h5>optionLocation: <a href="../globals.html#ZOptionLocation" class="tsd-signature-type">ZOptionLocation</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>Unrecognized option name.</p>
+											<p>Erroneous option location.</p>
 										</div>
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> message: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Unrecognized option: &quot;${optionName}&quot;&#x60;</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> message: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Unrecognized command line option&#x60;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Error message.</p>
@@ -146,7 +147,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="UnknownZOptionError.html" class="tsd-signature-type">UnknownZOptionError</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="ZOptionError.html" class="tsd-signature-type">ZOptionError</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -158,7 +159,7 @@
 					<h3>message</h3>
 					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="UnknownZOptionError.html">UnknownZOptionError</a>.<a href="UnknownZOptionError.html#message">message</a></p>
+						<p>Inherited from <a href="ZOptionError.html">ZOptionError</a>.<a href="ZOptionError.html#message">message</a></p>
 						<ul>
 							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:974</li>
 						</ul>
@@ -169,24 +170,24 @@
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="UnknownZOptionError.html">UnknownZOptionError</a>.<a href="UnknownZOptionError.html#name">name</a></p>
+						<p>Inherited from <a href="ZOptionError.html">ZOptionError</a>.<a href="ZOptionError.html#name">name</a></p>
 						<ul>
 							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:973</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="optionName" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> option<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">option<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="optionLocation" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> option<wbr>Location</h3>
+					<div class="tsd-signature tsd-kind-icon">option<wbr>Location<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Required</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#ZOptionLocation" class="tsd-signature-type">ZOptionLocation</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/c6f92c9/src/unknown-option-error.ts#L18">run-z/optionz/src/unknown-option-error.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/970d1f4/src/option-error.ts#L16">run-z/optionz/src/option-error.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Unrecognized option name.</p>
+							<p>Erroneous option location.</p>
 						</div>
 					</div>
 				</section>
@@ -195,8 +196,8 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stack</h3>
 					<div class="tsd-signature tsd-kind-icon">stack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="UnknownZOptionError.html">UnknownZOptionError</a>.<a href="UnknownZOptionError.html#stack">stack</a></p>
-						<p>Overrides <a href="UnknownZOptionError.html">UnknownZOptionError</a>.<a href="UnknownZOptionError.html#stack">stack</a></p>
+						<p>Inherited from <a href="ZOptionError.html">ZOptionError</a>.<a href="ZOptionError.html#stack">stack</a></p>
+						<p>Overrides <a href="ZOptionError.html">ZOptionError</a>.<a href="ZOptionError.html#stack">stack</a></p>
 						<ul>
 							<li>Defined in node_modules/typescript/lib/lib.es5.d.ts:975</li>
 						</ul>
@@ -227,25 +228,25 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
-						<a href="UnknownZOptionError.html" class="tsd-kind-icon">UnknownZOption<wbr>Error</a>
+						<a href="ZOptionError.html" class="tsd-kind-icon">ZOption<wbr>Error</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="UnknownZOptionError.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="ZOptionError.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="UnknownZOptionError.html#message" class="tsd-kind-icon">message</a>
+								<a href="ZOptionError.html#message" class="tsd-kind-icon">message</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="UnknownZOptionError.html#name" class="tsd-kind-icon">name</a>
+								<a href="ZOptionError.html#name" class="tsd-kind-icon">name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="UnknownZOptionError.html#optionName" class="tsd-kind-icon">option<wbr>Name</a>
+								<a href="ZOptionError.html#optionLocation" class="tsd-kind-icon">option<wbr>Location</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-								<a href="UnknownZOptionError.html#stack" class="tsd-kind-icon">stack</a>
+								<a href="ZOptionError.html#stack" class="tsd-kind-icon">stack</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
-								<a href="UnknownZOptionError.html#Error" class="tsd-kind-icon">Error</a>
+								<a href="ZOptionError.html#Error" class="tsd-kind-icon">Error</a>
 							</li>
 						</ul>
 					</li>
@@ -271,6 +272,9 @@
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="../globals.html#ZOptionInput" class="tsd-kind-icon">ZOption<wbr>Input</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="../globals.html#ZOptionLocation" class="tsd-kind-icon">ZOption<wbr>Location</a>
 					</li>
 					<li class=" tsd-kind-object-literal">
 						<a href="../globals.html#ZOptionSyntax" class="tsd-kind-icon">ZOption<wbr>Syntax</a>
