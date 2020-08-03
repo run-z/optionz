@@ -10,7 +10,10 @@ import { ZOptionLocation } from './option-location';
  */
 export class ZOptionError extends Error {
 
-  readonly optionLocation: ZOptionLocation;
+  /**
+   * Erroneous option location.
+   */
+  readonly optionLocation: Required<ZOptionLocation>;
 
   /**
    * Constructs option error.
