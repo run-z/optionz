@@ -1,9 +1,10 @@
 import { asis, noop, valueProvider } from '@proc7ts/primitives';
 import type { ZOption, ZOptionReader } from './option';
+import { ZOptionError } from './option-error';
+import type { ZOptionLocation } from './option-location';
 import { ZOptionSyntax } from './option-syntax';
 import { SimpleZOptionsParser, simpleZOptionsParser } from './simple-options-parser';
 import type { SupportedZOptions } from './supported-options';
-import { UnknownZOptionError } from './unknown-option-error';
 
 describe('ZOptionsParser', () => {
 
@@ -105,6 +106,7 @@ describe('ZOptionsParser', () => {
 
     let values: readonly string[] | undefined;
     let rest: readonly string[] | undefined;
+    let restLocation: ZOptionLocation | undefined;
     const parser = simpleZOptionsParser({
       options: {
         '--test': option => {
@@ -112,6 +114,7 @@ describe('ZOptionsParser', () => {
         },
         '*': option => {
           rest = option.rest();
+          restLocation = option.optionLocation({ endIndex: option.args.length });
         },
       },
     });
@@ -120,6 +123,13 @@ describe('ZOptionsParser', () => {
 
     expect(values).toEqual([]);
     expect(rest).toEqual(['val2', '--end']);
+    expect(restLocation).toEqual({
+      args: ['--test', 'val1', 'val2', '--end'],
+      index: 1,
+      endIndex: 4,
+      offset: 0,
+      endOffset: 5,
+    });
     expect(recognized).toEqual({
       '--test': [],
       val1: ['val2', '--end'],
@@ -153,8 +163,8 @@ describe('ZOptionsParser', () => {
     const parser = simpleZOptionsParser({ options: {} });
     const error = await parser(['--option']).catch(asis);
 
-    expect(error).toBeInstanceOf(UnknownZOptionError);
-    expect(error.optionName).toBe('--option');
+    expect(error).toBeInstanceOf(ZOptionError);
+    expect(error.optionLocation).toEqual({ args: ['--option'], index: 0, endIndex: 1, offset: 0, endOffset: 8 });
   });
   it('accepts supported options provider', async () => {
 
@@ -318,8 +328,8 @@ describe('ZOptionsParser', () => {
     });
     const error = await parser(['--test']).catch(asis);
 
-    expect(error).toBeInstanceOf(UnknownZOptionError);
-    expect(error.optionName).toBe('--test');
+    expect(error).toBeInstanceOf(ZOptionError);
+    expect(error.optionLocation).toEqual({ args: ['--test'], index: 0, endIndex: 1, offset: 0, endOffset: 6 });
   });
   it('throws when option reader does nothing', async () => {
 
@@ -330,8 +340,8 @@ describe('ZOptionsParser', () => {
     });
     const error = await parser(['--test']).catch(asis);
 
-    expect(error).toBeInstanceOf(UnknownZOptionError);
-    expect(error.optionName).toBe('--test');
+    expect(error).toBeInstanceOf(ZOptionError);
+    expect(error.optionLocation).toEqual({ args: ['--test'], index: 0, endIndex: 1, offset: 0, endOffset: 6 });
   });
   it('does not throw when option reader does nothing before option recognition', async () => {
 

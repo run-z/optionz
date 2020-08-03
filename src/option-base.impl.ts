@@ -1,0 +1,49 @@
+import type { ZOption, ZOptionReader } from './option';
+import type { ZOptionLocation } from './option-location';
+import type { ZOptionImpl } from './option.impl';
+
+/**
+ * @internal
+ */
+export class ZOptionBase<TOption extends ZOption> implements ZOption {
+
+  constructor(private readonly _impl: ZOptionImpl<TOption>) {
+  }
+
+  get name(): string {
+    return this._impl.name;
+  }
+
+  get key(): string {
+    return this._impl.key;
+  }
+
+  get args(): readonly string[] {
+    return this._impl.args;
+  }
+
+  get argIndex(): number {
+    return this._impl.argIndex;
+  }
+
+  values(max?: number): readonly string[] {
+    return this._impl.values(false, max);
+  }
+
+  rest(max?: number): readonly string[] {
+    return this._impl.values(true, max);
+  }
+
+  defer(whenRecognized?: ZOptionReader<this>): void {
+    this._impl.defer(whenRecognized as ZOptionReader<any>);
+  }
+
+  whenRecognized(receiver: (this: void, option: this) => void): void {
+    this._impl.whenRecognized(receiver as (option: any) => void);
+  }
+
+  optionLocation(init?: ZOptionLocation.Init): Required<ZOptionLocation> {
+    return this._impl.optionLocation(init);
+  }
+
+}

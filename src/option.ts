@@ -3,6 +3,8 @@
  * @module @run-z/optionz
  */
 
+import type { ZOptionLocation } from './option-location';
+
 /**
  * Base representation of command line option passed to its {@link ZOptionReader reader} in order to be recognized.
  *
@@ -101,6 +103,15 @@ export interface ZOption {
    * @param receiver
    */
   whenRecognized(receiver: (this: void, option: this) => void): void;
+
+  /**
+   * Builds option location within parsed command line.
+   *
+   * @param init  Initial properties of option location.
+   *
+   * @returns Option location within parsed command line arguments.
+   */
+  optionLocation(init?: ZOptionLocation.Init): Required<ZOptionLocation>;
 
 }
 
