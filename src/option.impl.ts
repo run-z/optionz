@@ -15,8 +15,11 @@ export class ZOptionImpl<TOption extends ZOption> {
   private _values!: readonly string[];
 
   private _recognizedUpto!: number;
+  private _actions: ((this: void) => void)[] = [];
   private _deferred?: ZOptionReader<TOption>;
   private readonly _allDeferred: ZOptionReader<TOption>[] = [];
+  private _reason: any;
+  private _finalReason: any;
 
   recognized?: readonly string[];
   private _whenRecognized: (option: TOption) => void = noop;
@@ -53,6 +56,8 @@ export class ZOptionImpl<TOption extends ZOption> {
   }
 
   async read(option: TOption, reader: ZOptionReader<TOption>): Promise<void> {
+    this._actions = [];
+    this._reason = undefined;
     if (!this.recognized) {
       this._recognizedUpto = -1;
       this._deferred = undefined;
@@ -62,18 +67,41 @@ export class ZOptionImpl<TOption extends ZOption> {
 
     if (this._deferred) {
       this._allDeferred.push(this._deferred);
-    } else if (!this.recognized && this._recognizedUpto >= 0) {
-      this.recognized = this.args.slice(this.argIndex + 1, this._recognizedUpto);
+      if (this._finalReason == null) {
+        this._finalReason = this._reason;
+      }
+    } else {
+
+      const actions = this._actions;
+
+      if (actions.length) {
+        this.whenRecognized(() => {
+          for (const action of actions) {
+            action();
+          }
+        });
+      }
+      if (!this.recognized && this._recognizedUpto >= 0) {
+        this.recognized = this.args.slice(this.argIndex + 1, this._recognizedUpto);
+      }
     }
   }
 
   async done(option: TOption): Promise<number> {
-    for (const deferred of this._allDeferred) {
-      await deferred(option);
-    }
-
     if (this.recognized) {
+      this._actions = [];
+
+      for (const deferred of this._allDeferred) {
+        await deferred(option);
+      }
       this._whenRecognized(option);
+
+      // Perform actions registered by deferred callbacks
+      for (const action of this._actions) {
+        action();
+      }
+    } else if (this._finalReason != null) {
+      throw this._finalReason;
     } else {
       throw new ZOptionError(this.optionLocation(), `Unrecognized command line option: "${this.name}"`);
     }
@@ -81,10 +109,7 @@ export class ZOptionImpl<TOption extends ZOption> {
     return this._recognizedUpto;
   }
 
-  values(
-      rest: boolean,
-      max?: number,
-  ): readonly string[] {
+  values(rest: boolean, max?: number): readonly string[] {
     if (max != null && max < 0) {
       max = 0;
     }
@@ -105,13 +130,37 @@ export class ZOptionImpl<TOption extends ZOption> {
     return result;
   }
 
+  recognize(action?: (this: void) => void): void {
+    if (this._recognizedUpto < 0) {
+      this._recognize(this.argIndex + 1);
+    }
+    if (action) {
+      this._actions.push(action);
+    }
+  }
+
   private _recognize(upto: number): void {
     this._recognizedUpto = upto;
     this._deferred = undefined;
+    this._reason = undefined;
   }
 
-  defer(whenRecognized?: ZOptionReader<TOption>): void {
+  defer(whenRecognized: ZOptionReader<TOption> = noop): void {
     this._deferred = whenRecognized;
+  }
+
+  unrecognize(reason?: any): void {
+    if (this.recognized) {
+      return;
+    }
+    if (!this._deferred) {
+      this._deferred = noop;
+    }
+    if (reason != null) {
+      this._reason = reason;
+    }
+    this._recognizedUpto = -1;
+    this._actions.length = 0;
   }
 
   whenRecognized(receiver: (option: TOption) => void): void {
