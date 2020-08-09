@@ -177,36 +177,41 @@ function supportedZOptionsMeta<TOption extends ZOption>(
 
   const result = new Map<string, CombinedZOptionMeta>();
 
-  // eslint-disable-next-line prefer-const
-  for (let [key, specs] of options) {
+  for (const [readerKey, specs] of options) {
     for (const spec of specs) {
 
       const { meta = {} } = spec;
       let help: ZOptionMeta.Help;
+      let canonicalKey: string;
 
       if (meta.aliasOf != null) {
-        key = meta.aliasOf;
+        canonicalKey = meta.aliasOf;
         help = { usage: meta.usage };
       } else {
+        canonicalKey = readerKey;
         help = meta;
       }
 
       const usage = Array.from(arrayOfElements(help.usage));
-      const existing = result.get(key);
+      const existing = result.get(canonicalKey);
 
-      if (!existing) {
-        if (!usage.length) {
-          usage.push(key);
+      if (existing) {
+        if (usage.length) {
+          existing.usage.push(...usage);
+        } else if (!existing.usage.includes(readerKey)) {
+          existing.usage.push(readerKey);
         }
-        result.set(key, { ...help, usage });
-      } else {
-        existing.usage.push(...usage);
         if (!existing.help) {
           existing.help = help.help;
         }
         if (!existing.description) {
           existing.description = help.description;
         }
+      } else {
+        if (!usage.length) {
+          usage.push(readerKey);
+        }
+        result.set(canonicalKey, { ...help, usage });
       }
     }
   }
