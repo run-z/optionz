@@ -144,4 +144,28 @@ describe('ZOptionMeta', () => {
     await parser(['--help']);
     expect(help).toEqual({ usage: [] });
   });
+  it('is empty for hidden option', async () => {
+
+    let all: string[] | undefined;
+    let help: ZOptionMeta.Combined | undefined;
+    const parser = simpleZOptionsParser({
+      options: {
+        '--help'(option) {
+          all = Array.from(option.supportedOptions());
+          help = option.optionMeta('--hidden');
+          option.rest();
+        },
+        '--hidden': {
+          read: noop,
+          meta: {
+            hidden: true,
+          },
+        },
+      },
+    });
+
+    await parser(['--help']);
+    expect(all).toEqual(['--help']);
+    expect(help).toEqual({ usage: [] });
+  });
 });

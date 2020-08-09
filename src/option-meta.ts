@@ -6,9 +6,13 @@
 /**
  * Meta information for the option.
  *
- * Can be either {@link ZOptionMeta.Help help information}, or a reference to {@link ZOptionMeta.Alias alias option}.
+ * Can either contain {@link ZOptionMeta.Help help information}, be a reference to another option this one is an
+ * {@link ZOptionMeta.Alias alias for}, or be {@link ZOptionMeta.Hidden hidden}.
  */
-export type ZOptionMeta = ZOptionMeta.Help | ZOptionMeta.Alias;
+export type ZOptionMeta =
+    | ZOptionMeta.Hidden
+    | ZOptionMeta.Alias
+    | ZOptionMeta.Help;
 
 export namespace ZOptionMeta {
 
@@ -16,6 +20,8 @@ export namespace ZOptionMeta {
    * Option help information.
    */
   export interface Help {
+
+    readonly hidden?: false;
 
     /**
      * Option usage description(s).
@@ -41,6 +47,8 @@ export namespace ZOptionMeta {
    */
   export interface Alias {
 
+    readonly hidden?: false;
+
     /**
      * Option usage descriptions(s).
      */
@@ -54,6 +62,15 @@ export namespace ZOptionMeta {
   }
 
   /**
+   * Hidden option.
+   */
+  export interface Hidden {
+
+    readonly hidden: true;
+
+  }
+
+  /**
    * Option help information combined from multiple sources.
    */
   export interface Combined {
@@ -61,7 +78,7 @@ export namespace ZOptionMeta {
     /**
      * Option usage descriptions, including aliases usage.
      *
-     * May be empty only for unsupported option.
+     * May be empty for unsupported and hidden options.
      */
     readonly usage: readonly string[];
 

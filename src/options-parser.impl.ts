@@ -184,6 +184,9 @@ function supportedZOptionsMeta<TOption extends ZOption>(
       let help: ZOptionMeta.Help;
       let canonicalKey: string;
 
+      if (meta.hidden) {
+        continue;
+      }
       if (meta.aliasOf != null) {
         canonicalKey = meta.aliasOf;
         help = { usage: meta.usage };
