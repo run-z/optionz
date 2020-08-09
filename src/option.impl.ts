@@ -3,6 +3,7 @@ import type { ZOption } from './option';
 import { ZOptionError } from './option-error';
 import type { ZOptionInput } from './option-input';
 import { ZOptionLocation } from './option-location';
+import type { ZOptionMeta } from './option-meta';
 import type { ZOptionReader } from './option-reader';
 
 /**
@@ -25,7 +26,11 @@ export class ZOptionImpl<TOption extends ZOption> {
   recognized?: readonly string[];
   private _whenRecognized: (option: TOption) => void = noop;
 
-  constructor(private _args: readonly string[], readonly argIndex: number) {
+  constructor(
+      readonly optionsMeta: () => ReadonlyMap<string, ZOptionMeta.Combined>,
+      private _args: readonly string[],
+      readonly argIndex: number,
+  ) {
     this._head = _args.slice(0, argIndex);
   }
 
@@ -56,7 +61,7 @@ export class ZOptionImpl<TOption extends ZOption> {
     return this._args = [...this._head, name, ...values, ...tail];
   }
 
-  async read(option: TOption, reader: ZOptionReader.Fn<TOption>): Promise<void> {
+  async read(option: TOption, reader: ZOptionReader.Spec<TOption>): Promise<void> {
     this._actions = [];
     this._reason = undefined;
     if (!this.recognized) {
@@ -64,7 +69,7 @@ export class ZOptionImpl<TOption extends ZOption> {
       this._deferred = undefined;
     }
 
-    await reader(option);
+    await reader.read(option);
 
     if (this._deferred) {
       this._allDeferred.push(this._deferred);

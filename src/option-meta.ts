@@ -60,6 +60,8 @@ export namespace ZOptionMeta {
 
     /**
      * Option usage descriptions, including aliases usage.
+     *
+     * May be empty only for unsupported option.
      */
     readonly usage: readonly string[];
 

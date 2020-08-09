@@ -1,5 +1,6 @@
 import type { ZOption } from './option';
 import type { ZOptionLocation } from './option-location';
+import type { ZOptionMeta } from './option-meta';
 import type { ZOptionReader } from './option-reader';
 import type { ZOptionImpl } from './option.impl';
 
@@ -56,6 +57,14 @@ export class ZOptionBase<TOption extends ZOption> implements ZOption {
 
   optionLocation(init?: ZOptionLocation.Init): Required<ZOptionLocation> {
     return this._impl.optionLocation(init);
+  }
+
+  supportedOptions(): Iterable<string> {
+    return this._impl.optionsMeta().keys();
+  }
+
+  optionMeta(key: string): ZOptionMeta.Combined {
+    return this._impl.optionsMeta().get(key) || { usage: [] };
   }
 
 }

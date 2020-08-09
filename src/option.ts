@@ -4,6 +4,7 @@
  */
 
 import type { ZOptionLocation } from './option-location';
+import type { ZOptionMeta } from './option-meta';
 import type { ZOptionReader } from './option-reader';
 
 /**
@@ -139,6 +140,22 @@ export interface ZOption {
    * @returns Option location within parsed command line arguments.
    */
   optionLocation(init?: ZOptionLocation.Init): Required<ZOptionLocation>;
+
+  /**
+   * Lists all options supported by the parser.
+   *
+   * @returns An iterable of all supported option keys.
+   */
+  supportedOptions(): Iterable<string>;
+
+  /**
+   * Returns meta information for option.
+   *
+   * @param key  Option key.
+   *
+   * @returns Combined meta information for the option with the given key.
+   */
+  optionMeta(key: string): ZOptionMeta.Combined;
 
 }
 
