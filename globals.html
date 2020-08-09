@@ -71,6 +71,8 @@
 								<li class="tsd-kind-namespace"><a href="modules/SimpleZOptionsParser.html" class="tsd-kind-icon">SimpleZOptions<wbr>Parser</a></li>
 								<li class="tsd-kind-namespace tsd-has-type-parameter"><a href="modules/SupportedZOptions.html" class="tsd-kind-icon">SupportedZOptions</a></li>
 								<li class="tsd-kind-namespace"><a href="modules/ZOption.html" class="tsd-kind-icon">ZOption</a></li>
+								<li class="tsd-kind-namespace"><a href="modules/ZOptionMeta.html" class="tsd-kind-icon">ZOption<wbr>Meta</a></li>
+								<li class="tsd-kind-namespace tsd-has-type-parameter"><a href="modules/ZOptionReader.html" class="tsd-kind-icon">ZOption<wbr>Reader</a></li>
 								<li class="tsd-kind-namespace tsd-has-type-parameter"><a href="modules/ZOptionsParser.html" class="tsd-kind-icon">ZOptions<wbr>Parser</a></li>
 							</ul>
 						</section>
@@ -89,7 +91,6 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="globals.html#ZOptionReader" class="tsd-kind-icon">ZOption<wbr>Reader</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#ZOptionSyntax" class="tsd-kind-icon">ZOption<wbr>Syntax</a></li>
 							</ul>
 						</section>
@@ -114,82 +115,13 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
-					<a name="ZOptionReader" class="tsd-anchor"></a>
-					<h3>ZOption<wbr>Reader</h3>
-					<div class="tsd-signature tsd-kind-icon">ZOption<wbr>Reader&lt;TOption, TThis&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TThis</span>, option<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TOption</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option.ts#L193">run-z/optionz/src/option.ts:193</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Option reader signature.</p>
-						</div>
-						<p>A reader accepts a <a href="modules/ZOption.html">command line option</a> corresponding to the key the reader is
-						<a href="interfaces/SupportedZOptions.Map.html">registered for</a> and tries to recognize it.</p>
-					</div>
-					<h4 class="tsd-type-parameters-title">Type parameters</h4>
-					<ul class="tsd-type-parameters">
-						<li>
-							<h4>TOption<span class="tsd-signature-symbol">: </span><a href="modules/ZOption.html" class="tsd-signature-type">ZOption</a></h4>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>A type of command line option representation expected by reader.</p>
-								</div>
-							</div>
-						</li>
-						<li>
-							<h4>TThis</h4>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>A type of <code>this</code> parameter.</p>
-								</div>
-							</div>
-						</li>
-					</ul>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TThis</span>, option<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TOption</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<div class="tsd-comment tsd-typography">
-										</div>
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>this: <span class="tsd-signature-type">TThis</span></h5>
-											</li>
-											<li>
-												<h5>option: <span class="tsd-signature-type">TOption</span></h5>
-												<div class="tsd-comment tsd-typography">
-													<div class="lead">
-														<p>Command line option to recognize.</p>
-													</div>
-												</div>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></h4>
-										<p>Either nothing or promise-like instance resolved when the reader finishes option processing,
-										either recognized or not.</p>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="ZOptionSyntax" class="tsd-anchor"></a>
 					<h3>ZOption<wbr>Syntax</h3>
 					<div class="tsd-signature tsd-kind-icon">ZOption<wbr>Syntax<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/ZOptionInput.html" class="tsd-signature-type">ZOptionInput</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-syntax.ts#L17">run-z/optionz/src/option-syntax.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-syntax.ts#L17">run-z/optionz/src/option-syntax.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -197,7 +129,7 @@
 							<p>Supported command line syntax.</p>
 						</div>
 						<p>The syntax is a function that converts raw command line arguments to <a href="interfaces/ZOptionInput.html">option input</a> suitable
-						to be recognized by <a href="globals.html#ZOptionReader">option readers</a>.</p>
+						to be recognized by <a href="modules/ZOptionReader.html">option readers</a>.</p>
 						<p>A syntax should be <a href="interfaces/ZOptionsParser.Config.html#syntax">registered</a> for options parser to respect it.</p>
 					</div>
 					<div class="tsd-type-declaration">
@@ -246,7 +178,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/options-parser.ts#L77">run-z/optionz/src/options-parser.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/options-parser.ts#L77">run-z/optionz/src/options-parser.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -293,7 +225,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/parse-options.ts#L20">run-z/optionz/src/parse-options.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/parse-options.ts#L20">run-z/optionz/src/parse-options.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -331,7 +263,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/simple-options-parser.ts#L88">run-z/optionz/src/simple-options-parser.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/simple-options-parser.ts#L88">run-z/optionz/src/simple-options-parser.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -362,7 +294,7 @@
 					<div class="tsd-signature tsd-kind-icon">ZOption<wbr>Input<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-input.ts#L50">run-z/optionz/src/option-input.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-input.ts#L50">run-z/optionz/src/option-input.ts:50</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
@@ -375,7 +307,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-input.ts#L98">run-z/optionz/src/option-input.ts:98</a></li>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-input.ts#L98">run-z/optionz/src/option-input.ts:98</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -411,7 +343,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-input.ts#L61">run-z/optionz/src/option-input.ts:61</a></li>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-input.ts#L61">run-z/optionz/src/option-input.ts:61</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -447,7 +379,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-input.ts#L75">run-z/optionz/src/option-input.ts:75</a></li>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-input.ts#L75">run-z/optionz/src/option-input.ts:75</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -486,9 +418,9 @@
 					<div class="tsd-signature tsd-kind-icon">ZOption<wbr>Location<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L9">run-z/optionz/src/option-location.ts:9</a></li>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L44">run-z/optionz/src/option-location.ts:44</a></li>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L83">run-z/optionz/src/option-location.ts:83</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L9">run-z/optionz/src/option-location.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L44">run-z/optionz/src/option-location.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L83">run-z/optionz/src/option-location.ts:83</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -502,7 +434,7 @@
 						<div class="tsd-signature tsd-kind-icon">Init<span class="tsd-signature-symbol">:</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L49">run-z/optionz/src/option-location.ts:49</a></li>
+								<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L49">run-z/optionz/src/option-location.ts:49</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -516,7 +448,7 @@
 							<div class="tsd-signature tsd-kind-icon">end<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L63">run-z/optionz/src/option-location.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L63">run-z/optionz/src/option-location.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -536,7 +468,7 @@
 							<div class="tsd-signature tsd-kind-icon">end<wbr>Offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L77">run-z/optionz/src/option-location.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L77">run-z/optionz/src/option-location.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -556,7 +488,7 @@
 							<div class="tsd-signature tsd-kind-icon">index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L56">run-z/optionz/src/option-location.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L56">run-z/optionz/src/option-location.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -576,7 +508,7 @@
 							<div class="tsd-signature tsd-kind-icon">offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L70">run-z/optionz/src/option-location.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L70">run-z/optionz/src/option-location.ts:70</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -597,7 +529,7 @@
 						<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L14">run-z/optionz/src/option-location.ts:14</a></li>
+								<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L14">run-z/optionz/src/option-location.ts:14</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -612,7 +544,7 @@
 						<div class="tsd-signature tsd-kind-icon">end<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L26">run-z/optionz/src/option-location.ts:26</a></li>
+								<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L26">run-z/optionz/src/option-location.ts:26</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -632,7 +564,7 @@
 						<div class="tsd-signature tsd-kind-icon">end<wbr>Offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L40">run-z/optionz/src/option-location.ts:40</a></li>
+								<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L40">run-z/optionz/src/option-location.ts:40</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -652,7 +584,7 @@
 						<div class="tsd-signature tsd-kind-icon">index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L19">run-z/optionz/src/option-location.ts:19</a></li>
+								<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L19">run-z/optionz/src/option-location.ts:19</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -667,7 +599,7 @@
 						<div class="tsd-signature tsd-kind-icon">offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L33">run-z/optionz/src/option-location.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L33">run-z/optionz/src/option-location.ts:33</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -691,7 +623,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-location.ts#L92">run-z/optionz/src/option-location.ts:92</a></li>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-location.ts#L92">run-z/optionz/src/option-location.ts:92</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -720,7 +652,7 @@
 					<div class="tsd-signature tsd-kind-icon">ZOption<wbr>Syntax<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-syntax.ts#L34">run-z/optionz/src/option-syntax.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-syntax.ts#L34">run-z/optionz/src/option-syntax.ts:34</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
@@ -733,7 +665,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-syntax.ts#L104">run-z/optionz/src/option-syntax.ts:104</a></li>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-syntax.ts#L104">run-z/optionz/src/option-syntax.ts:104</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -768,7 +700,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-syntax.ts#L93">run-z/optionz/src/option-syntax.ts:93</a></li>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-syntax.ts#L93">run-z/optionz/src/option-syntax.ts:93</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -792,7 +724,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-syntax.ts#L45">run-z/optionz/src/option-syntax.ts:45</a></li>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-syntax.ts#L45">run-z/optionz/src/option-syntax.ts:45</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -820,7 +752,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-syntax.ts#L63">run-z/optionz/src/option-syntax.ts:63</a></li>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-syntax.ts#L63">run-z/optionz/src/option-syntax.ts:63</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -851,7 +783,7 @@
 							<li class="tsd-description">
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/run-z/optionz/blob/ff84e1d/src/option-syntax.ts#L82">run-z/optionz/src/option-syntax.ts:82</a></li>
+										<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-syntax.ts#L82">run-z/optionz/src/option-syntax.ts:82</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -891,6 +823,12 @@
 					<li class=" tsd-kind-namespace">
 						<a href="modules/ZOption.html">ZOption</a>
 					</li>
+					<li class=" tsd-kind-namespace">
+						<a href="modules/ZOptionMeta.html">ZOption<wbr>Meta</a>
+					</li>
+					<li class=" tsd-kind-namespace tsd-has-type-parameter">
+						<a href="modules/ZOptionReader.html">ZOption<wbr>Reader</a>
+					</li>
 					<li class=" tsd-kind-namespace tsd-has-type-parameter">
 						<a href="modules/ZOptionsParser.html">ZOptions<wbr>Parser</a>
 					</li>
@@ -903,9 +841,6 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ZOptionInput.html" class="tsd-kind-icon">ZOption<wbr>Input</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
-						<a href="globals.html#ZOptionReader" class="tsd-kind-icon">ZOption<wbr>Reader</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#ZOptionSyntax" class="tsd-kind-icon">ZOption<wbr>Syntax</a>

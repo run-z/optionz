@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SupportedZOptions | Command Line Options Parser</title>
+	<title>ZOptionReader | Command Line Options Parser</title>
 	<meta name="description" content="Documentation for Command Line Options Parser">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="SupportedZOptions.html">SupportedZOptions</a>
+					<a href="ZOptionReader.html">ZOptionReader</a>
 				</li>
 			</ul>
-			<h1>Namespace SupportedZOptions&lt;TOption, TCtx&gt;</h1>
+			<h1>Namespace ZOptionReader&lt;TOption, TThis&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -67,9 +67,9 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A set of options supported by <a href="ZOptionsParser.html">parser</a>.</p>
+						<p>Option reader.</p>
 					</div>
-					<p>This is either a <a href="../interfaces/SupportedZOptions.Map.html">map of option readers</a>, its <a href="SupportedZOptions.html#Provider">provider function</a>, or an array of the above. Multiple readers may be specified per option key with the latter.</p>
+					<p>This can be either a <a href="ZOptionReader.html#Fn">reader function</a>, or its <a href="../interfaces/ZOptionReader.Spec.html">full specifier</a>.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-type-parameters">
@@ -79,15 +79,15 @@
 						<h4>TOption<span class="tsd-signature-symbol">: </span><a href="ZOption.html" class="tsd-signature-type">ZOption</a></h4>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>A type of option representation.</p>
+								<p>A type of command line option representation expected by reader.</p>
 							</div>
 						</div>
 					</li>
 					<li>
-						<h4>TCtx</h4>
+						<h4>TThis</h4>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>A type of option processing context required by parser.</p>
+								<p>A type of <code>this</code> parameter.</p>
 							</div>
 						</div>
 					</li>
@@ -100,13 +100,13 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter"><a href="../interfaces/SupportedZOptions.Map.html" class="tsd-kind-icon">Map</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter"><a href="../interfaces/ZOptionReader.Spec.html" class="tsd-kind-icon">Spec</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-namespace tsd-has-type-parameter"><a href="SupportedZOptions.html#Provider" class="tsd-kind-icon">Provider</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-namespace tsd-has-type-parameter"><a href="ZOptionReader.html#Fn" class="tsd-kind-icon">Fn</a></li>
 							</ul>
 						</section>
 					</div>
@@ -115,19 +115,20 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-namespace tsd-has-type-parameter">
-					<a name="Provider" class="tsd-anchor"></a>
-					<h3>Provider</h3>
-					<div class="tsd-signature tsd-kind-icon">Provider&lt;TOption, TCtx&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, context<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TCtx</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/SupportedZOptions.Map.html" class="tsd-signature-type">Map</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TOption</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="Fn" class="tsd-anchor"></a>
+					<h3>Fn</h3>
+					<div class="tsd-signature tsd-kind-icon">Fn&lt;TOption, TThis&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TThis</span>, option<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TOption</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/supported-options.ts#L84">run-z/optionz/src/supported-options.ts:84</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/3996675/src/option-reader.ts#L31">run-z/optionz/src/option-reader.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Options syntax provider signature.</p>
+							<p>Option reader function (or method) signature.</p>
 						</div>
-						<p>The provider is called at most once per <a href="ZOptionsParser.html">parser call</a>.</p>
+						<p>A reader function accepts a <a href="ZOption.html">command line option</a> corresponding to the key the reader is
+						<a href="../interfaces/SupportedZOptions.Map.html">registered for</a> and tries to recognize it.</p>
 					</div>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
@@ -135,15 +136,15 @@
 							<h4>TOption<span class="tsd-signature-symbol">: </span><a href="ZOption.html" class="tsd-signature-type">ZOption</a></h4>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>A type of option representation.</p>
+									<p>A type of command line option representation expected by reader.</p>
 								</div>
 							</div>
 						</li>
 						<li>
-							<h4>TCtx</h4>
+							<h4>TThis</h4>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>A type of option processing context required by parser.</p>
+									<p>A type of <code>this</code> parameter.</p>
 								</div>
 							</div>
 						</li>
@@ -153,7 +154,7 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span>, context<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TCtx</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/SupportedZOptions.Map.html" class="tsd-signature-type">Map</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TOption</span><span class="tsd-signature-symbol">&gt;</span></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TThis</span>, option<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TOption</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
@@ -162,19 +163,20 @@
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>this: <span class="tsd-signature-type">void</span></h5>
+												<h5>this: <span class="tsd-signature-type">TThis</span></h5>
 											</li>
 											<li>
-												<h5>context: <span class="tsd-signature-type">TCtx</span></h5>
+												<h5>option: <span class="tsd-signature-type">TOption</span></h5>
 												<div class="tsd-comment tsd-typography">
 													<div class="lead">
-														<p>Option processing context.</p>
+														<p>Command line option to recognize.</p>
 													</div>
 												</div>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <a href="../interfaces/SupportedZOptions.Map.html" class="tsd-signature-type">Map</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TOption</span><span class="tsd-signature-symbol">&gt;</span></h4>
-										<p>A <a href="../interfaces/SupportedZOptions.Map.html">map of option readers</a>.</p>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PromiseLike</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span></h4>
+										<p>Either nothing or promise-like instance resolved when the reader finishes option processing,
+										either recognized or not.</p>
 									</li>
 								</ul>
 							</li>
@@ -192,7 +194,7 @@
 					<li class=" tsd-kind-namespace">
 						<a href="SimpleZOptionsParser.html">SimpleZOptions<wbr>Parser</a>
 					</li>
-					<li class="current tsd-kind-namespace tsd-has-type-parameter">
+					<li class=" tsd-kind-namespace tsd-has-type-parameter">
 						<a href="SupportedZOptions.html">SupportedZOptions</a>
 					</li>
 					<li class=" tsd-kind-namespace">
@@ -201,7 +203,7 @@
 					<li class=" tsd-kind-namespace">
 						<a href="ZOptionMeta.html">ZOption<wbr>Meta</a>
 					</li>
-					<li class=" tsd-kind-namespace tsd-has-type-parameter">
+					<li class="current tsd-kind-namespace tsd-has-type-parameter">
 						<a href="ZOptionReader.html">ZOption<wbr>Reader</a>
 					</li>
 					<li class=" tsd-kind-namespace tsd-has-type-parameter">
@@ -212,10 +214,10 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="../interfaces/SupportedZOptions.Map.html" class="tsd-kind-icon">Map</a>
+						<a href="../interfaces/ZOptionReader.Spec.html" class="tsd-kind-icon">Spec</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="SupportedZOptions.html#Provider" class="tsd-kind-icon">Provider</a>
+						<a href="ZOptionReader.html#Fn" class="tsd-kind-icon">Fn</a>
 					</li>
 				</ul>
 			</nav>
