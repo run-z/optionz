@@ -4,6 +4,7 @@
  */
 
 import type { ZOptionLocation } from './option-location';
+import type { ZOptionReader } from './option-reader';
 
 /**
  * Base representation of command line option passed to its {@link ZOptionReader reader} in order to be recognized.
@@ -103,7 +104,7 @@ export interface ZOption {
    *
    * @param whenRecognized  Optional callback function that will be called when option recognized by another reader.
    */
-  defer(whenRecognized?: ZOptionReader<this>): void;
+  defer(whenRecognized?: ZOptionReader.Fn<this>): void;
 
   /**
    * Marks current option as unrecognized.
@@ -181,20 +182,3 @@ export namespace ZOption {
 
 }
 
-/**
- * Option reader signature.
- *
- * A reader accepts a {@link ZOption command line option} corresponding to the key the reader is
- * {@link SupportedZOptions.Map registered for} and tries to recognize it.
- *
- * @typeparam TOption  A type of command line option representation expected by reader.
- * @typeparam TThis  A type of `this` parameter.
- */
-export type ZOptionReader<TOption extends ZOption, TThis = void> =
-/**
- * @param option  Command line option to recognize.
- *
- * @returns Either nothing or promise-like instance resolved when the reader finishes option processing,
- * either recognized or not.
- */
-    (this: TThis, option: TOption) => void | PromiseLike<unknown>;

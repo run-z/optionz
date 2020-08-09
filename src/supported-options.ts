@@ -2,7 +2,8 @@
  * @packageDocumentation
  * @module @run-z/optionz
  */
-import type { ZOption, ZOptionReader } from './option';
+import type { ZOption } from './option';
+import type { ZOptionReader } from './option-reader';
 
 /**
  * A set of options supported by {@link ZOptionsParser parser}.

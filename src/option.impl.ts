@@ -1,8 +1,9 @@
 import { noop } from '@proc7ts/primitives';
-import type { ZOption, ZOptionReader } from './option';
+import type { ZOption } from './option';
 import { ZOptionError } from './option-error';
 import type { ZOptionInput } from './option-input';
 import { ZOptionLocation } from './option-location';
+import type { ZOptionReader } from './option-reader';
 
 /**
  * @internal
@@ -16,8 +17,8 @@ export class ZOptionImpl<TOption extends ZOption> {
 
   private _recognizedUpto!: number;
   private _actions: ((this: void) => void)[] = [];
-  private _deferred?: ZOptionReader<TOption>;
-  private readonly _allDeferred: ZOptionReader<TOption>[] = [];
+  private _deferred?: ZOptionReader.Fn<TOption>;
+  private readonly _allDeferred: ZOptionReader.Fn<TOption>[] = [];
   private _reason: any;
   private _finalReason: any;
 
@@ -55,7 +56,7 @@ export class ZOptionImpl<TOption extends ZOption> {
     return this._args = [...this._head, name, ...values, ...tail];
   }
 
-  async read(option: TOption, reader: ZOptionReader<TOption>): Promise<void> {
+  async read(option: TOption, reader: ZOptionReader.Fn<TOption>): Promise<void> {
     this._actions = [];
     this._reason = undefined;
     if (!this.recognized) {
@@ -145,7 +146,7 @@ export class ZOptionImpl<TOption extends ZOption> {
     this._reason = undefined;
   }
 
-  defer(whenRecognized: ZOptionReader<TOption> = noop): void {
+  defer(whenRecognized: ZOptionReader.Fn<TOption> = noop): void {
     this._deferred = whenRecognized;
   }
 

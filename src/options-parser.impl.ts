@@ -1,6 +1,7 @@
 import { arrayOfElements } from '@proc7ts/primitives';
-import type { ZOption, ZOptionReader } from './option';
+import type { ZOption } from './option';
 import { ZOptionBase } from './option-base.impl';
+import type { ZOptionReader } from './option-reader';
 import { ZOptionSyntax } from './option-syntax';
 import { ZOptionImpl } from './option.impl';
 import type { ZOptionsParser } from './options-parser';
@@ -16,7 +17,7 @@ import type { SupportedZOptions } from './supported-options';
 export class ZOptionsParser$<TOption extends ZOption, TCtx> {
 
   private readonly _config: ZOptionsParser.Config<TOption, TCtx>;
-  private _options?: (this: void, context: TCtx) => Map<string, ZOptionReader<TOption>[]>;
+  private _options?: (this: void, context: TCtx) => Map<string, ZOptionReader.Fn<TOption>[]>;
   private _syntax?: ZOptionSyntax;
   private _optionClass?: ZOption.ImplClass<TOption, TCtx, [ZOptionImpl<TOption>]>;
 
@@ -29,7 +30,7 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
     this._config = config;
   }
 
-  private get options(): (this: void, context: TCtx) => Map<string, readonly ZOptionReader<TOption>[]> {
+  private get options(): (this: void, context: TCtx) => Map<string, readonly ZOptionReader.Fn<TOption>[]> {
     if (this._options) {
       return this._options;
     }
@@ -121,9 +122,9 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
 function supportedZOptionsMap<TOption extends ZOption, TCtx>(
     context: TCtx,
     supportedOptions: SupportedZOptions<TOption, TCtx>,
-): Map<string, ZOptionReader<TOption>[]> {
+): Map<string, ZOptionReader.Fn<TOption>[]> {
 
-  const result = new Map<string, ZOptionReader<TOption>[]>();
+  const result = new Map<string, ZOptionReader.Fn<TOption>[]>();
 
   for (const supported of arrayOfElements(supportedOptions)) {
 
@@ -136,7 +137,7 @@ function supportedZOptionsMap<TOption extends ZOption, TCtx>(
         continue;
       }
 
-      const r = reader.bind(map);
+      const r = typeof reader === 'function' ? reader.bind(map) : reader.read.bind(reader);
       const readers = result.get(option);
 
       if (readers) {
