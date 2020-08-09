@@ -1,6 +1,8 @@
-import { arrayOfElements } from '@proc7ts/primitives';
-import type { ZOption, ZOptionReader } from './option';
+import { arrayOfElements, lazyValue } from '@proc7ts/primitives';
+import type { ZOption } from './option';
 import { ZOptionBase } from './option-base.impl';
+import type { ZOptionMeta } from './option-meta';
+import type { ZOptionReader } from './option-reader';
 import { ZOptionSyntax } from './option-syntax';
 import { ZOptionImpl } from './option.impl';
 import type { ZOptionsParser } from './options-parser';
@@ -16,7 +18,7 @@ import type { SupportedZOptions } from './supported-options';
 export class ZOptionsParser$<TOption extends ZOption, TCtx> {
 
   private readonly _config: ZOptionsParser.Config<TOption, TCtx>;
-  private _options?: (this: void, context: TCtx) => Map<string, ZOptionReader<TOption>[]>;
+  private _options?: (this: void, context: TCtx) => Map<string, ZOptionReader.Spec<TOption>[]>;
   private _syntax?: ZOptionSyntax;
   private _optionClass?: ZOption.ImplClass<TOption, TCtx, [ZOptionImpl<TOption>]>;
 
@@ -29,7 +31,7 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
     this._config = config;
   }
 
-  private get options(): (this: void, context: TCtx) => Map<string, readonly ZOptionReader<TOption>[]> {
+  get options(): (this: void, context: TCtx) => Map<string, readonly ZOptionReader.Spec<TOption>[]> {
     if (this._options) {
       return this._options;
     }
@@ -75,12 +77,13 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
   ): Promise<TCtx> {
 
     const options = this.options(context);
+    const optionMeta = lazyValue(() => supportedZOptionsMeta(options));
     const optionClass = this.optionClass;
     const syntax = this.syntax;
 
     for (let argIndex = Math.max(0, fromIndex); argIndex < args.length;) {
 
-      const impl = new ZOptionImpl<TOption>(args, argIndex);
+      const impl = new ZOptionImpl<TOption>(optionMeta, args, argIndex);
       const option = new optionClass(context, impl);
 
       let retry: boolean;
@@ -121,9 +124,9 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
 function supportedZOptionsMap<TOption extends ZOption, TCtx>(
     context: TCtx,
     supportedOptions: SupportedZOptions<TOption, TCtx>,
-): Map<string, ZOptionReader<TOption>[]> {
+): Map<string, ZOptionReader.Spec<TOption>[]> {
 
-  const result = new Map<string, ZOptionReader<TOption>[]>();
+  const result = new Map<string, ZOptionReader.Spec<TOption>[]>();
 
   for (const supported of arrayOfElements(supportedOptions)) {
 
@@ -136,13 +139,79 @@ function supportedZOptionsMap<TOption extends ZOption, TCtx>(
         continue;
       }
 
-      const r = reader.bind(map);
+      let spec: ZOptionReader.Spec<TOption>;
+
+      if (typeof reader === 'function') {
+        spec = {
+          read: reader.bind(map),
+        };
+      } else {
+        spec = reader;
+      }
+
       const readers = result.get(option);
 
       if (readers) {
-        readers.push(r);
+        readers.push(spec);
       } else {
-        result.set(option, [r]);
+        result.set(option, [spec]);
+      }
+    }
+  }
+
+  return result;
+}
+
+/**
+ * @internal
+ */
+function supportedZOptionsMeta<TOption extends ZOption>(
+    options: ReadonlyMap<string, readonly ZOptionReader.Spec<TOption>[]>,
+): ReadonlyMap<string, ZOptionMeta.Combined> {
+
+  interface CombinedZOptionMeta {
+    usage: string[];
+    help?: string;
+    description?: string;
+  }
+
+  const result = new Map<string, CombinedZOptionMeta>();
+
+  for (const [readerKey, specs] of options) {
+    for (const spec of specs) {
+
+      const { meta = {} } = spec;
+      let help: ZOptionMeta.Help;
+      let canonicalKey: string;
+
+      if (meta.aliasOf != null) {
+        canonicalKey = meta.aliasOf;
+        help = { usage: meta.usage };
+      } else {
+        canonicalKey = readerKey;
+        help = meta;
+      }
+
+      const usage = Array.from(arrayOfElements(help.usage));
+      const existing = result.get(canonicalKey);
+
+      if (existing) {
+        if (usage.length) {
+          existing.usage.push(...usage);
+        } else if (!existing.usage.includes(readerKey)) {
+          existing.usage.push(readerKey);
+        }
+        if (!existing.help) {
+          existing.help = help.help;
+        }
+        if (!existing.description) {
+          existing.description = help.description;
+        }
+      } else {
+        if (!usage.length) {
+          usage.push(readerKey);
+        }
+        result.set(canonicalKey, { ...help, usage });
       }
     }
   }

@@ -1,8 +1,10 @@
 import { noop } from '@proc7ts/primitives';
-import type { ZOption, ZOptionReader } from './option';
+import type { ZOption } from './option';
 import { ZOptionError } from './option-error';
 import type { ZOptionInput } from './option-input';
 import { ZOptionLocation } from './option-location';
+import type { ZOptionMeta } from './option-meta';
+import type { ZOptionReader } from './option-reader';
 
 /**
  * @internal
@@ -16,15 +18,19 @@ export class ZOptionImpl<TOption extends ZOption> {
 
   private _recognizedUpto!: number;
   private _actions: ((this: void) => void)[] = [];
-  private _deferred?: ZOptionReader<TOption>;
-  private readonly _allDeferred: ZOptionReader<TOption>[] = [];
+  private _deferred?: ZOptionReader.Fn<TOption>;
+  private readonly _allDeferred: ZOptionReader.Fn<TOption>[] = [];
   private _reason: any;
   private _finalReason: any;
 
   recognized?: readonly string[];
   private _whenRecognized: (option: TOption) => void = noop;
 
-  constructor(private _args: readonly string[], readonly argIndex: number) {
+  constructor(
+      readonly optionsMeta: () => ReadonlyMap<string, ZOptionMeta.Combined>,
+      private _args: readonly string[],
+      readonly argIndex: number,
+  ) {
     this._head = _args.slice(0, argIndex);
   }
 
@@ -55,7 +61,7 @@ export class ZOptionImpl<TOption extends ZOption> {
     return this._args = [...this._head, name, ...values, ...tail];
   }
 
-  async read(option: TOption, reader: ZOptionReader<TOption>): Promise<void> {
+  async read(option: TOption, reader: ZOptionReader.Spec<TOption>): Promise<void> {
     this._actions = [];
     this._reason = undefined;
     if (!this.recognized) {
@@ -63,7 +69,7 @@ export class ZOptionImpl<TOption extends ZOption> {
       this._deferred = undefined;
     }
 
-    await reader(option);
+    await reader.read(option);
 
     if (this._deferred) {
       this._allDeferred.push(this._deferred);
@@ -145,7 +151,7 @@ export class ZOptionImpl<TOption extends ZOption> {
     this._reason = undefined;
   }
 
-  defer(whenRecognized: ZOptionReader<TOption> = noop): void {
+  defer(whenRecognized: ZOptionReader.Fn<TOption> = noop): void {
     this._deferred = whenRecognized;
   }
 

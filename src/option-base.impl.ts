@@ -1,5 +1,7 @@
-import type { ZOption, ZOptionReader } from './option';
+import type { ZOption } from './option';
 import type { ZOptionLocation } from './option-location';
+import type { ZOptionMeta } from './option-meta';
+import type { ZOptionReader } from './option-reader';
 import type { ZOptionImpl } from './option.impl';
 
 /**
@@ -40,9 +42,9 @@ export class ZOptionBase<TOption extends ZOption> implements ZOption {
     return this._impl.recognize(action);
   }
 
-  defer(whenRecognized?: ZOptionReader<this>): void {
+  defer(whenRecognized?: ZOptionReader.Fn<this>): void {
     this.unrecognize();
-    this._impl.defer(whenRecognized as ZOptionReader<any>);
+    this._impl.defer(whenRecognized as ZOptionReader.Fn<any>);
   }
 
   unrecognize(reason?: any): void {
@@ -55,6 +57,14 @@ export class ZOptionBase<TOption extends ZOption> implements ZOption {
 
   optionLocation(init?: ZOptionLocation.Init): Required<ZOptionLocation> {
     return this._impl.optionLocation(init);
+  }
+
+  supportedOptions(): Iterable<string> {
+    return this._impl.optionsMeta().keys();
+  }
+
+  optionMeta(key: string): ZOptionMeta.Combined {
+    return this._impl.optionsMeta().get(key) || { usage: [] };
   }
 
 }
