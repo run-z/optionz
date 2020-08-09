@@ -27,15 +27,26 @@ export class ZOptionBase<TOption extends ZOption> implements ZOption {
   }
 
   values(max?: number): readonly string[] {
+    this.recognize();
     return this._impl.values(false, max);
   }
 
   rest(max?: number): readonly string[] {
+    this.recognize();
     return this._impl.values(true, max);
   }
 
+  recognize(action?: (this: void) => void): void {
+    return this._impl.recognize(action);
+  }
+
   defer(whenRecognized?: ZOptionReader<this>): void {
+    this.unrecognize();
     this._impl.defer(whenRecognized as ZOptionReader<any>);
+  }
+
+  unrecognize(reason?: any): void {
+    this._impl.unrecognize(reason);
   }
 
   whenRecognized(receiver: (this: void, option: this) => void): void {

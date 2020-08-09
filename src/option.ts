@@ -54,8 +54,8 @@ export interface ZOption {
    * {@link ZOptionSyntax option syntax}. E.g. a `--name=value` syntax supports one value, while
    * `--name value1 value2 ...` syntax supports any number of them.
    *
-   * Calling this method marks the option and value arguments as recognized. This can be changed by calling any
-   * recognition method again.
+   * Calling this method marks the option and value arguments as {@link recognize recognized}. This can be undone
+   * by calling any recognition method again.
    *
    * When called on already recognized option this method just returns the values previously returned to the reader
    * that recognized them.
@@ -71,8 +71,8 @@ export interface ZOption {
    *
    * Reads [values] and all command line arguments following them up to the end of command line or their maximum number.
    *
-   * Calling this method marks all arguments read as recognized. This can be changed by calling any recognition method
-   * again.
+   * Calling this method marks all arguments read as {@link recognize recognized}. This can be undone by calling
+   * any recognition method again.
    *
    * When called on already recognized option this method just returns the values previously returned to the reader
    * that recognized them.
@@ -82,6 +82,18 @@ export interface ZOption {
    * @returns Command line arguments array.
    */
   rest(max?: number): readonly string[];
+
+  /**
+   * Marks current option as recognized.
+   *
+   * This method is called by [rest] and [values].
+   *
+   * This method can be called multiple times to register multiple actions to call. These actions won't be called once
+   * the option is marked as {@link unrecognize unrecognized} again.
+   *
+   * @param action  The action to perform when the option recognized and all readers processed.
+   */
+  recognize(action?: (this: void) => void): void;
 
   /**
    * Defers the option processing until recognized by another reader available for the same option key.
@@ -94,13 +106,27 @@ export interface ZOption {
   defer(whenRecognized?: ZOptionReader<this>): void;
 
   /**
+   * Marks current option as unrecognized.
+   *
+   * This method is called by [defer].
+   *
+   * When calling without parameter the previous reason is not updated.
+   *
+   * Does nothing if current option is recognized by another reader.
+   *
+   * @param reason  An error to throw when all readers processed and option is still unrecognized. When omitted,
+   * the {@link ZOptionError} will be thrown.
+   */
+  unrecognize(reason?: any): void;
+
+  /**
    * Allows to await for option recognition.
    *
    * Calling this method does not alter option recognition status in any way, unlike {@link defer recognition
    * deferring}. An unlike deferring, the callback registered by this method will be called when the option recognized
    * by any reader, not just the readers registered for the same option key.
    *
-   * @param receiver
+   * @param receiver  Callback function that will be called when the option recognized and all readers processed.
    */
   whenRecognized(receiver: (this: void, option: this) => void): void;
 

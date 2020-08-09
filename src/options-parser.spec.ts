@@ -317,6 +317,60 @@ describe('ZOptionsParser', () => {
       '--test': ['val', 'end'],
     });
   });
+  it('performs recognition actions', async () => {
+
+    const action1 = jest.fn();
+    const action2 = jest.fn();
+    const action3 = jest.fn();
+    const parser = simpleZOptionsParser({
+      options: [
+        {
+          '--test': option => {
+            option.recognize(action1);
+            option.defer();
+            option.recognize(action2);
+            option.values();
+            option.recognize(action3);
+          },
+        },
+      ],
+    });
+
+    const recognized = await parser(['--test', 'val', 'end']);
+
+    expect(recognized).toEqual({
+      '--test': ['val', 'end'],
+    });
+    expect(action1).not.toHaveBeenCalled();
+    expect(action2).toHaveBeenCalledTimes(1);
+    expect(action3).toHaveBeenCalledTimes(1);
+  });
+  it('performs recognition actions when recognized by other reader', async () => {
+
+    const action = jest.fn();
+    const parser = simpleZOptionsParser({
+      options: [
+        {
+          '--test': option => {
+            option.defer(opt => opt.recognize(action));
+          },
+        },
+        {
+          '--test': option => {
+            option.defer();
+            option.values();
+          },
+        },
+      ],
+    });
+
+    const recognized = await parser(['--test', 'val', 'end']);
+
+    expect(recognized).toEqual({
+      '--test': ['val', 'end'],
+    });
+    expect(action).toHaveBeenCalledTimes(1);
+  });
   it('throws when option recognition deferred, but not complete', async () => {
 
     const parser = simpleZOptionsParser({
@@ -342,6 +396,62 @@ describe('ZOptionsParser', () => {
 
     expect(error).toBeInstanceOf(ZOptionError);
     expect(error.optionLocation).toEqual({ args: ['--test'], index: 0, endIndex: 1, offset: 0, endOffset: 6 });
+  });
+  it('throws when unrecognized', async () => {
+
+    const parser = simpleZOptionsParser({
+      options: {
+        '--test': option => {
+          option.unrecognize();
+        },
+      },
+    });
+
+    const error = await parser(['--test']).catch(asis);
+
+    expect(error).toBeInstanceOf(ZOptionError);
+    expect(error.optionLocation).toEqual({ args: ['--test'], index: 0, endIndex: 1, offset: 0, endOffset: 6 });
+  });
+  it('throws when unrecognized with reason', async () => {
+
+    const reason1 = new Error('reason1');
+    const reason2 = new Error('reason2');
+    const parser = simpleZOptionsParser({
+      options: {
+        '--test': option => {
+          option.unrecognize(reason1);
+          option.unrecognize(reason2);
+          option.defer();
+        },
+      },
+    });
+
+    const error = await parser(['--test']).catch(asis);
+
+    expect(error).toBe(reason2);
+  });
+  it('throws first unrecognized reason', async () => {
+
+    const reason1 = new Error('reason1');
+    const reason2 = new Error('reason2');
+    const parser = simpleZOptionsParser({
+      options: [
+        {
+          '--test': option => {
+            option.unrecognize(reason1);
+          },
+        },
+        {
+          '--test': option => {
+            option.unrecognize(reason2);
+          },
+        },
+      ],
+    });
+
+    const error = await parser(['--test']).catch(asis);
+
+    expect(error).toBe(reason1);
   });
   it('does not throw when option reader does nothing before option recognition', async () => {
 
