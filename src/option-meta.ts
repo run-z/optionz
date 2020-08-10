@@ -40,6 +40,13 @@ export namespace ZOptionMeta {
      */
     readonly description?: string;
 
+    /**
+     * The group the option belongs to.
+     *
+     * Used when sorting options.
+     */
+    readonly group?: string;
+
   }
 
   /**
@@ -92,6 +99,20 @@ export namespace ZOptionMeta {
      */
     readonly description?: string;
 
+    /**
+     * The group the option belongs to.
+     *
+     * Used when sorting options.
+     */
+    readonly group?: string;
+
   }
+
+  /**
+   * A list of options meta information.
+   *
+   * A read-only array of key/meta tuples.
+   */
+  export type List = readonly (readonly [string, Combined])[];
 
 }

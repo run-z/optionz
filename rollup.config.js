@@ -1,13 +1,16 @@
 import { externalModules } from '@proc7ts/rollup-helpers';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
+import path from 'path';
 import sourcemaps from 'rollup-plugin-sourcemaps';
 import ts from 'rollup-plugin-typescript2';
 import typescript from 'typescript';
-import pkg from './package.json';
 
 export default {
-  input: './src/index.ts',
+  input: {
+    optionz: './src/index.ts',
+    'optionz.help': './src/help/index.ts',
+  },
   plugins: [
     commonjs(),
     ts({
@@ -20,16 +23,28 @@ export default {
     sourcemaps(),
   ],
   external: externalModules(),
+  manualChunks(id) {
+    if (id.startsWith(path.join(__dirname, 'src', 'help') + path.sep)) {
+      return 'optionz.help';
+    }
+    return 'optionz';
+  },
   output: [
     {
-      file: pkg.main,
       format: 'cjs',
       sourcemap: true,
+      dir: './dist',
+      entryFileNames: '[name].js',
+      chunkFileNames: `_[name].js`,
+      hoistTransitiveImports: false,
     },
     {
-      file: pkg.module,
       format: 'esm',
       sourcemap: true,
+      dir: './dist',
+      entryFileNames: '[name].mjs',
+      chunkFileNames: `_[name].mjs`,
+      hoistTransitiveImports: false,
     },
   ],
 };

@@ -13,7 +13,7 @@ import type { ZOptionMeta } from './option-meta';
  * @typeparam TOption  A type of command line option representation expected by reader.
  * @typeparam TThis  A type of `this` parameter.
  */
-export type ZOptionReader<TOption extends ZOption, TThis = void> =
+export type ZOptionReader<TOption extends ZOption = ZOption, TThis = void> =
   | ZOptionReader.Fn<TOption, TThis>
   | ZOptionReader.Spec<TOption>;
 
@@ -28,7 +28,7 @@ export namespace ZOptionReader {
    * @typeparam TOption  A type of command line option representation expected by reader.
    * @typeparam TThis  A type of `this` parameter.
    */
-  export type Fn<TOption extends ZOption, TThis = void> =
+  export type Fn<TOption extends ZOption = ZOption, TThis = unknown> =
   /**
    * @param option  Command line option to recognize.
    *
@@ -44,7 +44,7 @@ export namespace ZOptionReader {
    *
    * @typeparam TOption  A type of command line option representation expected by reader.
    */
-  export interface Spec<TOption extends ZOption> {
+  export interface Spec<TOption extends ZOption = ZOption> {
 
     /**
      * Reads and tries to recognize the option.
