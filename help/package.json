@@ -1,0 +1,5 @@
+{
+  "main": "../dist/optionz.help.js",
+  "module": "../dist/optionz.help.mjs",
+  "types": "index.d.ts"
+}

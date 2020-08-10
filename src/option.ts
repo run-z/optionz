@@ -2,7 +2,6 @@
  * @packageDocumentation
  * @module @run-z/optionz
  */
-
 import type { ZOptionLocation } from './option-location';
 import type { ZOptionMeta } from './option-meta';
 import type { ZOptionReader } from './option-reader';

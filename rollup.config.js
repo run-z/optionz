@@ -9,6 +9,7 @@ import typescript from 'typescript';
 export default {
   input: {
     optionz: './src/index.ts',
+    'optionz.help': './src/help/index.ts',
   },
   plugins: [
     commonjs(),
