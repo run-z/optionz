@@ -54,7 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="ZOption.html">ZOption</a>
+					<a href="@run-z_optionz.html">@run-z/optionz</a>
+				</li>
+				<li>
+					<a href="@run-z_optionz.ZOption.html">ZOption</a>
 				</li>
 			</ul>
 			<h1>Namespace ZOption</h1>
@@ -67,14 +70,14 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Base representation of command line option passed to its <a href="ZOptionReader.html">reader</a> in order to be recognized.</p>
+						<p>Base representation of command line option passed to its <a href="@run-z_optionz.ZOptionReader.html">reader</a> in order to be recognized.</p>
 					</div>
 					<p>A class implementing this interface along with any interface specific to the parser is created by
-					<a href="../interfaces/ZOptionsParser.Config.html#optionClass">ZOptionsParser.Config.optionClass</a> method.</p>
-					<p>The <a href="ZOptionReader.html">reader</a> uses option methods to recognize and consume command line arguments. Once recognized
+					<a href="../interfaces/@run-z_optionz.ZOptionsParser.Config.html#optionClass">ZOptionsParser.Config.optionClass</a> method.</p>
+					<p>The <a href="@run-z_optionz.ZOptionReader.html">reader</a> uses option methods to recognize and consume command line arguments. Once recognized
 					these arguments are consumed, and option reading continues from the next non-consumed argument.</p>
 					<p>If multiple readers correspond to the same option key, they all consulted in order. Once one of them recognized the
-						option, the remaining and <a href="ZOption.html#defer">deferred</a> ones receive an option instance representing already consumed
+						option, the remaining and <a href="@run-z_optionz.ZOption.html#defer">deferred</a> ones receive an option instance representing already consumed
 					option. The latter can be read by readers, but can no longer be updated.</p>
 				</div>
 			</section>
@@ -85,31 +88,31 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter"><a href="../interfaces/ZOption.BaseClass.html" class="tsd-kind-icon">Base<wbr>Class</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter"><a href="../interfaces/ZOption.ImplClass.html" class="tsd-kind-icon">Impl<wbr>Class</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter"><a href="../interfaces/@run-z_optionz.ZOption.BaseClass.html" class="tsd-kind-icon">Base<wbr>Class</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter"><a href="../interfaces/@run-z_optionz.ZOption.ImplClass.html" class="tsd-kind-icon">Impl<wbr>Class</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-namespace"><a href="ZOption.html#argIndex" class="tsd-kind-icon">arg<wbr>Index</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-namespace"><a href="ZOption.html#args" class="tsd-kind-icon">args</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-namespace"><a href="ZOption.html#key" class="tsd-kind-icon">key</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-namespace"><a href="ZOption.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#argIndex" class="tsd-kind-icon">arg<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#args" class="tsd-kind-icon">args</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#key" class="tsd-kind-icon">key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#name" class="tsd-kind-icon">name</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="ZOption.html#defer" class="tsd-kind-icon">defer</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="ZOption.html#optionLocation" class="tsd-kind-icon">option<wbr>Location</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="ZOption.html#optionMeta" class="tsd-kind-icon">option<wbr>Meta</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="ZOption.html#recognize" class="tsd-kind-icon">recognize</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="ZOption.html#rest" class="tsd-kind-icon">rest</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="ZOption.html#supportedOptions" class="tsd-kind-icon">supported<wbr>Options</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="ZOption.html#unrecognize" class="tsd-kind-icon">unrecognize</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="ZOption.html#values" class="tsd-kind-icon">values</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="ZOption.html#whenRecognized" class="tsd-kind-icon">when<wbr>Recognized</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#defer" class="tsd-kind-icon">defer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#optionLocation" class="tsd-kind-icon">option<wbr>Location</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#optionMeta" class="tsd-kind-icon">option<wbr>Meta</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#recognize" class="tsd-kind-icon">recognize</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#rest" class="tsd-kind-icon">rest</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#supportedOptions" class="tsd-kind-icon">supported<wbr>Options</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#unrecognize" class="tsd-kind-icon">unrecognize</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#values" class="tsd-kind-icon">values</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-namespace"><a href="@run-z_optionz.ZOption.html#whenRecognized" class="tsd-kind-icon">when<wbr>Recognized</a></li>
 							</ul>
 						</section>
 					</div>
@@ -123,7 +126,7 @@
 					<div class="tsd-signature tsd-kind-icon">arg<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L50">run-z/optionz/src/option.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L49">run-z/optionz/src/option.ts:49</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -138,14 +141,14 @@
 					<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L45">run-z/optionz/src/option.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L44">run-z/optionz/src/option.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Command line arguments the option is read from.</p>
 						</div>
-						<p>These arguments may be updated by <a href="../globals.html#ZOptionSyntax">option syntax</a> between the read attempts.</p>
+						<p>These arguments may be updated by <a href="@run-z_optionz.html#ZOptionSyntax">option syntax</a> between the read attempts.</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-namespace">
@@ -154,7 +157,7 @@
 					<div class="tsd-signature tsd-kind-icon">key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L38">run-z/optionz/src/option.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L37">run-z/optionz/src/option.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -162,7 +165,7 @@
 							<p>Option key used to find corresponding option readers.</p>
 						</div>
 						<p>This may be the same as [name], or may be e.g. a wildcard key when no readers for the option name recognized it.
-						In any case, the option key is <a href="../interfaces/ZOptionInput.html#key">syntax-specific</a>.</p>
+						In any case, the option key is <a href="../interfaces/@run-z_optionz.ZOptionInput.html#key">syntax-specific</a>.</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-namespace">
@@ -171,14 +174,14 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L30">run-z/optionz/src/option.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L29">run-z/optionz/src/option.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Option name.</p>
 						</div>
-						<p>This is a command line <a href="ZOption.html#args">argument</a> at <a href="ZOption.html#argIndex">currently processed index</a>.</p>
+						<p>This is a command line <a href="@run-z_optionz.ZOption.html#args">argument</a> at <a href="@run-z_optionz.ZOption.html#argIndex">currently processed index</a>.</p>
 					</div>
 				</section>
 			</section>
@@ -188,13 +191,13 @@
 					<a name="defer" class="tsd-anchor"></a>
 					<h3>defer</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-namespace">
-						<li class="tsd-signature tsd-kind-icon">defer<span class="tsd-signature-symbol">(</span>whenRecognized<span class="tsd-signature-symbol">?: </span><a href="ZOptionReader.html#Fn" class="tsd-signature-type">Fn</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">defer<span class="tsd-signature-symbol">(</span>whenRecognized<span class="tsd-signature-symbol">?: </span><a href="@run-z_optionz.ZOptionReader.html#Fn" class="tsd-signature-type">Fn</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L108">run-z/optionz/src/option.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L107">run-z/optionz/src/option.ts:107</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -207,7 +210,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> whenRecognized: <a href="ZOptionReader.html#Fn" class="tsd-signature-type">Fn</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> whenRecognized: <a href="@run-z_optionz.ZOptionReader.html#Fn" class="tsd-signature-type">Fn</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">this</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Optional callback function that will be called when option recognized by another reader.</p>
 									</div>
@@ -221,13 +224,13 @@
 					<a name="optionLocation" class="tsd-anchor"></a>
 					<h3>option<wbr>Location</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-namespace">
-						<li class="tsd-signature tsd-kind-icon">option<wbr>Location<span class="tsd-signature-symbol">(</span>init<span class="tsd-signature-symbol">?: </span><a href="../globals.html#ZOptionLocation.Init" class="tsd-signature-type">Init</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Required</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#ZOptionLocation" class="tsd-signature-type">ZOptionLocation</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">option<wbr>Location<span class="tsd-signature-symbol">(</span>init<span class="tsd-signature-symbol">?: </span><a href="@run-z_optionz.html#ZOptionLocation.Init" class="tsd-signature-type">Init</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Required</span><span class="tsd-signature-symbol">&lt;</span><a href="@run-z_optionz.html#ZOptionLocation" class="tsd-signature-type">ZOptionLocation</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L142">run-z/optionz/src/option.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L141">run-z/optionz/src/option.ts:141</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -238,13 +241,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> init: <a href="../globals.html#ZOptionLocation.Init" class="tsd-signature-type">Init</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> init: <a href="@run-z_optionz.html#ZOptionLocation.Init" class="tsd-signature-type">Init</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Initial properties of option location.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Required</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#ZOptionLocation" class="tsd-signature-type">ZOptionLocation</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Required</span><span class="tsd-signature-symbol">&lt;</span><a href="@run-z_optionz.html#ZOptionLocation" class="tsd-signature-type">ZOptionLocation</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>Option location within parsed command line arguments.</p>
 						</li>
 					</ul>
@@ -253,13 +256,13 @@
 					<a name="optionMeta" class="tsd-anchor"></a>
 					<h3>option<wbr>Meta</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-namespace">
-						<li class="tsd-signature tsd-kind-icon">option<wbr>Meta<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/ZOptionMeta.Combined.html" class="tsd-signature-type">Combined</a></li>
+						<li class="tsd-signature tsd-kind-icon">option<wbr>Meta<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/@run-z_optionz.ZOptionMeta.Combined.html" class="tsd-signature-type">Combined</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L158">run-z/optionz/src/option.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L157">run-z/optionz/src/option.ts:157</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -276,7 +279,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ZOptionMeta.Combined.html" class="tsd-signature-type">Combined</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/@run-z_optionz.ZOptionMeta.Combined.html" class="tsd-signature-type">Combined</a></h4>
 							<p>Combined meta information for the option with the given key.</p>
 						</li>
 					</ul>
@@ -291,7 +294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L98">run-z/optionz/src/option.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L97">run-z/optionz/src/option.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -300,7 +303,7 @@
 								</div>
 								<p>This method is called by [rest] and [values].</p>
 								<p>This method can be called multiple times to register multiple actions to call. These actions won&#39;t be called once
-								the option is marked as <a href="ZOption.html#unrecognize">unrecognized</a> again.</p>
+								the option is marked as <a href="@run-z_optionz.ZOption.html#unrecognize">unrecognized</a> again.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -325,7 +328,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L86">run-z/optionz/src/option.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L85">run-z/optionz/src/option.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -333,7 +336,7 @@
 									<p>Reads up to the maximum number of the remaining command line arguments and treat them as option values.</p>
 								</div>
 								<p>Reads [values] and all command line arguments following them up to the end of command line or their maximum number.</p>
-								<p>Calling this method marks all arguments read as <a href="ZOption.html#recognize">recognized</a>. This can be undone by calling
+								<p>Calling this method marks all arguments read as <a href="@run-z_optionz.ZOption.html#recognize">recognized</a>. This can be undone by calling
 								any recognition method again.</p>
 								<p>When called on already recognized option this method just returns the values previously returned to the reader
 								that recognized them.</p>
@@ -362,7 +365,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L149">run-z/optionz/src/option.ts:149</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L148">run-z/optionz/src/option.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -385,7 +388,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L122">run-z/optionz/src/option.ts:122</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L121">run-z/optionz/src/option.ts:121</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -402,7 +405,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> reason: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>An error to throw when all readers processed and option is still unrecognized. When omitted,
-										the <a href="../classes/ZOptionError.html">ZOptionError</a> will be thrown.</p>
+										the <a href="../classes/@run-z_optionz.ZOptionError.html">ZOptionError</a> will be thrown.</p>
 									</div>
 								</li>
 							</ul>
@@ -420,17 +423,17 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L69">run-z/optionz/src/option.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L68">run-z/optionz/src/option.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Reads up to the maximum number of values of the option.</p>
 								</div>
-								<p>Values are command line options following the <a href="ZOption.html#argIndex">currently processed one</a>. Their number depend on the
-									<a href="../globals.html#ZOptionSyntax">option syntax</a>. E.g. a <code>--name=value</code> syntax supports one value, while
+								<p>Values are command line options following the <a href="@run-z_optionz.ZOption.html#argIndex">currently processed one</a>. Their number depend on the
+									<a href="@run-z_optionz.html#ZOptionSyntax">option syntax</a>. E.g. a <code>--name=value</code> syntax supports one value, while
 								<code>--name value1 value2 ...</code> syntax supports any number of them.</p>
-								<p>Calling this method marks the option and value arguments as <a href="ZOption.html#recognize">recognized</a>. This can be undone
+								<p>Calling this method marks the option and value arguments as <a href="@run-z_optionz.ZOption.html#recognize">recognized</a>. This can be undone
 								by calling any recognition method again.</p>
 								<p>When called on already recognized option this method just returns the values previously returned to the reader
 								that recognized them.</p>
@@ -459,14 +462,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option.ts#L133">run-z/optionz/src/option.ts:133</a></li>
+									<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/option.ts#L132">run-z/optionz/src/option.ts:132</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Allows to await for option recognition.</p>
 								</div>
-								<p>Calling this method does not alter option recognition status in any way, unlike <a href="ZOption.html#defer">recognition deferring</a>. An unlike deferring, the callback registered by this method will be called when the option recognized
+								<p>Calling this method does not alter option recognition status in any way, unlike <a href="@run-z_optionz.ZOption.html#defer">recognition deferring</a>. An unlike deferring, the callback registered by this method will be called when the option recognized
 								by any reader, not just the readers registered for the same option key.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -511,72 +514,54 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="SimpleZOptionsParser.html">SimpleZOptions<wbr>Parser</a>
-					</li>
-					<li class=" tsd-kind-namespace tsd-has-type-parameter">
-						<a href="SupportedZOptions.html">SupportedZOptions</a>
-					</li>
-					<li class="current tsd-kind-namespace">
-						<a href="ZOption.html">ZOption</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="ZOptionMeta.html">ZOption<wbr>Meta</a>
-					</li>
-					<li class=" tsd-kind-namespace tsd-has-type-parameter">
-						<a href="ZOptionReader.html">ZOption<wbr>Reader</a>
-					</li>
-					<li class=" tsd-kind-namespace tsd-has-type-parameter">
-						<a href="ZOptionsParser.html">ZOptions<wbr>Parser</a>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="../interfaces/ZOption.BaseClass.html" class="tsd-kind-icon">Base<wbr>Class</a>
+						<a href="../interfaces/@run-z_optionz.ZOption.BaseClass.html" class="tsd-kind-icon">Base<wbr>Class</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace tsd-has-type-parameter">
-						<a href="../interfaces/ZOption.ImplClass.html" class="tsd-kind-icon">Impl<wbr>Class</a>
+						<a href="../interfaces/@run-z_optionz.ZOption.ImplClass.html" class="tsd-kind-icon">Impl<wbr>Class</a>
 					</li>
 					<li class=" tsd-kind-property tsd-parent-kind-namespace">
-						<a href="ZOption.html#argIndex" class="tsd-kind-icon">arg<wbr>Index</a>
+						<a href="@run-z_optionz.ZOption.html#argIndex" class="tsd-kind-icon">arg<wbr>Index</a>
 					</li>
 					<li class=" tsd-kind-property tsd-parent-kind-namespace">
-						<a href="ZOption.html#args" class="tsd-kind-icon">args</a>
+						<a href="@run-z_optionz.ZOption.html#args" class="tsd-kind-icon">args</a>
 					</li>
 					<li class=" tsd-kind-property tsd-parent-kind-namespace">
-						<a href="ZOption.html#key" class="tsd-kind-icon">key</a>
+						<a href="@run-z_optionz.ZOption.html#key" class="tsd-kind-icon">key</a>
 					</li>
 					<li class=" tsd-kind-property tsd-parent-kind-namespace">
-						<a href="ZOption.html#name" class="tsd-kind-icon">name</a>
+						<a href="@run-z_optionz.ZOption.html#name" class="tsd-kind-icon">name</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="ZOption.html#defer" class="tsd-kind-icon">defer</a>
+						<a href="@run-z_optionz.ZOption.html#defer" class="tsd-kind-icon">defer</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="ZOption.html#optionLocation" class="tsd-kind-icon">option<wbr>Location</a>
+						<a href="@run-z_optionz.ZOption.html#optionLocation" class="tsd-kind-icon">option<wbr>Location</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="ZOption.html#optionMeta" class="tsd-kind-icon">option<wbr>Meta</a>
+						<a href="@run-z_optionz.ZOption.html#optionMeta" class="tsd-kind-icon">option<wbr>Meta</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="ZOption.html#recognize" class="tsd-kind-icon">recognize</a>
+						<a href="@run-z_optionz.ZOption.html#recognize" class="tsd-kind-icon">recognize</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="ZOption.html#rest" class="tsd-kind-icon">rest</a>
+						<a href="@run-z_optionz.ZOption.html#rest" class="tsd-kind-icon">rest</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="ZOption.html#supportedOptions" class="tsd-kind-icon">supported<wbr>Options</a>
+						<a href="@run-z_optionz.ZOption.html#supportedOptions" class="tsd-kind-icon">supported<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="ZOption.html#unrecognize" class="tsd-kind-icon">unrecognize</a>
+						<a href="@run-z_optionz.ZOption.html#unrecognize" class="tsd-kind-icon">unrecognize</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="ZOption.html#values" class="tsd-kind-icon">values</a>
+						<a href="@run-z_optionz.ZOption.html#values" class="tsd-kind-icon">values</a>
 					</li>
 					<li class=" tsd-kind-method tsd-parent-kind-namespace">
-						<a href="ZOption.html#whenRecognized" class="tsd-kind-icon">when<wbr>Recognized</a>
+						<a href="@run-z_optionz.ZOption.html#whenRecognized" class="tsd-kind-icon">when<wbr>Recognized</a>
 					</li>
 				</ul>
 			</nav>
@@ -588,17 +573,17 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 			</ul>
 		</div>
 	</div>

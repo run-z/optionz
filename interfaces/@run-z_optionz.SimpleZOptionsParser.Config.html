@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Hidden | Command Line Options Parser</title>
+	<title>Config | Command Line Options Parser</title>
 	<meta name="description" content="Documentation for Command Line Options Parser">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,13 +54,16 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/ZOptionMeta.html">ZOptionMeta</a>
+					<a href="../modules/@run-z_optionz.html">@run-z/optionz</a>
 				</li>
 				<li>
-					<a href="ZOptionMeta.Hidden.html">Hidden</a>
+					<a href="../modules/@run-z_optionz.SimpleZOptionsParser.html">SimpleZOptionsParser</a>
+				</li>
+				<li>
+					<a href="@run-z_optionz.SimpleZOptionsParser.Config.html">Config</a>
 				</li>
 			</ul>
-			<h1>Interface Hidden</h1>
+			<h1>Interface Config</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +73,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Hidden option.</p>
+						<p>Simple command line options parser configuration.</p>
 					</div>
 				</div>
 			</section>
@@ -78,7 +81,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Hidden</span>
+						<span class="target">Config</span>
 					</li>
 				</ul>
 			</section>
@@ -89,7 +92,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ZOptionMeta.Hidden.html#hidden" class="tsd-kind-icon">hidden</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="@run-z_optionz.SimpleZOptionsParser.Config.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="@run-z_optionz.SimpleZOptionsParser.Config.html#syntax" class="tsd-kind-icon">syntax</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,14 +102,40 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="hidden" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> hidden</h3>
-					<div class="tsd-signature tsd-kind-icon">hidden<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span></div>
+					<a name="options" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> options</h3>
+					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="../modules/@run-z_optionz.SupportedZOptions.html" class="tsd-signature-type">SupportedZOptions</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/run-z/optionz/blob/4a1e13b/src/option-meta.ts#L69">run-z/optionz/src/option-meta.ts:69</a></li>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/simple-options-parser.ts#L38">run-z/optionz/src/simple-options-parser.ts:38</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Supported command line options.</p>
+						</div>
+						<p>Recognizes all options by default.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="syntax" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> syntax</h3>
+					<div class="tsd-signature tsd-kind-icon">syntax<span class="tsd-signature-symbol">:</span> <a href="../modules/@run-z_optionz.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">keyof </span><a href="../modules/@run-z_optionz.html#ZOptionSyntax" class="tsd-signature-type">ZOptionSyntax</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/run-z/optionz/blob/21b0168/src/simple-options-parser.ts#L45">run-z/optionz/src/simple-options-parser.ts:45</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Supported command line syntax.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p><a href="../modules/@run-z_optionz.html#ZOptionSyntax-1.default">ZOptionSyntax.default</a></p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -115,49 +145,28 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="../modules/SimpleZOptionsParser.html">SimpleZOptions<wbr>Parser</a>
-					</li>
-					<li class=" tsd-kind-namespace tsd-has-type-parameter">
-						<a href="../modules/SupportedZOptions.html">SupportedZOptions</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="../modules/ZOption.html">ZOption</a>
-					</li>
-					<li class="current tsd-kind-namespace">
-						<a href="../modules/ZOptionMeta.html">ZOption<wbr>Meta</a>
-					</li>
-					<li class=" tsd-kind-namespace tsd-has-type-parameter">
-						<a href="../modules/ZOptionReader.html">ZOption<wbr>Reader</a>
-					</li>
-					<li class=" tsd-kind-namespace tsd-has-type-parameter">
-						<a href="../modules/ZOptionsParser.html">ZOptions<wbr>Parser</a>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="ZOptionMeta.Alias.html" class="tsd-kind-icon">Alias</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="ZOptionMeta.Combined.html" class="tsd-kind-icon">Combined</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="ZOptionMeta.Help.html" class="tsd-kind-icon">Help</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="ZOptionMeta.Hidden.html" class="tsd-kind-icon">Hidden</a>
+						<a href="@run-z_optionz.SimpleZOptionsParser.Config.html" class="tsd-kind-icon">Config</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ZOptionMeta.Hidden.html#hidden" class="tsd-kind-icon">hidden</a>
+								<a href="@run-z_optionz.SimpleZOptionsParser.Config.html#options" class="tsd-kind-icon">options</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="@run-z_optionz.SimpleZOptionsParser.Config.html#syntax" class="tsd-kind-icon">syntax</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="@run-z_optionz.SimpleZOptionsParser.Result.html" class="tsd-kind-icon">Result</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -168,17 +177,18 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
 			</ul>
 			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 			</ul>
 		</div>
 	</div>
