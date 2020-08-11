@@ -57,10 +57,10 @@
     "typescript": "^3.9.7"
   },
   "scripts": {
-    "all": "run-p --aggregate-output build:all test",
+    "all": "run-p build:all test",
     "build": "rollup --config ./rollup.config.js",
     "build:all": "run-p --aggregate-output rebuild lint",
-    "ci:all": "run-p --aggregate-output build:all ci:test",
+    "ci:all": "run-p build:all ci:test",
     "ci:test": "jest --ci --runInBand",
     "clean": "shx rm -rf d.ts dist target",
     "doc": "typedoc",
