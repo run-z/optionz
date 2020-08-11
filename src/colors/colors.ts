@@ -19,6 +19,42 @@ export interface ZColors {
    */
   usage(text: string): string;
 
+  /**
+   * Formats option parameter placeholder.
+   *
+   * @param name  Parameter name.
+   *
+   * @returns Formatted placeholder.
+   */
+  param(name: string): string;
+
+  /**
+   * Formats a sign to use as part of grammar definition.
+   *
+   * @param sign  A sign to format.
+   *
+   * @returns Formatted sign.
+   */
+  sign(sign: string): string;
+
+  /**
+   * Formats optional part of grammar definition.
+   *
+   * @param text  Optional grammar text.
+   *
+   * @returns Formatted optional grammar.
+   */
+  optional(text: string): string;
+
+  /**
+   * Formats a list bullet.
+   *
+   * @param sign  Override bullet symbol to use.
+   *
+   * @returns Formatted bullet.
+   */
+  bullet(sign?: string): string;
+
 }
 
 /**
@@ -33,6 +69,22 @@ class DefaultZColors implements ZColors {
 
   usage(text: string): string {
     return defaultZColors().usage(text);
+  }
+
+  param(name: string): string {
+    return defaultZColors().param(name);
+  }
+
+  sign(sign: string): string {
+    return defaultZColors().sign(sign);
+  }
+
+  optional(text: string): string {
+    return defaultZColors().optional(text);
+  }
+
+  bullet(sign?: string): string {
+    return defaultZColors().bullet(sign);
   }
 
 }

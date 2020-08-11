@@ -25,4 +25,20 @@ export class ChalkZColors implements ZColors {
     return this.chalk().green(text);
   }
 
+  param(name: string): string {
+    return this.sign('\u276c') + this.chalk().cyan.bold(name) + this.sign('\u276d');
+  }
+
+  sign(sign: string): string {
+    return this.chalk().dim.white(sign);
+  }
+
+  optional(text: string): string {
+    return this.sign('[') + text + this.sign(']');
+  }
+
+  bullet(sign = '\u2023'): string {
+    return this.chalk().hidden('- ') + sign;
+  }
+
 }
