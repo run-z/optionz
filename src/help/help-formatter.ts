@@ -3,36 +3,13 @@
  * @module @run-z/optionz/help
  */
 import { flatMapIt, itsReduction } from '@proc7ts/a-iterable';
-import { valueProvider } from '@proc7ts/primitives';
-import type { Chalk } from 'chalk';
+import { clz } from '../colors';
 import type { ZOptionMeta } from '../option-meta';
 
 /**
- * Options help printer.
- *
- * Requires [chalk], [cliui], and [string-width].
- *
- * [chalk]: https://www.npmjs.com/package/chalk
- * [cliui]: https://www.npmjs.com/package/cliui
- * [string-width]: https://www.npmjs.com/package/string-width
+ * Options help printer used {@link ZHelpConfig.display by default}.
  */
 export class ZHelpFormatter {
-
-  chalk(): Chalk {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    return (this.chalk = valueProvider(require('chalk')))();
-  }
-
-  /**
-   * Formats option usage text.
-   *
-   * @param text  Original usage text.
-   *
-   * @returns Formatted usage text.
-   */
-  usage(text: string): string {
-    return this.chalk().green(text);
-  }
 
   /**
    * Detects usage column width.
@@ -90,7 +67,7 @@ export class ZHelpFormatter {
 
     for (const [, meta] of options) {
 
-      const usageText = meta.usage.map(usage => this.usage(usage)).join('\n');
+      const usageText = meta.usage.map(usage => clz.usage(usage)).join('\n');
       const { help, description = '' } = meta;
       let text: string;
 

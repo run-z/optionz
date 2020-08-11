@@ -1,0 +1,5 @@
+{
+  "main": "../dist/optionz.colors.js",
+  "module": "../dist/optionz.colors.mjs",
+  "types": "index.d.ts"
+}
