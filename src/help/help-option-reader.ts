@@ -11,12 +11,14 @@ import { ZHelpFormatter } from './help-formatter';
 /**
  * Creates option reader able to build and print help info.
  *
- * @typeparam TOption  A type of command line option representation expected by reader.
+ * @typeparam TOption  A type of help option.
  * @param config  Help configuration.
  *
  * @returns New option reader.
  */
-export function helpZOptionReader(config: ZHelpConfig = {}): ZOptionReader.Fn {
+export function helpZOptionReader<TOption extends ZOption>(
+    config: ZHelpConfig<TOption> = {},
+): ZOptionReader.Fn<TOption> {
 
   const brief = config.mode === 'brief';
   const compare = config.compare ? config.compare.bind(config) : compareZHelp;
@@ -29,7 +31,7 @@ export function helpZOptionReader(config: ZHelpConfig = {}): ZOptionReader.Fn {
 
     options.sort(([key1, meta1], [key2, meta2]) => compare(key1, meta1, key2, meta2));
 
-    return display(options);
+    return display(options, option);
   };
 }
 
@@ -57,20 +59,27 @@ function buildZHelp(brief: boolean, option: ZOption): (readonly [string, ZOption
 /**
  * @internal
  */
-function displayZHelp(config: ZHelpConfig): (this: void, options: ZOptionMeta.List) => void | PromiseLike<unknown> {
+function displayZHelp<TOption extends ZOption>(
+    config: ZHelpConfig<TOption>,
+): (this: void, options: ZOptionMeta.List, option: TOption) => void | PromiseLike<unknown> {
   if (config.display) {
     return config.display.bind(config);
   }
 
   const formatter = new ZHelpFormatter();
 
-  return options => console.log(formatter.help(options));
+  return async options => console.log(await formatter.help(options));
 }
 
 /**
  * @internal
  */
-function compareZHelp(key1: string, meta1: ZOptionMeta.Combined, key2: string, meta2: ZOptionMeta.Combined): number {
+function compareZHelp(
+    key1: string,
+    meta1: ZOptionMeta.Combined,
+    key2: string,
+    meta2: ZOptionMeta.Combined,
+): number {
   return compareZStrings(meta1.group, meta2.group) || compareZStrings(key1, key2);
 }
 

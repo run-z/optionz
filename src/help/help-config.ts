@@ -2,12 +2,15 @@
  * @packageDocumentation
  * @module @run-z/optionz/help
  */
+import type { ZOption } from '../option';
 import type { ZOptionMeta } from '../option-meta';
 
 /**
  * Configuration for {@link helpZOptionReader help option reader}.
+ *
+ * @typeparam TOption  A type of help option.
  */
-export interface ZHelpConfig {
+export interface ZHelpConfig<TOption extends ZOption = ZOption> {
 
   /**
    * Help display mode.
@@ -42,10 +45,11 @@ export interface ZHelpConfig {
    * By default prints help information formatted by {@link ZHelpFormatter help formatter} to console.
    *
    * @param options  A list of options meta to display.
+   * @param option  Help option representation.
    *
    * @returns Either nothing if help displayed synchronously, or a promise-like instance resolved when help displayed
    * asynchronously.
    */
-  display?(options: ZOptionMeta.List): void | PromiseLike<unknown>;
+  display?(options: ZOptionMeta.List, option: TOption): void | PromiseLike<unknown>;
 
 }

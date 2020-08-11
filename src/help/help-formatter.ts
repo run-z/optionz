@@ -77,9 +77,10 @@ export class ZHelpFormatter {
    *
    * @param options  A list of options meta to display.
    *
-   * @returns Formatted help text.
+   * @returns A promise resolved to formatted help text.
    */
-  help(options: ZOptionMeta.List): string {
+  // eslint-disable-next-line @typescript-eslint/require-await
+  async help(options: ZOptionMeta.List): Promise<string> {
 
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const cliui = require('cliui');

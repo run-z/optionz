@@ -72,10 +72,13 @@ describe('helpZOptionReader', () => {
 
     await parser(['--help']);
 
-    expect(display).toHaveBeenCalledWith([
-      ['--help', { usage: ['--help'] }],
-      ['--test', { usage: ['--test'] }],
-    ]);
+    expect(display).toHaveBeenCalledWith(
+        [
+          ['--help', { usage: ['--help'] }],
+          ['--test', { usage: ['--test'] }],
+        ],
+        expect.anything(),
+    );
     expect(logSpy).not.toHaveBeenCalled();
   });
   it('compares options by group first', async () => {
@@ -105,11 +108,14 @@ describe('helpZOptionReader', () => {
 
     await parser(['--help']);
 
-    expect(display).toHaveBeenCalledWith([
-      ['--abc', { usage: ['--abc'], group: '1' }],
-      ['--test', { usage: ['--test'], group: '1' }],
-      ['--help', { usage: ['--help'] }],
-    ]);
+    expect(display).toHaveBeenCalledWith(
+        [
+          ['--abc', { usage: ['--abc'], group: '1' }],
+          ['--test', { usage: ['--test'], group: '1' }],
+          ['--help', { usage: ['--help'] }],
+        ],
+        expect.anything(),
+    );
   });
   it('compares options by group and key', async () => {
 
@@ -141,11 +147,14 @@ describe('helpZOptionReader', () => {
 
     await parser(['--help']);
 
-    expect(display).toHaveBeenCalledWith([
-      ['--help', { usage: ['--help'], group: '1' }],
-      ['--test', { usage: ['--test'], group: '1' }],
-      ['--abc', { usage: ['--abc'], group: '2' }],
-    ]);
+    expect(display).toHaveBeenCalledWith(
+        [
+          ['--help', { usage: ['--help'], group: '1' }],
+          ['--test', { usage: ['--test'], group: '1' }],
+          ['--abc', { usage: ['--abc'], group: '2' }],
+        ],
+        expect.anything(),
+    );
   });
   it('compares options by custom method', async () => {
 
@@ -165,10 +174,13 @@ describe('helpZOptionReader', () => {
 
     await parser(['--help']);
 
-    expect(display).toHaveBeenCalledWith([
-      ['--abc', { usage: ['--abc'] }],
-      ['--help', { usage: ['--help'] }],
-      ['--test-option', { usage: ['--test-option'] }],
-    ]);
+    expect(display).toHaveBeenCalledWith(
+        [
+          ['--abc', { usage: ['--abc'] }],
+          ['--help', { usage: ['--help'] }],
+          ['--test-option', { usage: ['--test-option'] }],
+        ],
+        expect.anything(),
+    );
   });
 });
