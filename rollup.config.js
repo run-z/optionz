@@ -9,6 +9,7 @@ import typescript from 'typescript';
 export default {
   input: {
     optionz: './src/index.ts',
+    'optionz.colors': './src/colors/index.ts',
     'optionz.help': './src/help/index.ts',
   },
   plugins: [
@@ -24,6 +25,9 @@ export default {
   ],
   external: externalModules(),
   manualChunks(id) {
+    if (id.startsWith(path.join(__dirname, 'src', 'colors') + path.sep)) {
+      return 'optionz.colors';
+    }
     if (id.startsWith(path.join(__dirname, 'src', 'help') + path.sep)) {
       return 'optionz.help';
     }
