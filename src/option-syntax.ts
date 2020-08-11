@@ -51,11 +51,10 @@ export const ZOptionSyntax = {
    *
    * Supports the following option formats:
    *
-   * - `--name=VALUE`
-   * - `--name [VALUE [VALUE ...]]`
+   * - `--name=VALUE`. Corresponding option key is `--name`.
+   * - `--name [VALUE [VALUE ...]]`. Corresponding option key is `--name=VALUE`, `--name=*`, or `--name`.
    *
-   * Option keys should be in `--name` format.
-   * Uses `--*=*` as a fallback option key for options -n `--name=VALUE` format.
+   * Uses `--*=*` as a fallback option key for options in `--name=VALUE` format.
    * Uses `--*` as a generic fallback option key.
    *
    * Enabled {@link default by default}.
@@ -69,9 +68,9 @@ export const ZOptionSyntax = {
    *
    * Supports the following option formats:
    *
-   * - `-name=VALUE`. Corresponding key should be in `-name` format.
-   * - `-name [VALUE [VALUE ...]]`. Corresponding option key should be in `-name` format.
-   * - `-n[m[o...]][VALUE]`. Corresponding option key should be in `-n*` format.
+   * - `-name=VALUE`. Corresponding key is `-name=VALUE`, `-name=*`, or `-name`.
+   * - `-name [VALUE [VALUE ...]]`. Corresponding option key is `-name`.
+   * - `-n[m[o...]][VALUE]`. Corresponding option key is `-n*`.
    *
    * Uses `-*=*` as a fallback option key for options in `-name=VALUE` format.
    * Uses `-?` as a fallback option key for one-letter options.
@@ -154,12 +153,15 @@ function longZOptionSyntax(args: readonly [string, ...string[]]): Iterable<ZOpti
   if (eqIdx > 0) {
     // `--name=value` form
 
-    const values = [name.substr(eqIdx + 1)];
+    const value = name.substr(eqIdx + 1);
+    const values = [value];
     const tail = args.slice(1);
 
     name = name.substr(0, eqIdx);
 
     return [
+      { key: `${name}=${value}`, name, values, tail },
+      { key: `${name}=*`, name, values, tail },
       { name, values, tail },
       { key: '--*=*', name, values, tail },
       { key: '--*', name, values, tail },
@@ -193,11 +195,14 @@ function shortZOptionSyntax(args: readonly [string, ...string[]]): Iterable<ZOpt
   if (eqIdx > 0) {
     // `-name=value` form
 
-    const values = [name.substr(eqIdx + 1)];
+    const value = name.substr(eqIdx + 1);
+    const values = [value];
     const tail = args.slice(1);
 
     name = name.substr(0, eqIdx);
 
+    result.push({ key: `${name}=${value}`, name, values, tail });
+    result.push({ key: `${name}=*`, name, values, tail });
     result.push({ name, values, tail });
     result.push({ key: '-*=*', name, values, tail });
     if (name.length === 2) {

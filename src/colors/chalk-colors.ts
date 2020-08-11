@@ -7,7 +7,7 @@ import type { Chalk } from 'chalk';
 import type { ZColors } from './colors';
 
 /**
- * Console color theme relying on [chalk](https://www.npmjs.com/package/chalk).
+ * Terminal color theme relying on [chalk](https://www.npmjs.com/package/chalk).
  *
  * This theme is used {@link ZColors.useByDefault by default}.
  */

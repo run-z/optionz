@@ -6,7 +6,7 @@ import { lazyValue, valueProvider } from '@proc7ts/primitives';
 import { ChalkZColors } from './chalk-colors';
 
 /**
- * Console color theme to use for text formatting.
+ * Terminal color theme to use for text formatting.
  */
 export interface ZColors {
 
@@ -92,9 +92,9 @@ class DefaultZColors implements ZColors {
 export const ZColors = {
 
   /**
-   * Assigns console color theme to use {@link clz by default}.
+   * Assigns terminal color theme to use {@link clz by default}.
    *
-   * @param colors  New default console color theme to use.
+   * @param colors  New default terminal color theme to use.
    */
   useByDefault(colors: ZColors): void {
     defaultZColors = valueProvider(colors);
@@ -103,6 +103,6 @@ export const ZColors = {
 };
 
 /**
- * Console color theme that delegates to {@link ZColors.useByDefault default one}.
+ * Terminal color theme that delegates to {@link ZColors.useByDefault default one}.
  */
 export const clz: ZColors = (/*#__PURE__*/ new DefaultZColors());

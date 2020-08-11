@@ -1,0 +1,27 @@
+/**
+ * @packageDocumentation
+ * @module @run-z/optionz/colors
+ */
+import type { ZOption } from '../option';
+
+/**
+ * Chalk color options configuration.
+ *
+ * @typeparam TOption  A type of color option.
+ */
+export interface ChalkZColorConfig<TOption extends ZOption> {
+
+  /**
+   * Forces terminal colors support.
+   *
+   * Assigns `chalk.supportedColors.level` by default.
+   *
+   * @param level  Color support level (off, basic, 256, or 16m/TrueColor).
+   * @param option  Color support option.
+   *
+   * @returns Either nothing if color support enabled synchronously, or a promise-like instance resolved when color
+   * support enabled asynchronously.
+   */
+  forceColors?(level: 0 | 1 | 2 | 3, option: TOption): void | PromiseLike<unknown>;
+
+}
