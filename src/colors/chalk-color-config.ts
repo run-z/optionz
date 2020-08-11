@@ -2,6 +2,7 @@
  * @packageDocumentation
  * @module @run-z/optionz/colors
  */
+import type { ColorSupport } from 'chalk';
 import type { ZOption } from '../option';
 
 /**
@@ -16,12 +17,12 @@ export interface ChalkZColorConfig<TOption extends ZOption> {
    *
    * Assigns `chalk.supportedColors.level` by default.
    *
-   * @param level  Color support level (off, basic, 256, or 16m/TrueColor).
+   * @param mode  Color support mode (off, basic, 256, or 16m/TrueColor).
    * @param option  Color support option.
    *
    * @returns Either nothing if color support enabled synchronously, or a promise-like instance resolved when color
    * support enabled asynchronously.
    */
-  forceColors?(level: 0 | 1 | 2 | 3, option: TOption): void | PromiseLike<unknown>;
+  forceColors?(mode: ColorSupport, option: TOption): void | PromiseLike<unknown>;
 
 }

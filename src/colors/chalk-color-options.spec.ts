@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 import { arrayOfElements, asis } from '@proc7ts/primitives';
+import type { ColorSupport } from 'chalk';
 import { helpZOptionReader } from '../help';
 import { ZOptionError } from '../option-error';
 import { simpleZOptionsParser, SimpleZOptionsParser } from '../simple-options-parser';
@@ -10,13 +11,13 @@ const chalk = require('chalk');
 
 describe('chalkZColorOptions', () => {
 
-  let defaultLevel: 0 | 1 | 2 | 3;
+  let defaultLevel: ColorSupport | false;
 
   beforeEach(() => {
-    defaultLevel = chalk.supportsColor.level;
+    defaultLevel = chalk.supportsColor;
   });
   afterEach(() => {
-    chalk.supportsColor.level = defaultLevel;
+    chalk.supportsColor = defaultLevel;
   });
 
   let parser: SimpleZOptionsParser;
@@ -29,47 +30,47 @@ describe('chalkZColorOptions', () => {
 
   describe('--color', () => {
     it('enables basic color support', async () => {
-      chalk.supportsColor.level = 0;
+      chalk.supportsColor = { level: 0 };
       await parser(['--color']);
       expect(chalk.supportsColor.level).toBe(1);
     });
     it('enables basic color support by `true` value', async () => {
-      chalk.supportsColor.level = 0;
+      chalk.supportsColor = { level: 0 };
       await parser(['--color=true']);
       expect(chalk.supportsColor.level).toBe(1);
     });
     it('enables basic color support by `always` value', async () => {
-      chalk.supportsColor.level = 0;
+      chalk.supportsColor = { level: 0 };
       await parser(['--color=always']);
       expect(chalk.supportsColor.level).toBe(1);
     });
     it('enables 256 colors support', async () => {
-      chalk.supportsColor.level = 0;
+      chalk.supportsColor = { level: 0 };
       await parser(['--color=256']);
       expect(chalk.supportsColor.level).toBe(2);
     });
     it('enables 16m colors support', async () => {
-      chalk.supportsColor.level = 0;
+      chalk.supportsColor = { level: 0 };
       await parser(['--color=16m']);
       expect(chalk.supportsColor.level).toBe(3);
     });
     it('enables 16m colors support by `full` value', async () => {
-      chalk.supportsColor.level = 0;
+      chalk.supportsColor = { level: 0 };
       await parser(['--color=full']);
       expect(chalk.supportsColor.level).toBe(3);
     });
     it('enables 16m colors support by `truecolor` value', async () => {
-      chalk.supportsColor.level = 0;
+      chalk.supportsColor = { level: 0 };
       await parser(['--color=truecolor']);
       expect(chalk.supportsColor.level).toBe(3);
     });
     it('disables color support by `false` value', async () => {
-      chalk.supportsColor.level = 1;
+      chalk.supportsColor = { level: 1 };
       await parser(['--color=false']);
       expect(chalk.supportsColor.level).toBe(0);
     });
     it('disables color support by `never` value', async () => {
-      chalk.supportsColor.level = 1;
+      chalk.supportsColor = { level: 1 };
       await parser(['--color=never']);
       expect(chalk.supportsColor.level).toBe(0);
     });
@@ -84,7 +85,7 @@ describe('chalkZColorOptions', () => {
 
   describe('--no-color', () => {
     it('disables color support', async () => {
-      chalk.supportsColor.level = 1;
+      chalk.supportsColor = { level: 1 };
       await parser(['--no-color']);
       expect(chalk.supportsColor.level).toBe(0);
     });
@@ -92,7 +93,7 @@ describe('chalkZColorOptions', () => {
 
   describe('--no-colors', () => {
     it('disables color support', async () => {
-      chalk.supportsColor.level = 1;
+      chalk.supportsColor = { level: 1 };
       await parser(['--no-colors']);
       expect(chalk.supportsColor.level).toBe(0);
     });
@@ -110,7 +111,10 @@ describe('chalkZColorOptions', () => {
 
     await parser(['--color=256']);
 
-    expect(forceColors).toHaveBeenCalledWith(2, expect.anything());
+    expect(forceColors).toHaveBeenCalledWith(
+        { level: 2, hasBasic: true, has256: true, has16m: false },
+        expect.anything(),
+    );
   });
 
   it('has help', async () => {

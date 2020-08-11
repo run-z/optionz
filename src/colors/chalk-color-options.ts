@@ -2,6 +2,7 @@
  * @packageDocumentation
  * @module @run-z/optionz/colors
  */
+import type { ColorSupport, Level } from 'chalk';
 import type { ZOption } from '../option';
 import { ZOptionError } from '../option-error';
 import type { SupportedZOptions } from '../supported-options';
@@ -12,7 +13,7 @@ import { clz } from './colors';
  * @internal
  */
 const chalkZColorLevels: {
-  readonly [key: string]: 0 | 1 | 2 | 3 | undefined;
+  readonly [key: string]: Level | undefined;
 } = {
   '16m': 3,
   full: 3,
@@ -22,6 +23,38 @@ const chalkZColorLevels: {
   always: 1,
   false: 0,
   never: 0,
+};
+
+/**
+ * @internal
+ */
+const chalkZColorModes: {
+  readonly [level in Level]: ColorSupport;
+} = {
+  0: {
+    level: 0,
+    hasBasic: false,
+    has256: false,
+    has16m: false,
+  },
+  1: {
+    level: 1,
+    hasBasic: true,
+    has256: false,
+    has16m: false,
+  },
+  2: {
+    level: 2,
+    hasBasic: true,
+    has256: true,
+    has16m: false,
+  },
+  3: {
+    level: 3,
+    hasBasic: true,
+    has256: true,
+    has16m: true,
+  },
 };
 
 
@@ -43,14 +76,14 @@ export function chalkZColorOptions<TOption extends ZOption>(
   const forceColors = config.forceColors ? config.forceColors.bind(config) : forceChalkZColors;
   const readColorOff = (option: TOption): void | PromiseLike<unknown> => {
     option.recognize();
-    return forceColors(0, option);
+    return forceColors(chalkZColorModes[0], option);
   };
 
   return {
     '--color': {
       read(option) {
         option.recognize();
-        return forceColors(1, option);
+        return forceColors(chalkZColorModes[1], option);
       },
       meta: {
         help: 'Force color terminal support',
@@ -74,7 +107,7 @@ ${clz.bullet()} ${clz.usage('false')}, ${clz.usage('never')} - disable colors.
         const level = chalkZColorLevels[value];
 
         if (level != null) {
-          return forceColors(level, option);
+          return forceColors(chalkZColorModes[level], option);
         }
 
         throw new ZOptionError(
@@ -108,7 +141,7 @@ ${clz.bullet()} ${clz.usage('false')}, ${clz.usage('never')} - disable colors.
 /**
  * @internal
  */
-function forceChalkZColors(level: 0 | 1 | 2 | 3): void {
+function forceChalkZColors(mode: ColorSupport): void {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  require('chalk').supportsColor.level = level;
+  require('chalk').supportsColor = mode;
 }
