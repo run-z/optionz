@@ -67,12 +67,12 @@ describe('chalkZColorOptions', () => {
     it('disables color support by `false` value', async () => {
       chalk.supportsColor = { level: 1 };
       await parser(['--color=false']);
-      expect(chalk.supportsColor.level).toBe(0);
+      expect(chalk.supportsColor).toBe(false);
     });
     it('disables color support by `never` value', async () => {
       chalk.supportsColor = { level: 1 };
       await parser(['--color=never']);
-      expect(chalk.supportsColor.level).toBe(0);
+      expect(chalk.supportsColor).toBe(false);
     });
     it('ignores unrecognized value', async () => {
 
@@ -87,7 +87,7 @@ describe('chalkZColorOptions', () => {
     it('disables color support', async () => {
       chalk.supportsColor = { level: 1 };
       await parser(['--no-color']);
-      expect(chalk.supportsColor.level).toBe(0);
+      expect(chalk.supportsColor).toBe(false);
     });
   });
 
@@ -95,7 +95,7 @@ describe('chalkZColorOptions', () => {
     it('disables color support', async () => {
       chalk.supportsColor = { level: 1 };
       await parser(['--no-colors']);
-      expect(chalk.supportsColor.level).toBe(0);
+      expect(chalk.supportsColor).toBe(false);
     });
   });
 

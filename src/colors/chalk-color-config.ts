@@ -23,6 +23,6 @@ export interface ChalkZColorConfig<TOption extends ZOption> {
    * @returns Either nothing if color support enabled synchronously, or a promise-like instance resolved when color
    * support enabled asynchronously.
    */
-  forceColors?(mode: ColorSupport, option: TOption): void | PromiseLike<unknown>;
+  forceColors?(mode: ColorSupport | false, option: TOption): void | PromiseLike<unknown>;
 
 }
