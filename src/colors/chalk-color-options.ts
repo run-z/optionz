@@ -111,6 +111,7 @@ ${clz.bullet()} ${clz.usage('false')}, ${clz.usage('never')} - disable colors.
         );
       },
       meta: {
+        aliasOf: '--color',
         get usage() {
           return `--color=${clz.param('MODE')}`;
         },
