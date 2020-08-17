@@ -14,13 +14,14 @@ export type SimpleZOptionsParser =
 /**
  * @param args  Array of command line arguments
  * @param fromIndex  An index of command line argument to start processing from.
+ * @param opts  Parser options.
  *
  * @returns A promise resolved to parse result.
  */
     (
         this: void,
         args: readonly string[],
-        fromIndex?: number,
+        opts?: ZOptionsParser.Opts,
     ) => Promise<SimpleZOptionsParser.Result>;
 
 export namespace SimpleZOptionsParser {
@@ -88,7 +89,7 @@ function readAllZOptionValues(option: ZOption): void {
 export function simpleZOptionsParser(config: SimpleZOptionsParser.Config = {}): SimpleZOptionsParser {
 
   const { options = defaultSimpleZOptions } = config;
-  const parser: ZOptionsParser<Record<string, string[]>> = customZOptionsParser({
+  const parser: ZOptionsParser<ZOption, Record<string, string[]>> = customZOptionsParser({
     ...config,
     options,
     optionClass<TArgs extends any[]>(

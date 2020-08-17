@@ -11,13 +11,13 @@ import type { SupportedZOptions } from './supported-options';
  * Command line options parser signature.
  *
  * @typeparam TOption  A type of option representation.
- * @typeparam TCtx  Option processing context required by parser and the type of parser result.
+ * @typeparam TCtx  A type of option processing context required by parser.
  */
-export type ZOptionsParser<TCtx> =
+export type ZOptionsParser<TOption extends ZOption, TCtx> =
 /**
  * @param context  Options processing context. This context is supposed to receive the processing results.
  * @param args  Array of command line arguments
- * @param fromIndex  An index of command line argument to start processing from.
+ * @param opts  Parser options.
  *
  * @returns A promise resolved to processing context when parsing completes.
  */
@@ -25,7 +25,7 @@ export type ZOptionsParser<TCtx> =
         this: void,
         context: TCtx,
         args: readonly string[],
-        fromIndex?: number,
+        opts?: ZOptionsParser.Opts<TOption, TCtx>,
     ) => Promise<TCtx>;
 
 export namespace ZOptionsParser {
@@ -63,20 +63,40 @@ export namespace ZOptionsParser {
 
   }
 
+  /**
+   * Additional options for command line options parser.
+   *
+   * @typeparam TOption  A type of option representation.
+   * @typeparam TCtx  A type of option processing context required by parser.
+   */
+  export interface Opts<TOption extends ZOption = ZOption, TCtx = unknown> {
+
+    /**
+     * An index of command line argument to start processing from.
+     */
+    readonly fromIndex?: number;
+
+    /**
+     * Additional options to support.
+     */
+    readonly options?: SupportedZOptions<TOption, TCtx>;
+
+  }
+
 }
 
 /**
  * Builds custom command line options parser.
  *
  * @typeparam TOption  A type of option representation.
- * @typeparam TCtx  Option processing context required by parser and the type of parser result.
+ * @typeparam TCtx  A type of option processing context required by parser.
  * @param config  Parser configuration.
  *
  * @returns New options parser.
  */
 export function customZOptionsParser<TOption extends ZOption, TCtx>(
     config: ZOptionsParser.Config<TOption, TCtx>,
-): ZOptionsParser<TCtx> {
+): ZOptionsParser<TOption, TCtx> {
 
   const parser = new ZOptionsParser$(config);
 
