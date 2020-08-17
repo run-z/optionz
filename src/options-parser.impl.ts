@@ -18,7 +18,6 @@ import type { SupportedZOptions } from './supported-options';
 export class ZOptionsParser$<TOption extends ZOption, TCtx> {
 
   private readonly _config: ZOptionsParser.Config<TOption, TCtx>;
-  private _options?: (this: void, context: TCtx) => Map<string, ZOptionReader.Spec<TOption>[]>;
   private _syntax?: ZOptionSyntax;
   private _optionClass?: ZOption.ImplClass<TOption, TCtx, [ZOptionImpl<TOption>]>;
 
@@ -29,13 +28,6 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
    */
   constructor(config: ZOptionsParser.Config<TOption, TCtx>) {
     this._config = config;
-  }
-
-  get options(): (this: void, context: TCtx) => Map<string, readonly ZOptionReader.Spec<TOption>[]> {
-    if (this._options) {
-      return this._options;
-    }
-    return this._options = context => supportedZOptionsMap(context, this._config.options);
   }
 
   /**
@@ -67,17 +59,27 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
    * @param context  Options processing context. This context is supposed to receive the processing results.
    * @param args  Array of command line arguments
    * @param fromIndex  An index of command line argument to start processing from.
+   * @param options  Additional options to support.
    *
    * @returns A promise resolved to processing context when parsing completes.
    */
   async parseOptions(
       context: TCtx,
       args: readonly string[],
-      fromIndex = 0,
+      {
+        fromIndex = 0,
+        options,
+      }: {
+        fromIndex?: number;
+        options?: SupportedZOptions<TOption, TCtx>;
+      } = {},
   ): Promise<TCtx> {
 
-    const options = this.options(context);
-    const optionMeta = lazyValue(() => supportedZOptionsMeta(options));
+    const allOptions = supportedZOptionsMap(
+        context,
+        arrayOfElements(this._config.options).concat(arrayOfElements(options)),
+    );
+    const optionMeta = lazyValue(() => supportedZOptionsMeta(allOptions));
     const optionClass = this.optionClass;
     const syntax = this.syntax;
 
@@ -99,7 +101,7 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
           }
 
           const { key = input.name } = input;
-          const readers = options.get(key) || [];
+          const readers = allOptions.get(key) || [];
 
           for (const reader of readers) {
             await impl.read(option, reader);
@@ -123,12 +125,12 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
  */
 function supportedZOptionsMap<TOption extends ZOption, TCtx>(
     context: TCtx,
-    supportedOptions: SupportedZOptions<TOption, TCtx>,
+    supportedOptions: readonly (SupportedZOptions.Map<TOption> | SupportedZOptions.Provider<TOption, TCtx>)[],
 ): Map<string, ZOptionReader.Spec<TOption>[]> {
 
   const result = new Map<string, ZOptionReader.Spec<TOption>[]>();
 
-  for (const supported of arrayOfElements(supportedOptions)) {
+  for (const supported of supportedOptions) {
 
     const map: SupportedZOptions.Map<TOption> = typeof supported === 'function'
         ? supported(context)
