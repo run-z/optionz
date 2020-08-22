@@ -7,7 +7,7 @@
     "command-line",
     "run-z"
   ],
-  "homepage": "https://github.com/run-z/run-z",
+  "homepage": "https://github.com/run-z/optionz",
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com:run-z/optionz.git"
