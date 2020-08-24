@@ -15,7 +15,7 @@ export interface ChalkZColorConfig<TOption extends ZOption> {
   /**
    * Forces terminal colors support.
    *
-   * Assigns `chalk.supportedColors.level` by default.
+   * Assigns `chalk.level` by default.
    *
    * @param mode  Color support mode (off, basic, 256, or 16m/TrueColor).
    * @param option  Color support option.
