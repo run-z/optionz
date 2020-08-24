@@ -29,9 +29,14 @@ const chalkZColorLevels: {
  * @internal
  */
 const chalkZColorModes: {
-  readonly [level in Level]: ColorSupport | false;
+  readonly [level in Level]: ColorSupport;
 } = {
-  0: false,
+  0: {
+    level: 0,
+    hasBasic: false,
+    has256: false,
+    has16m: false,
+  },
   1: {
     level: 1,
     hasBasic: true,
@@ -137,7 +142,7 @@ ${clz.bullet()} ${clz.usage('false')}, ${clz.usage('never')} - disable colors.
 /**
  * @internal
  */
-function forceChalkZColors(mode: ColorSupport | false): void {
+function forceChalkZColors(mode: ColorSupport): void {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  require('chalk').supportsColor = mode;
+  require('chalk').level = mode.level;
 }
