@@ -20,6 +20,20 @@
   "main": "dist/optionz.js",
   "module": "dist/optionz.mjs",
   "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/optionz.mjs",
+      "require": "./dist/optionz.js"
+    },
+    "./colors": {
+      "import": "./dist/optionz.colors.mjs",
+      "require": "./dist/optionz.colors.js"
+    },
+    "./help": {
+      "import": "./dist/optionz.help.mjs",
+      "require": "./dist/optionz.help.js"
+    }
+  },
   "dependencies": {
     "@proc7ts/a-iterable": "^2.7.0",
     "@proc7ts/call-thru": "^4.0.0",
