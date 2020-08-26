@@ -4,6 +4,7 @@
     "module": "es2015",
     "target": "es2018",
     "strict": true,
+    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,

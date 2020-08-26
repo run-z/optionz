@@ -3,6 +3,8 @@
  * @module @run-z/optionz/help
  */
 import { flatMapIt, itsReduction } from '@proc7ts/a-iterable';
+import cliui from 'cliui';
+import stringWidth from 'string-width';
 import { clz } from '../colors';
 import type { ZOptionMeta } from '../option-meta';
 
@@ -17,10 +19,6 @@ export class ZHelpFormatter {
    * @param options  A list of options meta to format.
    */
   usageWidth(options: ZOptionMeta.List): number {
-
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const stringWidth = require('string-width');
-
     return itsReduction(
         flatMapIt(
             options,
@@ -59,8 +57,6 @@ export class ZHelpFormatter {
   // eslint-disable-next-line @typescript-eslint/require-await
   async help(options: ZOptionMeta.List): Promise<string> {
 
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const cliui = require('cliui');
     const ui = cliui();
     const usagePadding = this.usagePadding();
     const usageWidth = this.usageWidth(options) + usagePadding[1] + usagePadding[3];

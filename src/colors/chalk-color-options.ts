@@ -3,6 +3,7 @@
  * @module @run-z/optionz/colors
  */
 import type { ColorSupport, Level } from 'chalk';
+import chalk from 'chalk';
 import type { ZOption } from '../option';
 import { ZOptionError } from '../option-error';
 import type { SupportedZOptions } from '../supported-options';
@@ -143,6 +144,5 @@ ${clz.bullet()} ${clz.usage('false')}, ${clz.usage('never')} - disable colors.
  * @internal
  */
 function forceChalkZColors(mode: ColorSupport): void {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  require('chalk').level = mode.level;
+  chalk.level = mode.level;
 }

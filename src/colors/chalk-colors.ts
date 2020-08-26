@@ -4,6 +4,7 @@
  */
 import { valueProvider } from '@proc7ts/primitives';
 import type { Chalk } from 'chalk';
+import chalk from 'chalk';
 import type { ZColors } from './colors';
 
 /**
@@ -17,8 +18,7 @@ export class ChalkZColors implements ZColors {
    * Chalk instance to use.
    */
   chalk(): Chalk {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    return (this.chalk = valueProvider(require('chalk')))();
+    return (this.chalk = valueProvider(chalk))();
   }
 
   usage(text: string): string {

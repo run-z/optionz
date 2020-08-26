@@ -1,12 +1,10 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { arrayOfElements, asis } from '@proc7ts/primitives';
 import type { Level } from 'chalk';
+import chalk from 'chalk';
 import { helpZOptionReader } from '../help';
 import { ZOptionError } from '../option-error';
 import { simpleZOptionsParser, SimpleZOptionsParser } from '../simple-options-parser';
 import { chalkZColorOptions } from './chalk-color-options';
-
-const chalk = require('chalk');
 
 describe('chalkZColorOptions', () => {
 

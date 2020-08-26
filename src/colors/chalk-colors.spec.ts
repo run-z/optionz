@@ -1,6 +1,5 @@
+import stripAnsi from 'strip-ansi';
 import { ChalkZColors } from './chalk-colors';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const stripAnsi = require('strip-ansi');
 
 describe('ChalkZColors', () => {
 
