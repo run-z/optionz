@@ -35,8 +35,8 @@ describe('ChalkZColors', () => {
 
   describe('bullet', () => {
     it('formats bullet', () => {
-      expect(stripAnsi(colors.bullet())).toEqual('- \u2023');
-      expect(stripAnsi(colors.bullet('-'))).toEqual('- -');
+      expect(stripAnsi(colors.bullet())).toEqual('  \u2023');
+      expect(stripAnsi(colors.bullet('-'))).toEqual('  -');
     });
   });
 

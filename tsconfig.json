@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "es2015",
-    "target": "es2018",
+    "moduleResolution": "Node",
+    "module": "ES2015",
+    "target": "ES2018",
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,

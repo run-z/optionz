@@ -38,8 +38,8 @@
     "@proc7ts/a-iterable": "^2.7.0",
     "@proc7ts/call-thru": "^4.0.0",
     "@proc7ts/primitives": "^1.1.0",
-    "cliui": "^7.0.1",
-    "string-width": "^4.2.0"
+    "string-width": "^4.2.0",
+    "wrap-ansi": "^7.0.0"
   },
   "peerDependencies": {
     "chalk": "^4.1.0"

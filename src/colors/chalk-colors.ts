@@ -38,7 +38,7 @@ export class ChalkZColors implements ZColors {
   }
 
   bullet(sign = '\u2023'): string {
-    return this.chalk().hidden('- ') + sign;
+    return `  ${sign}`;
   }
 
 }

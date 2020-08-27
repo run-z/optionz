@@ -3,8 +3,9 @@
  * @module @run-z/optionz/help
  */
 import { flatMapIt, itsReduction } from '@proc7ts/a-iterable';
-import cliui from 'cliui';
+import * as os from 'os';
 import stringWidth from 'string-width';
+import wrapAnsi from 'wrap-ansi';
 import { clz } from '../colors';
 import type { ZOptionMeta } from '../option-meta';
 
@@ -34,7 +35,7 @@ export class ZHelpFormatter {
    *
    * @return top, right, bottom, and left paddings.
    */
-  usagePadding(): readonly [number, number, number, number] {
+  usagePadding(): readonly [top: number, right: number, bottom: number, left: number] {
     return [1, 1, 0, 2];
   }
 
@@ -43,7 +44,7 @@ export class ZHelpFormatter {
    *
    * @return top, right, bottom, and left paddings.
    */
-  textPadding(): readonly [number, number, number, number] {
+  textPadding(): readonly [top: number, right: number, bottom: number, left: number] {
     return [1, 0, 0, 1];
   }
 
@@ -57,13 +58,24 @@ export class ZHelpFormatter {
   // eslint-disable-next-line @typescript-eslint/require-await
   async help(options: ZOptionMeta.List): Promise<string> {
 
-    const ui = cliui();
+    let out = '';
     const usagePadding = this.usagePadding();
-    const usageWidth = this.usageWidth(options) + usagePadding[1] + usagePadding[3];
+    const usageTop = emptyLines(usagePadding[0]);
+    const usageBottom = usagePadding[2];
+    const usageLeft = ' '.repeat(usagePadding[3]);
+    const usageRight = ' '.repeat(usagePadding[1]);
+    const usageWidth = this.usageWidth(options);
 
-    for (const [, meta] of options) {
+    const textPadding = this.textPadding();
+    const textTop = emptyLines(textPadding[0]);
+    const textBottom = textPadding[2];
+    const textLeft = ' '.repeat(textPadding[3]);
+    const textRight = ' '.repeat(textPadding[1]);
 
-      const usageText = meta.usage.map(usage => clz.usage(usage)).join('\n');
+    for (let optionIdx = 0; optionIdx < options.length; ++optionIdx) {
+
+      const [, meta] = options[optionIdx];
+      const usageLines = meta.usage.map(usage => clz.usage(usage));
       const { help, description = '' } = meta;
       let text: string;
 
@@ -77,21 +89,67 @@ export class ZHelpFormatter {
         text = description.trim();
       }
 
-      ui.div(
-          {
-            text: usageText,
-            width: usageWidth,
-            padding: usagePadding,
-          },
-          {
-            text,
-            padding: this.textPadding(),
-          },
+      const textLines = wrapLines(
+          text,
+          (process.stdout.columns || 80)
+          - usageWidth
+          - usagePadding[1] - usagePadding[3]
+          - textPadding[1] - textPadding[3],
       );
+
+      if (optionIdx) {
+        // Top padding
+        usageLines.splice(0, 0, ...usageTop);
+        textLines.splice(0, 0, ...textTop);
+      }
+
+      let numUsageLines = usageLines.length;
+      let numTextLines = textLines.length;
+
+      if (optionIdx + 1 < options.length) {
+        // Bottom padding
+        numUsageLines += usageBottom;
+        numTextLines += textBottom;
+      }
+
+      const numLines = Math.max(numUsageLines, numTextLines);
+
+      for (let lineIdx = 0; lineIdx < numLines; ++lineIdx) {
+        out += usageLeft + padLine(usageLines[lineIdx] || '', usageWidth) + usageRight
+            + textLeft + (textLines[lineIdx] || '') + textRight
+            + os.EOL;
+      }
     }
 
-    return ui.toString();
+    return out;
   }
 
 }
 
+/**
+ * @internal
+ */
+function wrapLines(text: string, columns: number): string[] {
+  return wrapAnsi(text, columns, { hard: true, trim: false }).split('\n');
+}
+
+/**
+ * @internal
+ */
+function emptyLines(numLines: number): readonly string[] {
+
+  const result: string[] = [];
+
+  for (let i = 0; i < numLines; ++i) {
+    result.push('');
+  }
+
+  return result;
+}
+
+/**
+ * @internal
+ */
+function padLine(line: string, columns: number): string {
+  return line + ' '.repeat(columns - stringWidth(line));
+}
