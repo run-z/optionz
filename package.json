@@ -80,12 +80,13 @@
   },
   "scripts": {
     "all": "run-z build,lint,test",
-    "build": "run-z +z --then rollup --config ./rollup.config.js",
+    "bootstrap": "rollup --config ./rollup.config.js",
+    "build": "run-z +z bootstrap",
     "ci:all": "run-z all +test/--ci/--runInBand",
     "clean": "run-z +z --then shx rm -rf d.ts dist target",
     "doc": "run-z +z --then typedoc",
     "doc:publish": "run-z doc --then gh-pages --dist target/typedoc --dotfiles",
-    "lint": "run-z +z --then eslint . --ext .js,.ts",
+    "lint": "run-z +z --then eslint .",
     "test": "run-z +z --then jest",
     "z": "run-z +build,+doc,+lint,+test"
   }
