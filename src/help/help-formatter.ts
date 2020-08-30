@@ -3,7 +3,6 @@
  * @module @run-z/optionz/help
  */
 import { flatMapIt, itsReduction } from '@proc7ts/a-iterable';
-import * as os from 'os';
 import stringWidth from 'string-width';
 import wrapAnsi from 'wrap-ansi';
 import { clz } from '../colors';
@@ -116,8 +115,7 @@ export class ZHelpFormatter {
 
       for (let lineIdx = 0; lineIdx < numLines; ++lineIdx) {
         out += usageLeft + padLine(usageLines[lineIdx] || '', usageWidth) + usageRight
-            + textLeft + (textLines[lineIdx] || '') + textRight
-            + os.EOL;
+            + textLeft + (textLines[lineIdx] || '') + textRight + '\n';
       }
     }
 
