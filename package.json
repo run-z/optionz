@@ -79,7 +79,7 @@
     "typescript": "^4.0.2"
   },
   "scripts": {
-    "all": "run-z bootstrap,lint,test",
+    "all": "run-z build,lint,test",
     "bootstrap": "rollup --config ./rollup.config.js",
     "build": "run-z +z bootstrap",
     "ci:all": "run-z all +test/--ci/--runInBand",
@@ -88,6 +88,6 @@
     "doc:publish": "run-z doc --then gh-pages --dist target/typedoc --dotfiles",
     "lint": "run-z +z --then eslint .",
     "test": "run-z +z --then jest",
-    "z": "run-z +build,+doc,+lint,+test"
+    "z": "run-z +bootstrap,+doc,+lint,+test"
   }
 }
