@@ -2,8 +2,8 @@
  * @packageDocumentation
  * @module @run-z/optionz
  */
-import { filterIt, flatMapIt } from '@proc7ts/a-iterable';
 import { isArrayOfElements } from '@proc7ts/primitives';
+import { filterIt, flatMapIt } from '@proc7ts/push-iterator';
 import { ZOptionInput } from './option-input';
 
 /**
