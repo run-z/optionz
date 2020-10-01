@@ -2,7 +2,7 @@
  * @packageDocumentation
  * @module @run-z/optionz/help
  */
-import { flatMapIt, itsReduction } from '@proc7ts/a-iterable';
+import { flatMapIt, itsReduction } from '@proc7ts/push-iterator';
 import stringWidth from 'string-width';
 import wrapAnsi from 'wrap-ansi';
 import { clz } from '../colors';
