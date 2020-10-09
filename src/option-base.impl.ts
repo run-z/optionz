@@ -59,8 +59,8 @@ export class ZOptionBase<TOption extends ZOption> implements ZOption {
     return this._impl.optionLocation(init);
   }
 
-  supportedOptions(): Iterable<string> {
-    return this._impl.optionsMeta().keys();
+  supportedOptions(): readonly string[] {
+    return [...this._impl.optionsMeta().keys()];
   }
 
   optionMeta(key: string): ZOptionMeta.Combined {

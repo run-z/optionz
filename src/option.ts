@@ -143,9 +143,9 @@ export interface ZOption {
   /**
    * Lists all options supported by the parser.
    *
-   * @returns An iterable of all supported option keys except hidden ones.
+   * @returns A read-only array of all supported option keys except hidden ones.
    */
-  supportedOptions(): Iterable<string>;
+  supportedOptions(): readonly string[];
 
   /**
    * Returns meta information for option.

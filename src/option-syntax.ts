@@ -17,7 +17,7 @@ export type ZOptionSyntax =
 /**
  * @param args  An array of command line arguments to process.
  *
- * @returns An iterable of option inputs. May be empty if the command line argument has another syntax.
+ * @returns A read-only array of option inputs. May be empty if the command line argument has another syntax.
  */
     (this: void, args: readonly [string, ...string[]]) => readonly ZOptionInput[];
 
