@@ -2,7 +2,6 @@
  * @packageDocumentation
  * @module @run-z/optionz/help
  */
-import { flatMapIt, itsReduction } from '@proc7ts/push-iterator';
 import stringWidth from 'string-width';
 import wrapAnsi from 'wrap-ansi';
 import { clz } from '../colors';
@@ -19,14 +18,12 @@ export class ZHelpFormatter {
    * @param options  A list of options meta to format.
    */
   usageWidth(options: ZOptionMeta.List): number {
-    return itsReduction(
-        flatMapIt(
-            options,
-            ([, { usage }]) => usage,
-        ),
-        (prev, usage) => Math.max(prev, stringWidth(usage)),
-        0,
-    );
+    return options
+        .flatMap(([, { usage }]) => usage)
+        .reduce(
+            (prev, usage) => Math.max(prev, stringWidth(usage)),
+            0,
+        );
   }
 
   /**

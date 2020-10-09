@@ -3,7 +3,6 @@
  * @module @run-z/optionz
  */
 import { isArrayOfElements } from '@proc7ts/primitives';
-import { filterIt, flatMapIt } from '@proc7ts/push-iterator';
 import { ZOptionInput } from './option-input';
 
 /**
@@ -20,7 +19,7 @@ export type ZOptionSyntax =
  *
  * @returns An iterable of option inputs. May be empty if the command line argument has another syntax.
  */
-    (this: void, args: readonly [string, ...string[]]) => Iterable<ZOptionInput>;
+    (this: void, args: readonly [string, ...string[]]) => readonly ZOptionInput[];
 
 /**
  * @internal
@@ -114,33 +113,27 @@ function zOptionSyntaxBy(syntax: ZOptionSyntax | readonly ZOptionSyntax[]): ZOpt
     return syntax;
   }
 
-  return args => {
+  return (args: readonly [string, ...string[]]): readonly ZOptionInput[] => {
 
     const tried: ZOptionInput[] = [];
 
-    return filterIt(
-        flatMapIt(
-            syntax,
-            p => p(args),
-        ),
-        input => {
-          // Prevent input duplicates
-          if (tried.some(t => ZOptionInput.equal(t, input))) {
-            return false;
-          }
+    return syntax.flatMap(p => p(args)).filter(input => {
+      // Prevent input duplicates
+      if (tried.some(t => ZOptionInput.equal(t, input))) {
+        return false;
+      }
 
-          tried.push(input);
+      tried.push(input);
 
-          return true;
-        },
-    );
+      return true;
+    });
   };
 }
 
 /**
  * @internal
  */
-function longZOptionSyntax(args: readonly [string, ...string[]]): Iterable<ZOptionInput> {
+function longZOptionSyntax(args: readonly [string, ...string[]]): readonly ZOptionInput[] {
 
   let [name] = args;
 
@@ -181,7 +174,7 @@ function longZOptionSyntax(args: readonly [string, ...string[]]): Iterable<ZOpti
 /**
  * @internal
  */
-function shortZOptionSyntax(args: readonly [string, ...string[]]): Iterable<ZOptionInput> {
+function shortZOptionSyntax(args: readonly [string, ...string[]]): readonly ZOptionInput[] {
 
   let [name] = args;
 
@@ -243,7 +236,7 @@ function shortZOptionSyntax(args: readonly [string, ...string[]]): Iterable<ZOpt
 /**
  * @internal
  */
-function anyZOptionSyntax(args: readonly [string, ...string[]]): Iterable<ZOptionInput> {
+function anyZOptionSyntax(args: readonly [string, ...string[]]): readonly ZOptionInput[] {
 
   const [name] = args;
   const values = ZOptionInput.valuesOf(args, 1);
