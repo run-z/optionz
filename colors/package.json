@@ -1,5 +1,5 @@
 {
-  "main": "../dist/optionz.colors.js",
-  "module": "../dist/optionz.colors.mjs",
+  "main": "../dist/optionz.colors.cjs",
+  "module": "../dist/optionz.colors.js",
   "types": "index.d.ts"
 }

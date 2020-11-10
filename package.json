@@ -17,21 +17,22 @@
   "bugs": {
     "url": "https://github.com/run-z/optionz/issues"
   },
-  "main": "dist/optionz.js",
-  "module": "dist/optionz.mjs",
+  "type": "module",
+  "main": "dist/optionz.cjs",
+  "module": "dist/optionz.js",
   "types": "index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/optionz.mjs",
-      "require": "./dist/optionz.js"
+      "import": "./dist/optionz.js",
+      "require": "./dist/optionz.cjs"
     },
     "./colors": {
-      "import": "./dist/optionz.colors.mjs",
-      "require": "./dist/optionz.colors.js"
+      "import": "./dist/optionz.colors.js",
+      "require": "./dist/optionz.colors.cjs"
     },
     "./help": {
-      "import": "./dist/optionz.help.mjs",
-      "require": "./dist/optionz.help.js"
+      "import": "./dist/optionz.help.js",
+      "require": "./dist/optionz.help.cjs"
     }
   },
   "dependencies": {

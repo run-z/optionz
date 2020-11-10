@@ -24,7 +24,7 @@ module.exports = {
     [
       'jest-junit',
       {
-        suiteName: 'OptionZ',
+        suiteName: '@run-z/optionz',
         outputDirectory: './target/test-results',
         classNameTemplate: '{classname}: {title}',
         titleTemplate: '{classname}: {title}',
