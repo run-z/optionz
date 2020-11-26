@@ -1,4 +1,5 @@
 import { externalModules } from '@proc7ts/rollup-helpers';
+import flatDts from '@proc7ts/rollup-plugin-flat-dts';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import path from 'path';
@@ -25,10 +26,10 @@ export default {
   ],
   external: externalModules(),
   manualChunks(id) {
-    if (id.startsWith(path.join(__dirname, 'src', 'colors') + path.sep)) {
+    if (id.startsWith(path.resolve('src', 'colors') + path.sep)) {
       return 'optionz.colors';
     }
-    if (id.startsWith(path.join(__dirname, 'src', 'help') + path.sep)) {
+    if (id.startsWith(path.resolve('src', 'help') + path.sep)) {
       return 'optionz.help';
     }
     return 'optionz';
@@ -39,16 +40,30 @@ export default {
       sourcemap: true,
       dir: './dist',
       entryFileNames: '[name].cjs',
-      chunkFileNames: `_[name].cjs`,
+      chunkFileNames: '_[name].cjs',
       hoistTransitiveImports: false,
     },
     {
       format: 'esm',
       sourcemap: true,
-      dir: './dist',
-      entryFileNames: '[name].js',
-      chunkFileNames: `_[name].js`,
+      dir: '.',
+      entryFileNames: 'dist/[name].js',
+      chunkFileNames: 'dist/_[name].js',
       hoistTransitiveImports: false,
+      plugins: [
+        flatDts({
+          tsconfig: 'tsconfig.main.json',
+          lib: true,
+          entries: {
+            colors: {
+              file: 'colors/index.d.ts',
+            },
+            help: {
+              file: 'help/index.d.ts',
+            },
+          },
+        }),
+      ],
     },
   ],
 };
