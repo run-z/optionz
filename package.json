@@ -49,11 +49,11 @@
     }
   },
   "devDependencies": {
-    "@proc7ts/eslint-config": "^2.0.5",
     "@proc7ts/rollup-helpers": "^1.1.1",
     "@proc7ts/rollup-plugin-flat-dts": "^1.1.2",
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
+    "@run-z/eslint-config": "^1.0.0",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.19.7",
     "@types/wrap-ansi": "^3.0.0",
