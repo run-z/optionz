@@ -13,8 +13,8 @@ const defaultZOptionsParser = (/*#__PURE__*/ simpleZOptionsParser());
 /**
  * Parses command line options.
  *
- * @param args  Array of command line arguments
- * @param opts  Parser options.
+ * @param args - Array of command line arguments
+ * @param opts - Parser options.
  *
  * @returns A promise resolved to a map of recognized option names to arrays of their values.
  */

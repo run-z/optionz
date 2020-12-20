@@ -15,9 +15,9 @@ import type { SupportedZOptions } from './supported-options';
  */
 export type ZOptionsParser<TOption extends ZOption, TCtx> =
 /**
- * @param context  Options processing context. This context is supposed to receive the processing results.
- * @param args  Array of command line arguments
- * @param opts  Parser options.
+ * @param context - Options processing context. This context is supposed to receive the processing results.
+ * @param args - Array of command line arguments
+ * @param opts - Parser options.
  *
  * @returns A promise resolved to processing context when parsing completes.
  */
@@ -53,7 +53,7 @@ export namespace ZOptionsParser {
     /**
      * Builds command line option representation class.
      *
-     * @param base  Base option representation class.
+     * @param base - Base option representation class.
      *
      * @returns Command line option representation class constructor.
      */
@@ -90,7 +90,7 @@ export namespace ZOptionsParser {
  *
  * @typeparam TOption  A type of option representation.
  * @typeparam TCtx  A type of option processing context required by parser.
- * @param config  Parser configuration.
+ * @param config - Parser configuration.
  *
  * @returns New options parser.
  */

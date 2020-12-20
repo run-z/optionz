@@ -18,8 +18,8 @@ export class ZOptionError extends Error {
   /**
    * Constructs option error.
    *
-   * @param optionLocation  Erroneous option location.
-   * @param message  Error message.
+   * @param optionLocation - Erroneous option location.
+   * @param message - Error message.
    */
   constructor(
       optionLocation: ZOptionLocation,

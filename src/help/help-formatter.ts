@@ -15,7 +15,7 @@ export class ZHelpFormatter {
   /**
    * Detects usage column width.
    *
-   * @param options  A list of options meta to format.
+   * @param options - A list of options meta to format.
    */
   usageWidth(options: ZOptionMeta.List): number {
     return options
@@ -47,7 +47,7 @@ export class ZHelpFormatter {
   /**
    * Formats options help information.
    *
-   * @param options  A list of options meta to display.
+   * @param options - A list of options meta to display.
    *
    * @returns A promise resolved to formatted help text.
    */

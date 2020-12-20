@@ -13,7 +13,7 @@ export interface ZColors {
   /**
    * Formats option usage text.
    *
-   * @param text  Original usage text.
+   * @param text - Original usage text.
    *
    * @returns Formatted usage text.
    */
@@ -22,7 +22,7 @@ export interface ZColors {
   /**
    * Formats option parameter placeholder.
    *
-   * @param name  Parameter name.
+   * @param name - Parameter name.
    *
    * @returns Formatted placeholder.
    */
@@ -31,7 +31,7 @@ export interface ZColors {
   /**
    * Formats a sign to use as part of grammar definition.
    *
-   * @param sign  A sign to format.
+   * @param sign - A sign to format.
    *
    * @returns Formatted sign.
    */
@@ -40,7 +40,7 @@ export interface ZColors {
   /**
    * Formats optional part of grammar definition.
    *
-   * @param text  Optional grammar text.
+   * @param text - Optional grammar text.
    *
    * @returns Formatted optional grammar.
    */
@@ -49,7 +49,7 @@ export interface ZColors {
   /**
    * Formats a list bullet.
    *
-   * @param sign  Override bullet symbol to use.
+   * @param sign - Override bullet symbol to use.
    *
    * @returns Formatted bullet.
    */
@@ -94,7 +94,7 @@ export const ZColors = {
   /**
    * Assigns terminal color theme to use {@link clz by default}.
    *
-   * @param colors  New default terminal color theme to use.
+   * @param colors - New default terminal color theme to use.
    */
   useByDefault(colors: ZColors): void {
     defaultZColors = valueProvider(colors);

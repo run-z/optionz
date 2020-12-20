@@ -30,7 +30,7 @@ export namespace ZOptionReader {
    */
   export type Fn<TOption extends ZOption = ZOption, TThis = unknown> =
   /**
-   * @param option  Command line option to recognize.
+   * @param option - Command line option to recognize.
    *
    * @returns Either nothing or promise-like instance resolved when the reader finishes option processing,
    * either recognized or not.

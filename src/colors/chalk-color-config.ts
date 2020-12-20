@@ -17,8 +17,8 @@ export interface ChalkZColorConfig<TOption extends ZOption> {
    *
    * Assigns `chalk.level` by default.
    *
-   * @param mode  Color support mode (off, basic, 256, or 16m/TrueColor).
-   * @param option  Color support option.
+   * @param mode - Color support mode (off, basic, 256, or 16m/TrueColor).
+   * @param option - Color support option.
    *
    * @returns Either nothing if color support enabled synchronously, or a promise-like instance resolved when color
    * support enabled asynchronously.

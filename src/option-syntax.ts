@@ -15,7 +15,7 @@ import { ZOptionInput } from './option-input';
  */
 export type ZOptionSyntax =
 /**
- * @param args  An array of command line arguments to process.
+ * @param args - An array of command line arguments to process.
  *
  * @returns A read-only array of option inputs. May be empty if the command line argument has another syntax.
  */
@@ -95,7 +95,7 @@ export const ZOptionSyntax = {
   /**
    * Builds an option syntax supporting other syntaxes.
    *
-   * @param syntax  Either a single syntax, or an array of syntaxes to support.
+   * @param syntax - Either a single syntax, or an array of syntaxes to support.
    *
    * @returns Either a single `syntax` passed in, or a syntax supporting all of them.
    */

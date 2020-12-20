@@ -12,7 +12,7 @@ import { ZHelpFormatter } from './help-formatter';
  * Creates option reader able to build and print help info.
  *
  * @typeparam TOption  A type of help option.
- * @param config  Help configuration.
+ * @param config - Help configuration.
  *
  * @returns New option reader.
  */

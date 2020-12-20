@@ -29,10 +29,10 @@ export interface ZHelpConfig<TOption extends ZOption = ZOption> {
    *
    * By default sorts options by their {@link ZOptionMeta.group group} first, and then - by their keys.
    *
-   * @param key1  First option key.
-   * @param meta1  First option meta.
-   * @param key2  Second option key.
-   * @param meta2  Second option meta.
+   * @param key1 - First option key.
+   * @param meta1 - First option meta.
+   * @param key2 - Second option key.
+   * @param meta2 - Second option meta.
    *
    * @returns Positive number if first option should be listed after the second one, negative number if first option
    * should be listed before the second one, or zero to list them in original order.
@@ -44,8 +44,8 @@ export interface ZHelpConfig<TOption extends ZOption = ZOption> {
    *
    * By default prints help information formatted by {@link ZHelpFormatter help formatter} to console.
    *
-   * @param options  A list of options meta to display.
-   * @param option  Help option representation.
+   * @param options - A list of options meta to display.
+   * @param option - Help option representation.
    *
    * @returns Either nothing if help displayed synchronously, or a promise-like instance resolved when help displayed
    * asynchronously.

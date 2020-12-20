@@ -24,7 +24,7 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
   /**
    * Constructs command line options parser.
    *
-   * @param config  Command line options configuration.
+   * @param config - Command line options configuration.
    */
   constructor(config: ZOptionsParser.Config<TOption, TCtx>) {
     this._config = config;
@@ -56,10 +56,10 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
   /**
    * Parses command line options.
    *
-   * @param context  Options processing context. This context is supposed to receive the processing results.
-   * @param args  Array of command line arguments
-   * @param fromIndex  An index of command line argument to start processing from.
-   * @param options  Additional options to support.
+   * @param context - Options processing context. This context is supposed to receive the processing results.
+   * @param args - Array of command line arguments
+   * @param fromIndex - An index of command line argument to start processing from.
+   * @param options - Additional options to support.
    *
    * @returns A promise resolved to processing context when parsing completes.
    */

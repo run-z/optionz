@@ -61,7 +61,7 @@ export interface ZOption {
    * When called on already recognized option this method just returns the values previously returned to the reader
    * that recognized them.
    *
-   * @param max  The maximum number of values to read.
+   * @param max - The maximum number of values to read.
    *
    * @returns Option values array.
    */
@@ -78,7 +78,7 @@ export interface ZOption {
    * When called on already recognized option this method just returns the values previously returned to the reader
    * that recognized them.
    *
-   * @param max  The maximum number of arguments to read.
+   * @param max - The maximum number of arguments to read.
    *
    * @returns Command line arguments array.
    */
@@ -92,7 +92,7 @@ export interface ZOption {
    * This method can be called multiple times to register multiple actions to call. These actions won't be called once
    * the option is marked as {@link unrecognize unrecognized} again.
    *
-   * @param action  The action to perform when the option recognized and all readers processed.
+   * @param action - The action to perform when the option recognized and all readers processed.
    */
   recognize(action?: (this: void) => void): void;
 
@@ -102,7 +102,7 @@ export interface ZOption {
    * Calling this method marks arguments as unrecognized. This can be changed by calling any recognition method again.
    * The already registered callback will be unregistered on such call.
    *
-   * @param whenRecognized  Optional callback function that will be called when option recognized by another reader.
+   * @param whenRecognized - Optional callback function that will be called when option recognized by another reader.
    */
   defer(whenRecognized?: ZOptionReader.Fn<this>): void;
 
@@ -115,7 +115,7 @@ export interface ZOption {
    *
    * Does nothing if current option is recognized by another reader.
    *
-   * @param reason  An error to throw when all readers processed and option is still unrecognized. When omitted,
+   * @param reason - An error to throw when all readers processed and option is still unrecognized. When omitted,
    * the {@link ZOptionError} will be thrown.
    */
   unrecognize(reason?: any): void;
@@ -127,14 +127,14 @@ export interface ZOption {
    * deferring}. An unlike deferring, the callback registered by this method will be called when the option recognized
    * by any reader, not just the readers registered for the same option key.
    *
-   * @param receiver  Callback function that will be called when the option recognized and all readers processed.
+   * @param receiver - Callback function that will be called when the option recognized and all readers processed.
    */
   whenRecognized(receiver: (this: void, option: this) => void): void;
 
   /**
    * Builds option location within parsed command line.
    *
-   * @param init  Initial properties of option location.
+   * @param init - Initial properties of option location.
    *
    * @returns Option location within parsed command line arguments.
    */
@@ -150,7 +150,7 @@ export interface ZOption {
   /**
    * Returns meta information for option.
    *
-   * @param key  Option key.
+   * @param key - Option key.
    *
    * @returns Combined meta information for the option with the given key.
    */
@@ -189,8 +189,8 @@ export namespace ZOption {
     /**
      * Constructs command line option representation.
      *
-     * @param context  Option processing context.
-     * @param args  Arguments to pass to the {@link BaseClass base constructor}.
+     * @param context - Option processing context.
+     * @param args - Arguments to pass to the {@link BaseClass base constructor}.
      */
     new (context: TCtx, ...args: TArgs): TOption;
 

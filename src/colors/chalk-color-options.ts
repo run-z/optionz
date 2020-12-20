@@ -66,7 +66,7 @@ const chalkZColorModes: {
  *
  * [chalk]: https://www.npmjs.com/package/chalk
  *
- * @param config  Chalk color support configuration.
+ * @param config - Chalk color support configuration.
  *
  * @returns Supported set of color options.
  */

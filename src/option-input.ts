@@ -54,7 +54,7 @@ export const ZOptionInput = {
    *
    * This is used by default to find option values.
    *
-   * @param arg  Command line argument to check.
+   * @param arg - Command line argument to check.
    *
    * @returns `true` unless argument starts with `-` and not equal to `-` itself.
    */
@@ -67,8 +67,8 @@ export const ZOptionInput = {
    *
    * This is used by default to extract option values.
    *
-   * @param args  Command line arguments.
-   * @param fromIndex  First argument index to start extracting values at.
+   * @param args - Command line arguments.
+   * @param fromIndex - First argument index to start extracting values at.
    *
    * @returns An array of command line {@link isOptionValue option values}.
    */

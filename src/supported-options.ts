@@ -83,7 +83,7 @@ export namespace SupportedZOptions {
    */
   export type Provider<TOption extends ZOption = ZOption, TCtx = unknown> =
   /**
-   * @param context  Option processing context.
+   * @param context - Option processing context.
    *
    * @returns A {@link Map map of option readers}.
    */

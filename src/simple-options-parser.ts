@@ -12,9 +12,9 @@ import type { SupportedZOptions } from './supported-options';
  */
 export type SimpleZOptionsParser =
 /**
- * @param args  Array of command line arguments
- * @param fromIndex  An index of command line argument to start processing from.
- * @param opts  Parser options.
+ * @param args - Array of command line arguments
+ * @param fromIndex - An index of command line argument to start processing from.
+ * @param opts - Parser options.
  *
  * @returns A promise resolved to parse result.
  */
@@ -82,7 +82,7 @@ function readAllZOptionValues(option: ZOption): void {
 /**
  * Builds a simple command line options parser.
  *
- * @param config  Parser configuration.
+ * @param config - Parser configuration.
  *
  * @returns New options parser.
  */

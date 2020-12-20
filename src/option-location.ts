@@ -85,7 +85,7 @@ export const ZOptionLocation = {
   /**
    * Reconstructs option location.
    *
-   * @param location  Option location.
+   * @param location - Option location.
    *
    * @returns Reconstructed option location with all properties set.
    */
