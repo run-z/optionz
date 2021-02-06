@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @run-z/optionz
- */
 import type { ZOptionsParser } from './options-parser';
 import { SimpleZOptionsParser, simpleZOptionsParser } from './simple-options-parser';
 

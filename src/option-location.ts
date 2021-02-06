@@ -1,9 +1,4 @@
 /**
- * @packageDocumentation
- * @module @run-z/optionz
- */
-
-/**
  * The location of the option(s) within command line.
  */
 export interface ZOptionLocation {

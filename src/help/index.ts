@@ -1,6 +1,6 @@
 /**
  * @packageDocumentation
- * @module @run-z/optionz/help
+ * @module Module @run-z/optionz/help
  */
 export * from './help-config';
 export * from './help-formatter';

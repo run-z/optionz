@@ -1,9 +1,4 @@
 /**
- * @packageDocumentation
- * @module @run-z/optionz
- */
-
-/**
  * Meta information for the option.
  *
  * Can either contain {@link ZOptionMeta.Help help information}, be a reference to another option this one is an

@@ -1,6 +1,6 @@
 /**
  * @packageDocumentation
- * @module @run-z/optionz/colors
+ * @module Module @run-z/optionz/colors
  */
 export * from './chalk-color-config';
 export * from './chalk-color-options';

@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @run-z/optionz/colors
- */
 import type { ColorSupport } from 'chalk';
 import type { ZOption } from '../option';
 

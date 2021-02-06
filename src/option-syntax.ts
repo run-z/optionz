@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @run-z/optionz
- */
 import { isArrayOfElements } from '@proc7ts/primitives';
 import { ZOptionInput } from './option-input';
 

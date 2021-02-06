@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @run-z/optionz/colors
- */
 import { lazyValue, valueProvider } from '@proc7ts/primitives';
 import { ChalkZColors } from './chalk-colors';
 

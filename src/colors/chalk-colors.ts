@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @run-z/optionz/colors
- */
 import { valueProvider } from '@proc7ts/primitives';
 import type { Chalk } from 'chalk';
 import chalk from 'chalk';

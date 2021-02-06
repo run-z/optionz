@@ -1,9 +1,4 @@
 /**
- * @packageDocumentation
- * @module @run-z/optionz
- */
-
-/**
  * Command line option input.
  *
  * This is constructed from raw command line arguments by {@link ZOptionSyntax options syntax}.

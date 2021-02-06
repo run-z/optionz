@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @run-z/optionz/help
- */
 import type { ZOption } from '../option';
 import type { ZOptionMeta } from '../option-meta';
 

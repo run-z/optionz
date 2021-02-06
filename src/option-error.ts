@@ -1,7 +1,3 @@
-/**
- * @packageDocumentation
- * @module @run-z/optionz
- */
 import { ZOptionLocation } from './option-location';
 
 /**
