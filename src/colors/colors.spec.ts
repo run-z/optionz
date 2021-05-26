@@ -1,15 +1,16 @@
+import { describe, expect, it, jest } from '@jest/globals';
 import { clz, ZColors } from './colors';
 
 describe('ZColors', () => {
   describe('useByDefault', () => {
     it('assigns default theme to use', () => {
 
-      const colors: jest.Mocked<ZColors> = {
-        usage: jest.fn(),
-        param: jest.fn(),
-        sign: jest.fn(),
-        optional: jest.fn(),
-        bullet: jest.fn(),
+      const colors = {
+        usage: jest.fn(() => ''),
+        param: jest.fn(() => ''),
+        sign: jest.fn(() => ''),
+        optional: jest.fn(() => ''),
+        bullet: jest.fn(() => ''),
       };
 
       ZColors.useByDefault(colors);

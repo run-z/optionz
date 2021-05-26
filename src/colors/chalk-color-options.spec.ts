@@ -1,4 +1,5 @@
-import { arrayOfElements, asis } from '@proc7ts/primitives';
+import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
+import { arrayOfElements, asis, noop } from '@proc7ts/primitives';
 import type { Level } from 'chalk';
 import chalk from 'chalk';
 import { helpZOptionReader } from '../help';
@@ -98,7 +99,7 @@ describe('chalkZColorOptions', () => {
 
   it('forces color by custom method', async () => {
 
-    const forceColors = jest.fn();
+    const forceColors = jest.fn(noop);
 
     parser = simpleZOptionsParser({
       options: chalkZColorOptions({
@@ -117,7 +118,7 @@ describe('chalkZColorOptions', () => {
   it('has help', async () => {
 
     const options = [...arrayOfElements(chalkZColorOptions())];
-    const display = jest.fn();
+    const display = jest.fn(noop);
 
     options.push({
       '-h': helpZOptionReader({ display }),

@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import { ZOptionError } from './option-error';
 
 describe('ZOptionError', () => {

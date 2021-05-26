@@ -1,5 +1,5 @@
-module.exports = {
-  preset: 'ts-jest',
+export default {
+  preset: 'ts-jest/presets/default-esm',
   collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.ts',
@@ -19,6 +19,7 @@ module.exports = {
       lines: 100,
     },
   },
+  extensionsToTreatAsEsm: ['.ts'],
   reporters: [
     'default',
     [
@@ -37,6 +38,7 @@ module.exports = {
   globals: {
     'ts-jest': {
       tsconfig: 'tsconfig.spec.json',
+      useESM: true,
     },
   },
 };

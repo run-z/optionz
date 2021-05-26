@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals';
 import type { ZOptionInput } from './option-input';
 import { ZOptionSyntax } from './option-syntax';
 

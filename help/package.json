@@ -1,5 +1,5 @@
 {
-  "main": "../dist/optionz.help.cjs",
-  "module": "../dist/optionz.help.js",
+  "main": "../dist/optionz.help.js",
+  "exports": "../dist/optionz.help.js",
   "types": "./index.d.ts"
 }
