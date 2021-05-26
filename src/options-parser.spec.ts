@@ -1,4 +1,6 @@
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { asis, noop, valueProvider } from '@proc7ts/primitives';
+import type { Mock } from 'jest-mock';
 import type { ZOption } from './option';
 import { ZOptionError } from './option-error';
 import type { ZOptionLocation } from './option-location';
@@ -577,13 +579,13 @@ describe('ZOptionsParser', () => {
 
   describe('fallback reader', () => {
 
-    let readShort: jest.Mock<ReturnType<ZOptionReader.Fn<ZOption>>, Parameters<ZOptionReader.Fn<ZOption>>>;
+    let readShort: Mock<ReturnType<ZOptionReader.Fn<ZOption>>, Parameters<ZOptionReader.Fn<ZOption>>>;
     let defaultShort: string | undefined;
 
-    let readLong: jest.Mock<ReturnType<ZOptionReader.Fn<ZOption>>, Parameters<ZOptionReader.Fn<ZOption>>>;
+    let readLong: Mock<ReturnType<ZOptionReader.Fn<ZOption>>, Parameters<ZOptionReader.Fn<ZOption>>>;
     let defaultLong: string | undefined;
 
-    let readPositional: jest.Mock<ReturnType<ZOptionReader.Fn<ZOption>>, Parameters<ZOptionReader.Fn<ZOption>>>;
+    let readPositional: Mock<ReturnType<ZOptionReader.Fn<ZOption>>, Parameters<ZOptionReader.Fn<ZOption>>>;
     let defaultPositional: string | undefined;
 
     let fallbackKey: string | undefined;

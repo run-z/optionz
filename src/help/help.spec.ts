@@ -1,10 +1,12 @@
+import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { noop } from '@proc7ts/primitives';
+import type { SpyInstance } from 'jest-mock';
 import { simpleZOptionsParser } from '../simple-options-parser';
 import { helpZOptionReader } from './help-option-reader';
 
 describe('helpZOptionReader', () => {
 
-  let logSpy: jest.SpyInstance;
+  let logSpy: SpyInstance<void, any[]>;
 
   beforeEach(() => {
     logSpy = jest.spyOn(console, 'log');
@@ -53,14 +55,14 @@ describe('helpZOptionReader', () => {
 
     await parser(['--help']);
 
-    expect(logSpy).toHaveBeenCalledWith(expect.not.stringContaining('--help'));
+    expect(logSpy).not.toHaveBeenCalledWith(expect.stringContaining('--help'));
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('--test'));
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('TEST HELP'));
-    expect(logSpy).toHaveBeenCalledWith(expect.not.stringContaining('TEST DESCRIPTION'));
+    expect(logSpy).not.toHaveBeenCalledWith(expect.stringContaining('TEST DESCRIPTION'));
   });
   it('displays help with the given method', async () => {
 
-    const display = jest.fn();
+    const display = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
         '--test': noop,
@@ -83,7 +85,7 @@ describe('helpZOptionReader', () => {
   });
   it('compares options by group first', async () => {
 
-    const display = jest.fn();
+    const display = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
         '--test': {
@@ -119,7 +121,7 @@ describe('helpZOptionReader', () => {
   });
   it('compares options by group and key', async () => {
 
-    const display = jest.fn();
+    const display = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
         '--test': {
@@ -158,7 +160,7 @@ describe('helpZOptionReader', () => {
   });
   it('compares options by custom method', async () => {
 
-    const display = jest.fn();
+    const display = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
         '--test-option': noop,
