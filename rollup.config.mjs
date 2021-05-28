@@ -1,5 +1,3 @@
-import commonjs from '@rollup/plugin-commonjs';
-import nodeResolve from '@rollup/plugin-node-resolve';
 import { externalModules } from '@run-z/rollup-helpers';
 import path from 'path';
 import flatDts from 'rollup-plugin-flat-dts';
@@ -14,14 +12,12 @@ export default {
     'optionz.help': './src/help/index.ts',
   },
   plugins: [
-    commonjs(),
     ts({
       typescript,
       tsconfig: 'tsconfig.main.json',
       cacheRoot: 'target/.rts2_cache',
       useTsconfigDeclarationDir: true,
     }),
-    nodeResolve(),
     sourcemaps(),
   ],
   external: externalModules(),
