@@ -243,4 +243,3 @@ function anyZOptionSyntax(args: readonly [string, ...string[]]): readonly ZOptio
     { key: '*', name, values, tail },
   ];
 }
-

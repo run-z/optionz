@@ -91,4 +91,3 @@ function compareZStrings(str1: string | undefined, str2: string | undefined): nu
   }
   return str1 > str2 ? 1 : (str1 < str2 ? -1 : 0);
 }
-
