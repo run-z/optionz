@@ -1,11 +1,12 @@
 import { externalModules } from '@run-z/rollup-helpers';
 import path from 'path';
+import { defineConfig } from 'rollup';
 import flatDts from 'rollup-plugin-flat-dts';
 import sourcemaps from 'rollup-plugin-sourcemaps';
 import ts from 'rollup-plugin-typescript2';
 import typescript from 'typescript';
 
-export default {
+export default defineConfig({
   input: {
     optionz: './src/index.ts',
     'optionz.colors': './src/colors/index.ts',
@@ -55,4 +56,4 @@ export default {
       }),
     ],
   },
-};
+});
