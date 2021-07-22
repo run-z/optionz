@@ -48,7 +48,7 @@
     "@typescript-eslint/parser": "^4.28.4",
     "chalk": "^4.1.1",
     "eslint": "^7.31.0",
-    "eslint-plugin-jest": "^24.3.7",
+    "eslint-plugin-jest": "^24.4.0",
     "gh-pages": "^3.2.3",
     "jest": "^27.0.6",
     "jest-junit": "^12.2.0",
@@ -62,7 +62,7 @@
     "run-z": "=1.9.2-bootstrap",
     "shx": "^0.3.3",
     "strip-ansi": "^7.0.0",
-    "ts-jest": "^27.0.3",
+    "ts-jest": "^27.0.4",
     "tslib": "^2.3.0",
     "typedoc": "^0.21.4",
     "typescript": "^4.3.5"
