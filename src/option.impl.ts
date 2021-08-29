@@ -18,12 +18,12 @@ export class ZOptionImpl<TOption extends ZOption> {
 
   private _recognizedUpto!: number;
   private _actions: ((this: void) => void)[] = [];
-  private _deferred?: ZOptionReader.Fn<TOption>;
+  private _deferred?: ZOptionReader.Fn<TOption> | undefined;
   private readonly _allDeferred: ZOptionReader.Fn<TOption>[] = [];
   private _reason: any;
   private _finalReason: any;
 
-  recognized?: readonly string[];
+  recognized?: readonly string[] | undefined;
   private _whenRecognized: (option: TOption) => void = noop;
 
   constructor(

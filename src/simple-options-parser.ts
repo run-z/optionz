@@ -32,14 +32,14 @@ export namespace SimpleZOptionsParser {
      *
      * Recognizes all options by default.
      */
-    readonly options?: SupportedZOptions;
+    readonly options?: SupportedZOptions | undefined;
 
     /**
      * Supported command line syntax.
      *
      * @default {@link ZOptionSyntax.default}
      */
-    readonly syntax?: ZOptionSyntax | readonly ZOptionSyntax[];
+    readonly syntax?: ZOptionSyntax | readonly ZOptionSyntax[] | undefined;
 
   }
 

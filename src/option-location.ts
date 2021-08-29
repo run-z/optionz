@@ -18,21 +18,21 @@ export interface ZOptionLocation {
    *
    * @default Next to `index`. I.e. `index + 1`.
    */
-  readonly endIndex?: number;
+  readonly endIndex?: number | undefined;
 
   /**
    * An offset of relevant characters within the first command line argument.
    *
    * @default First character. I.e. `0`.
    */
-  readonly offset?: number;
+  readonly offset?: number | undefined;
 
   /**
    * The end offset of relevant characters within the last command line argument.
    *
    * @default The length of the last command line argument. I.e. `args[endIndex - 1].length`.
    */
-  readonly endOffset?: number;
+  readonly endOffset?: number | undefined;
 
 }
 
@@ -48,28 +48,28 @@ export namespace ZOptionLocation {
      *
      * @default {@link ZOption.argIndex}
      */
-    readonly index?: number;
+    readonly index?: number | undefined;
 
     /**
      * An index of command line arguments up to which the command line contains option(s).
      *
      * @default Next to `index`. I.e. `index + 1`.
      */
-    readonly endIndex?: number;
+    readonly endIndex?: number | undefined;
 
     /**
      * An offset of relevant characters within the first command line argument.
      *
      * @default First character. I.e. `0`.
      */
-    readonly offset?: number;
+    readonly offset?: number | undefined;
 
     /**
      * The end offset of relevant characters within the last command line argument.
      *
      * @default The length of the last command line argument. I.e. `args[endIndex - 1].length`.
      */
-    readonly endOffset?: number;
+    readonly endOffset?: number | undefined;
 
   }
 

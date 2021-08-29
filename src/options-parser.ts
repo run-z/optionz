@@ -44,7 +44,7 @@ export namespace ZOptionsParser {
      *
      * @default {@link ZOptionSyntax.default}
      */
-    readonly syntax?: ZOptionSyntax | readonly ZOptionSyntax[];
+    readonly syntax?: ZOptionSyntax | readonly ZOptionSyntax[] | undefined;
 
     /**
      * Builds command line option representation class.
@@ -70,12 +70,12 @@ export namespace ZOptionsParser {
     /**
      * An index of command line argument to start processing from.
      */
-    readonly fromIndex?: number;
+    readonly fromIndex?: number | undefined;
 
     /**
      * Additional options to support.
      */
-    readonly options?: SupportedZOptions<TOption, TCtx>;
+    readonly options?: SupportedZOptions<TOption, TCtx> | undefined;
 
   }
 

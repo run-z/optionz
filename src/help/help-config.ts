@@ -18,7 +18,7 @@ export interface ZHelpConfig<TOption extends ZOption = ZOption> {
    *
    * @default `detailed`
    */
-  readonly mode?: 'brief' | 'detailed';
+  readonly mode?: 'brief' | 'detailed' | undefined;
 
   /**
    * Compares two options meta.

@@ -50,7 +50,7 @@ export namespace ZOptionReader {
     /**
      * Option meta information.
      */
-    readonly meta?: ZOptionMeta;
+    readonly meta?: ZOptionMeta | undefined;
 
   }
 

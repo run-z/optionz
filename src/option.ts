@@ -114,7 +114,7 @@ export interface ZOption {
    * @param reason - An error to throw when all readers processed and option is still unrecognized. When omitted,
    * the {@link ZOptionError} will be thrown.
    */
-  unrecognize(reason?: any): void;
+  unrecognize(reason?: unknown): void;
 
   /**
    * Allows to await for option recognition.

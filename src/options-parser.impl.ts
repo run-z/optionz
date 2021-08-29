@@ -18,8 +18,8 @@ import type { SupportedZOptions } from './supported-options';
 export class ZOptionsParser$<TOption extends ZOption, TCtx> {
 
   private readonly _config: ZOptionsParser.Config<TOption, TCtx>;
-  private _syntax?: ZOptionSyntax;
-  private _optionClass?: ZOption.ImplClass<TOption, TCtx, [ZOptionImpl<TOption>]>;
+  private _syntax?: ZOptionSyntax | undefined;
+  private _optionClass?: ZOption.ImplClass<TOption, TCtx, [ZOptionImpl<TOption>]> | undefined;
 
   /**
    * Constructs command line options parser.
@@ -70,8 +70,8 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
         fromIndex = 0,
         options,
       }: {
-        fromIndex?: number;
-        options?: SupportedZOptions<TOption, TCtx>;
+        fromIndex?: number | undefined;
+        options?: SupportedZOptions<TOption, TCtx> | undefined;
       } = {},
   ): Promise<TCtx> {
 
@@ -173,8 +173,8 @@ function supportedZOptionsMeta<TOption extends ZOption>(
 
   interface CombinedZOptionMeta {
     usage: string[];
-    help?: string;
-    description?: string;
+    help?: string | undefined;
+    description?: string | undefined;
   }
 
   const result = new Map<string, CombinedZOptionMeta>();

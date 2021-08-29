@@ -10,7 +10,7 @@ export interface ZOptionInput {
    *
    * @default [name]
    */
-  readonly key?: string;
+  readonly key?: string | undefined;
 
   /**
    * Option name.
@@ -26,19 +26,19 @@ export interface ZOptionInput {
    *
    * @default Empty array.
    */
-  readonly values?: readonly string[];
+  readonly values?: readonly string[] | undefined;
 
   /**
    * Array of command line arguments following the option [name] and its [values].
    */
-  readonly tail?: readonly string[];
+  readonly tail?: readonly string[] | undefined;
 
   /**
    * Whether to retry the option processing.
    *
    * When an input with this flag set is encountered, current option processing terminates and restarts for another one.
    */
-  readonly retry?: boolean;
+  readonly retry?: boolean | undefined;
 
 }
 

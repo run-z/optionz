@@ -16,31 +16,31 @@ export namespace ZOptionMeta {
    */
   export interface Help {
 
-    readonly hidden?: false;
+    readonly hidden?: false | undefined;
 
     /**
      * Option usage description(s).
      */
-    readonly usage?: string | readonly string[];
+    readonly usage?: string | readonly string[] | undefined;
 
     readonly aliasOf?: undefined;
 
     /**
      * Brief help text.
      */
-    readonly help?: string;
+    readonly help?: string | undefined;
 
     /**
      * Full option description.
      */
-    readonly description?: string;
+    readonly description?: string | undefined;
 
     /**
      * The group the option belongs to.
      *
      * Used when sorting options.
      */
-    readonly group?: string;
+    readonly group?: string | undefined;
 
   }
 
@@ -49,12 +49,12 @@ export namespace ZOptionMeta {
    */
   export interface Alias {
 
-    readonly hidden?: false;
+    readonly hidden?: false | undefined;
 
     /**
      * Option usage descriptions(s).
      */
-    readonly usage?: string | readonly string[];
+    readonly usage?: string | readonly string[] | undefined;
 
     /**
      * An option name this one is alias of.
@@ -87,19 +87,19 @@ export namespace ZOptionMeta {
     /**
      * Brief help text.
      */
-    readonly help?: string;
+    readonly help?: string | undefined;
 
     /**
      * Full option description.
      */
-    readonly description?: string;
+    readonly description?: string | undefined;
 
     /**
      * The group the option belongs to.
      *
      * Used when sorting options.
      */
-    readonly group?: string;
+    readonly group?: string | undefined;
 
   }
 

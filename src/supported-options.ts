@@ -36,36 +36,36 @@ export namespace SupportedZOptions {
      * Fallback option reader consulted when none of the readers recognized the option in.
      * {@link ZOptionSyntax.longOptions `--name=VALUE` syntax}.
      */
-    readonly '--*=*'?: ZOptionReader<TOption, this>;
+    readonly '--*=*'?: ZOptionReader<TOption, this> | undefined;
 
     /**
      * Fallback option reader consulted when none of the readers recognized the option in
      * {@link ZOptionSyntax.longOptions long syntax}.
      */
-    readonly '--*'?: ZOptionReader<TOption, this>;
+    readonly '--*'?: ZOptionReader<TOption, this> | undefined;
 
     /**
      * Fallback option reader consulted when none of the readers recognized the option in
      * {@link ZOptionSyntax.shortOptions one-letter syntax}.
      */
-    readonly '-?'?: ZOptionReader<TOption, this>;
+    readonly '-?'?: ZOptionReader<TOption, this> | undefined;
 
     /**
      * Fallback option reader consulted when none of the readers recognized the option in
      * {@link ZOptionSyntax.shortOptions `-name=VALUE` syntax}.
      */
-    readonly '-*=*'?: ZOptionReader<TOption, this>;
+    readonly '-*=*'?: ZOptionReader<TOption, this> | undefined;
 
     /**
      * Fallback option reader consulted when none of the readers recognized the option in
      * {@link ZOptionSyntax.shortOptions short syntax}.
      */
-    readonly '-*'?: ZOptionReader<TOption, this>;
+    readonly '-*'?: ZOptionReader<TOption, this> | undefined;
 
     /**
      * Fallback option reader consulted when none of the readers the option in {@link ZOptionSyntax.any any syntax}.
      */
-    readonly '*'?: ZOptionReader<TOption, this>;
+    readonly '*'?: ZOptionReader<TOption, this> | undefined;
 
   }
 
