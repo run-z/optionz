@@ -73,6 +73,7 @@ export function chalkZColorOptions<TOption extends ZOption>(
   const forceColors = config.forceColors ? config.forceColors.bind(config) : forceChalkZColors;
   const readColorOff = (option: TOption): void | PromiseLike<unknown> => {
     option.recognize();
+
     return forceColors(chalkZColorModes[0], option);
   };
 
@@ -80,6 +81,7 @@ export function chalkZColorOptions<TOption extends ZOption>(
     '--color': {
       read(option) {
         option.recognize();
+
         return forceColors(chalkZColorModes[1], option);
       },
       meta: {

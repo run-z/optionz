@@ -37,6 +37,7 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
     if (this._optionClass) {
       return this._optionClass;
     }
+
     return this._optionClass = this._config.optionClass(ZOptionBase as ZOption.BaseClass<any>);
   }
 
@@ -97,6 +98,7 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
 
           if (input.retry) {
             retry = true;
+
             break; // Apply replacement
           }
 

@@ -30,11 +30,13 @@ export class ZOptionBase<TOption extends ZOption> implements ZOption {
 
   values(max?: number): readonly string[] {
     this.recognize();
+
     return this._impl.values(false, max);
   }
 
   rest(max?: number): readonly string[] {
     this.recognize();
+
     return this._impl.values(true, max);
   }
 

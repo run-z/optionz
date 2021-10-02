@@ -29,6 +29,7 @@ export default defineConfig({
     if (id.startsWith(path.resolve('src', 'help') + path.sep)) {
       return 'optionz.help';
     }
+
     return 'optionz';
   },
   output: {
