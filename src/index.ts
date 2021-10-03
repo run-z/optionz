@@ -1,6 +1,6 @@
 /**
  * @packageDocumentation
- * @module Module @run-z/optionz
+ * @module @run-z/optionz
  */
 export * from './option';
 export * from './option-error';
