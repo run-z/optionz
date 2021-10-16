@@ -12,32 +12,32 @@ describe('ChalkZColors', () => {
 
   describe('usage', () => {
     it('formats usage', () => {
-      expect(stripAnsi(colors.usage('usage example'))).toEqual('usage example');
+      expect(stripAnsi(colors.usage('usage example'))).toBe('usage example');
     });
   });
 
   describe('param', () => {
     it('formats parameter', () => {
-      expect(stripAnsi(colors.param('PARAM'))).toEqual('\u276cPARAM\u276d');
+      expect(stripAnsi(colors.param('PARAM'))).toBe('\u276cPARAM\u276d');
     });
   });
 
   describe('sign', () => {
     it('formats grammar sign', () => {
-      expect(stripAnsi(colors.sign('SIGN'))).toEqual('SIGN');
+      expect(stripAnsi(colors.sign('SIGN'))).toBe('SIGN');
     });
   });
 
   describe('optional', () => {
     it('formats optional grammar', () => {
-      expect(stripAnsi(colors.optional('optional grammar'))).toEqual('[optional grammar]');
+      expect(stripAnsi(colors.optional('optional grammar'))).toBe('[optional grammar]');
     });
   });
 
   describe('bullet', () => {
     it('formats bullet', () => {
-      expect(stripAnsi(colors.bullet())).toEqual('  \u2023');
-      expect(stripAnsi(colors.bullet('-'))).toEqual('  -');
+      expect(stripAnsi(colors.bullet())).toBe('  \u2023');
+      expect(stripAnsi(colors.bullet('-'))).toBe('  -');
     });
   });
 

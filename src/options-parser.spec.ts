@@ -78,7 +78,7 @@ describe('ZOptionsParser', () => {
       '--end': ['--after-end'],
     });
     expect(endArgs).toEqual(['--test', 'val1', 'val2', '--end', '--after-end']);
-    expect(endIndex).toEqual(3);
+    expect(endIndex).toBe(3);
   });
   it('recognizes option with up to the max values', async () => {
 
