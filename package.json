@@ -64,7 +64,7 @@
     "run-z": "=1.9.3-bootstrap",
     "shx": "^0.3.3",
     "strip-ansi": "^7.0.1",
-    "ts-jest": "^27.0.6",
+    "ts-jest": "^27.0.7",
     "tslib": "^2.3.1",
     "typedoc": "^0.22.5",
     "typescript": "^4.4.4"
