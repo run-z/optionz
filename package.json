@@ -1,6 +1,6 @@
 {
   "name": "@run-z/optionz",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Run-z command line options parser",
   "keywords": [
     "cli",
