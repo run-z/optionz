@@ -1,4 +1,4 @@
-import type { ColorSupport, Level } from 'chalk';
+import type { ColorSupport, ColorSupportLevel } from 'chalk';
 import chalk from 'chalk';
 import type { ZOption } from '../option';
 import { ZOptionError } from '../option-error';
@@ -10,7 +10,7 @@ import { clz } from './colors';
  * @internal
  */
 const chalkZColorLevels: {
-  readonly [key: string]: Level | undefined;
+  readonly [key: string]: ColorSupportLevel | undefined;
 } = {
   '16m': 3,
   full: 3,
@@ -26,7 +26,7 @@ const chalkZColorLevels: {
  * @internal
  */
 const chalkZColorModes: {
-  readonly [level in Level]: ColorSupport;
+  readonly [level in ColorSupportLevel]: ColorSupport;
 } = {
   0: {
     level: 0,

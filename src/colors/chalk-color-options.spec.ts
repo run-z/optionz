@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { arrayOfElements, asis, noop } from '@proc7ts/primitives';
-import type { Level } from 'chalk';
+import type { ColorSupportLevel } from 'chalk';
 import chalk from 'chalk';
 import { helpZOptionReader } from '../help';
 import { ZOptionError } from '../option-error';
@@ -9,7 +9,7 @@ import { chalkZColorOptions } from './chalk-color-options';
 
 describe('chalkZColorOptions', () => {
 
-  let defaultLevel: Level;
+  let defaultLevel: ColorSupportLevel;
 
   beforeEach(() => {
     defaultLevel = chalk.level;

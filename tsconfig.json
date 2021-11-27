@@ -21,6 +21,7 @@
       "node",
       "wrap-ansi"
     ],
+    "skipLibCheck": true,
     "outDir": "target/js",
     "sourceMap": true,
     "newLine": "LF"
