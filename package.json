@@ -42,7 +42,7 @@
     "@jest/globals": "^27.4.4",
     "@run-z/eslint-config": "^2.0.0",
     "@run-z/rollup-helpers": "^1.1.1",
-    "@types/node": "^14.18.0",
+    "@types/node": "^14.18.1",
     "@types/wrap-ansi": "^8.0.1",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
@@ -64,7 +64,7 @@
     "run-z": "=1.10.0-bootstrap",
     "shx": "^0.3.3",
     "strip-ansi": "^7.0.1",
-    "ts-jest": "^27.1.1",
+    "ts-jest": "^27.1.2",
     "tslib": "^2.3.1",
     "typedoc": "^0.22.10",
     "typescript": "^4.5.4"
