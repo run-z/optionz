@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@proc7ts/primitives": "^3.0.2",
-    "string-width": "^5.0.1",
+    "string-width": "^5.1.0",
     "wrap-ansi": "^8.0.1"
   },
   "peerDependencies": {
