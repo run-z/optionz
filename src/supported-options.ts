@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import type { ZOption } from './option';
 import type { ZOptionReader } from './option-reader';
 
