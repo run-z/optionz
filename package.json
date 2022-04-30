@@ -78,6 +78,6 @@
     "format": "run-z +z --then prettier --write \"**/*.{json,md}\"",
     "lint": "run-z +z --then eslint .",
     "test": "run-z +z env:NODE_OPTIONS=\"--experimental-vm-modules --no-warnings\" --then jest",
-    "z": "run-z +cmd:rollup,+cmd:typedoc,+cmd:eslint,+cmd:remark,+cmd:jest"
+    "z": "run-z +cmd:rollup,+cmd:typedoc,+cmd:eslint,+cmd:jest"
   }
 }
