@@ -6,7 +6,7 @@ import { helpZOptionReader } from './help-option-reader';
 
 describe('helpZOptionReader', () => {
 
-  let logSpy: SpyInstance<void, any[]>;
+  let logSpy: SpyInstance<(...args: unknown[]) => void>;
 
   beforeEach(() => {
     logSpy = jest.spyOn(console, 'log');
