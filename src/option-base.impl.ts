@@ -49,12 +49,12 @@ export class ZOptionBase<TOption extends ZOption> implements ZOption {
     this._impl.defer(whenRecognized as ZOptionReader.Fn<any>);
   }
 
-  unrecognize(reason?: any): void {
+  unrecognize(reason?: unknown): void {
     this._impl.unrecognize(reason);
   }
 
   whenRecognized(receiver: (this: void, option: this) => void): void {
-    this._impl.whenRecognized(receiver as (option: any) => void);
+    this._impl.whenRecognized(receiver as (option: unknown) => void);
   }
 
   optionLocation(init?: ZOptionLocation.Init): Required<ZOptionLocation> {

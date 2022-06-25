@@ -20,8 +20,8 @@ export class ZOptionImpl<TOption extends ZOption> {
   private _actions: ((this: void) => void)[] = [];
   private _deferred?: ZOptionReader.Fn<TOption> | undefined;
   private readonly _allDeferred: ZOptionReader.Fn<TOption>[] = [];
-  private _reason: any;
-  private _finalReason: any;
+  private _reason: unknown;
+  private _finalReason: unknown;
 
   recognized?: readonly string[] | undefined;
   private _whenRecognized: (option: TOption) => void = noop;
@@ -155,7 +155,7 @@ export class ZOptionImpl<TOption extends ZOption> {
     this._deferred = whenRecognized;
   }
 
-  unrecognize(reason?: any): void {
+  unrecognize(reason?: unknown): void {
     if (this.recognized) {
       return;
     }
