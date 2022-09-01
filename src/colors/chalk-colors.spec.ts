@@ -3,7 +3,6 @@ import stripAnsi from 'strip-ansi';
 import { ChalkZColors } from './chalk-colors';
 
 describe('ChalkZColors', () => {
-
   let colors: ChalkZColors;
 
   beforeEach(() => {
@@ -40,5 +39,4 @@ describe('ChalkZColors', () => {
       expect(stripAnsi(colors.bullet('-'))).toBe('  -');
     });
   });
-
 });

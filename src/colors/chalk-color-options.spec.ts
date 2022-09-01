@@ -8,7 +8,6 @@ import { simpleZOptionsParser, SimpleZOptionsParser } from '../simple-options-pa
 import { chalkZColorOptions } from './chalk-color-options';
 
 describe('chalkZColorOptions', () => {
-
   let defaultLevel: ColorSupportLevel;
 
   beforeEach(() => {
@@ -73,7 +72,6 @@ describe('chalkZColorOptions', () => {
       expect(chalk.level).toBe(0);
     });
     it('ignores unrecognized value', async () => {
-
       const error = await parser(['--color=wrong!']).catch(asis);
 
       expect(error).toBeInstanceOf(ZOptionError);
@@ -98,7 +96,6 @@ describe('chalkZColorOptions', () => {
   });
 
   it('forces color by custom method', async () => {
-
     const forceColors = jest.fn(noop);
 
     parser = simpleZOptionsParser({
@@ -110,13 +107,12 @@ describe('chalkZColorOptions', () => {
     await parser(['--color=256']);
 
     expect(forceColors).toHaveBeenCalledWith(
-        { level: 2, hasBasic: true, has256: true, has16m: false },
-        expect.anything(),
+      { level: 2, hasBasic: true, has256: true, has16m: false },
+      expect.anything(),
     );
   });
 
   it('has help', async () => {
-
     const options = [...arrayOfElements(chalkZColorOptions())];
     const display = jest.fn(noop);
 
@@ -129,12 +125,12 @@ describe('chalkZColorOptions', () => {
     await parser(['-h']);
 
     expect(display).toHaveBeenCalledWith(
-        expect.arrayContaining([
-          ['--color', expect.anything()],
-          ['--no-color', expect.anything()],
-          ['-h', expect.anything()],
-        ]),
-        expect.anything(),
+      expect.arrayContaining([
+        ['--color', expect.anything()],
+        ['--no-color', expect.anything()],
+        ['-h', expect.anything()],
+      ]),
+      expect.anything(),
     );
   });
 });

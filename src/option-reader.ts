@@ -14,7 +14,6 @@ export type ZOptionReader<TOption extends ZOption = ZOption, TThis = void> =
   | ZOptionReader.Spec<TOption>;
 
 export namespace ZOptionReader {
-
   /**
    * Option reader function (or method) signature.
    *
@@ -25,13 +24,13 @@ export namespace ZOptionReader {
    * @typeparam TThis  A type of `this` parameter.
    */
   export type Fn<TOption extends ZOption = ZOption, TThis = unknown> =
-  /**
-   * @param option - Command line option to recognize.
-   *
-   * @returns Either nothing or promise-like instance resolved when the reader finishes option processing,
-   * either recognized or not.
-   */
-      (this: TThis, option: TOption) => void | PromiseLike<unknown>;
+    /**
+     * @param option - Command line option to recognize.
+     *
+     * @returns Either nothing or promise-like instance resolved when the reader finishes option processing,
+     * either recognized or not.
+     */
+    (this: TThis, option: TOption) => void | PromiseLike<unknown>;
 
   /**
    * Option reader specifier.
@@ -41,7 +40,6 @@ export namespace ZOptionReader {
    * @typeparam TOption  A type of command line option representation expected by reader.
    */
   export interface Spec<TOption extends ZOption = ZOption> {
-
     /**
      * Reads and tries to recognize the option.
      */
@@ -51,7 +49,5 @@ export namespace ZOptionReader {
      * Option meta information.
      */
     readonly meta?: ZOptionMeta | undefined;
-
   }
-
 }

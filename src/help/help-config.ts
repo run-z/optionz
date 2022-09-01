@@ -7,7 +7,6 @@ import type { ZOptionMeta } from '../option-meta';
  * @typeparam TOption  A type of help option.
  */
 export interface ZHelpConfig<TOption extends ZOption = ZOption> {
-
   /**
    * Help display mode.
    *
@@ -33,7 +32,12 @@ export interface ZHelpConfig<TOption extends ZOption = ZOption> {
    * @returns Positive number if first option should be listed after the second one, negative number if first option
    * should be listed before the second one, or zero to list them in original order.
    */
-  compare?(key1: string, meta1: ZOptionMeta.Combined, key2: string, meta2: ZOptionMeta.Combined): number;
+  compare?(
+    key1: string,
+    meta1: ZOptionMeta.Combined,
+    key2: string,
+    meta2: ZOptionMeta.Combined,
+  ): number;
 
   /**
    * Displays help information.
@@ -47,5 +51,4 @@ export interface ZHelpConfig<TOption extends ZOption = ZOption> {
    * asynchronously.
    */
   display?(options: ZOptionMeta.List, option: TOption): void | PromiseLike<unknown>;
-
 }

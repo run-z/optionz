@@ -9,8 +9,7 @@ import type { ZOptionImpl } from './option.impl';
  */
 export class ZOptionBase<TOption extends ZOption> implements ZOption {
 
-  constructor(private readonly _impl: ZOptionImpl<TOption>) {
-  }
+  constructor(private readonly _impl: ZOptionImpl<TOption>) {}
 
   get name(): string {
     return this._impl.name;

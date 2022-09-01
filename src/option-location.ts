@@ -2,7 +2,6 @@
  * The location of the option(s) within command line.
  */
 export interface ZOptionLocation {
-
   /**
    * Command line arguments containing target option(s).
    */
@@ -33,16 +32,13 @@ export interface ZOptionLocation {
    * @default The length of the last command line argument. I.e. `args[endIndex - 1].length`.
    */
   readonly endOffset?: number | undefined;
-
 }
 
 export namespace ZOptionLocation {
-
   /**
    * Initial properties of option location.
    */
   export interface Init {
-
     /**
      * An index of the first command line argument containing the option.
      *
@@ -70,13 +66,10 @@ export namespace ZOptionLocation {
      * @default The length of the last command line argument. I.e. `args[endIndex - 1].length`.
      */
     readonly endOffset?: number | undefined;
-
   }
-
 }
 
 export const ZOptionLocation = {
-
   /**
    * Reconstructs option location.
    *
@@ -85,7 +78,6 @@ export const ZOptionLocation = {
    * @returns Reconstructed option location with all properties set.
    */
   by(location: ZOptionLocation): Required<ZOptionLocation> {
-
     const { args } = location;
     const index = Math.max(location.index, 0);
 
@@ -115,5 +107,4 @@ export const ZOptionLocation = {
 
     return { args, index, endIndex, offset, endOffset };
   },
-
 };

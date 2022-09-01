@@ -16,7 +16,6 @@ import type { ZOptionReader } from './option-reader';
  * option. The latter can be read by readers, but can no longer be updated.
  */
 export interface ZOption {
-
   /**
    * Option name.
    *
@@ -151,11 +150,9 @@ export interface ZOption {
    * @returns Combined meta information for the option with the given key.
    */
   optionMeta(key: string): ZOptionMeta.Combined;
-
 }
 
 export namespace ZOption {
-
   /**
    * A class constructor implementing a command line option representation.
    *
@@ -164,11 +161,9 @@ export namespace ZOption {
    * @typeparam TArgs  A type of constructor arguments.
    */
   export interface BaseClass<TArgs extends any[]> {
-
     prototype: ZOption;
 
     new (...args: TArgs): ZOption;
-
   }
 
   /**
@@ -179,7 +174,6 @@ export namespace ZOption {
    * @typeparam TArgs  A type of arguments to pass to the {@link BaseClass base constructor}.
    */
   export interface ImplClass<TOption extends ZOption, TCtx, TArgs extends any[]> {
-
     prototype: TOption;
 
     /**
@@ -189,7 +183,5 @@ export namespace ZOption {
      * @param args - Arguments to pass to the {@link BaseClass base constructor}.
      */
     new (context: TCtx, ...args: TArgs): TOption;
-
   }
-
 }

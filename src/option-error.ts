@@ -17,10 +17,7 @@ export class ZOptionError extends Error {
    * @param optionLocation - Erroneous option location.
    * @param message - Error message.
    */
-  constructor(
-      optionLocation: ZOptionLocation,
-      message = `Unrecognized command line option`,
-  ) {
+  constructor(optionLocation: ZOptionLocation, message = `Unrecognized command line option`) {
     super(message);
     this.optionLocation = ZOptionLocation.by(optionLocation);
   }

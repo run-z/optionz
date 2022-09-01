@@ -4,7 +4,6 @@ import { clz, ZColors } from './colors';
 describe('ZColors', () => {
   describe('useByDefault', () => {
     it('assigns default theme to use', () => {
-
       const colors = {
         usage: jest.fn(() => ''),
         param: jest.fn(() => ''),

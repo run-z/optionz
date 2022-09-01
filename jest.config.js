@@ -4,7 +4,7 @@ export default {
   collectCoverageFrom: [
     'src/**/*.ts',
     '!src/spec/**',
-    '!src/**/*.d.ts',    // Exclude type definitions
+    '!src/**/*.d.ts', // Exclude type definitions
     '!src/**/*.spec.ts', // Exclude tests
     '!src/**/index.ts',
     '!src/**/main.ts',

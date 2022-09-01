@@ -4,7 +4,6 @@
  * This is constructed from raw command line arguments by {@link ZOptionSyntax options syntax}.
  */
 export interface ZOptionInput {
-
   /**
    * A key of {@link ZOptionReader option readers} to recognize te option.
    *
@@ -39,11 +38,9 @@ export interface ZOptionInput {
    * When an input with this flag set is encountered, current option processing terminates and restarts for another one.
    */
   readonly retry?: boolean | undefined;
-
 }
 
 export const ZOptionInput = {
-
   /**
    * Checks whether the given command line argument is suitable to be used as option value.
    *
@@ -68,11 +65,9 @@ export const ZOptionInput = {
    * @returns An array of command line {@link isOptionValue option values}.
    */
   valuesOf(this: void, args: readonly string[], fromIndex = 0): readonly string[] {
-
     let i = fromIndex;
 
     while (i < args.length) {
-
       const arg = args[i];
 
       if (!ZOptionInput.isOptionValue(arg)) {
@@ -91,17 +86,29 @@ export const ZOptionInput = {
    * @param second
    */
   equal(this: void, first: ZOptionInput, second: ZOptionInput): boolean {
+    const {
+      name: name1,
+      key: key1 = name1,
+      values: values1 = [],
+      tail: tail1 = [],
+      retry: retry1 = false,
+    } = first;
+    const {
+      name: name2,
+      key: key2 = name2,
+      values: values2 = [],
+      tail: tail2 = [],
+      retry: retry2 = false,
+    } = second;
 
-    const { name: name1, key: key1 = name1, values: values1 = [], tail: tail1 = [], retry: retry1 = false } = first;
-    const { name: name2, key: key2 = name2, values: values2 = [], tail: tail2 = [], retry: retry2 = false } = second;
-
-    return name1 === name2
-        && key1 === key2
-        && retry1 === retry2
-        && arraysEqual(values1, values2)
-        && arraysEqual(tail1, tail2);
+    return (
+      name1 === name2
+      && key1 === key2
+      && retry1 === retry2
+      && arraysEqual(values1, values2)
+      && arraysEqual(tail1, tail2)
+    );
   },
-
 };
 
 /**

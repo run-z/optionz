@@ -10,12 +10,12 @@ import { ZOptionInput } from './option-input';
  * A syntax should be {@link ZOptionsParser.Config.syntax registered} for options parser to respect it.
  */
 export type ZOptionSyntax =
-/**
- * @param args - An array of command line arguments to process.
- *
- * @returns A read-only array of option inputs. May be empty if the command line argument has another syntax.
- */
-    (this: void, args: readonly [string, ...string[]]) => readonly ZOptionInput[];
+  /**
+   * @param args - An array of command line arguments to process.
+   *
+   * @returns A read-only array of option inputs. May be empty if the command line argument has another syntax.
+   */
+  (this: void, args: readonly [string, ...string[]]) => readonly ZOptionInput[];
 
 /**
  * @internal
@@ -27,7 +27,6 @@ const defaultZOptionSyntax = zOptionSyntaxBy([
 ]);
 
 export const ZOptionSyntax = {
-
   /**
    * Default command line option syntax.
    *
@@ -98,7 +97,6 @@ export const ZOptionSyntax = {
   by(this: void, syntax: ZOptionSyntax | readonly ZOptionSyntax[]): ZOptionSyntax {
     return zOptionSyntaxBy(syntax);
   },
-
 };
 
 /**
@@ -110,19 +108,20 @@ function zOptionSyntaxBy(syntax: ZOptionSyntax | readonly ZOptionSyntax[]): ZOpt
   }
 
   return (args: readonly [string, ...string[]]): readonly ZOptionInput[] => {
-
     const tried: ZOptionInput[] = [];
 
-    return syntax.flatMap(p => p(args)).filter(input => {
-      // Prevent input duplicates
-      if (tried.some(t => ZOptionInput.equal(t, input))) {
-        return false;
-      }
+    return syntax
+      .flatMap(p => p(args))
+      .filter(input => {
+        // Prevent input duplicates
+        if (tried.some(t => ZOptionInput.equal(t, input))) {
+          return false;
+        }
 
-      tried.push(input);
+        tried.push(input);
 
-      return true;
-    });
+        return true;
+      });
   };
 }
 
@@ -130,7 +129,6 @@ function zOptionSyntaxBy(syntax: ZOptionSyntax | readonly ZOptionSyntax[]): ZOpt
  * @internal
  */
 function longZOptionSyntax(args: readonly [string, ...string[]]): readonly ZOptionInput[] {
-
   let [name] = args;
 
   if (!name.startsWith('--')) {
@@ -171,7 +169,6 @@ function longZOptionSyntax(args: readonly [string, ...string[]]): readonly ZOpti
  * @internal
  */
 function shortZOptionSyntax(args: readonly [string, ...string[]]): readonly ZOptionInput[] {
-
   let [name] = args;
 
   if (name.length < 2 || !name.startsWith('-') || name.startsWith('--')) {
@@ -210,14 +207,13 @@ function shortZOptionSyntax(args: readonly [string, ...string[]]): readonly ZOpt
   result.push({ name, values, tail });
 
   if (restLetters) {
-
     const oneLetterName = name.substr(0, 2);
     const oneLetterTail = ['-' + restLetters, ...restArgs];
 
     result.push(
-        { key: oneLetterName + '*', name: oneLetterName, values: [restLetters], tail: restArgs },
-        { name: oneLetterName, tail: oneLetterTail },
-        { key: '-?', name: oneLetterName, tail: oneLetterTail },
+      { key: oneLetterName + '*', name: oneLetterName, values: [restLetters], tail: restArgs },
+      { name: oneLetterName, tail: oneLetterTail },
+      { key: '-?', name: oneLetterName, tail: oneLetterTail },
     );
   } else {
     // One-letter syntax
@@ -233,7 +229,6 @@ function shortZOptionSyntax(args: readonly [string, ...string[]]): readonly ZOpt
  * @internal
  */
 function anyZOptionSyntax(args: readonly [string, ...string[]]): readonly ZOptionInput[] {
-
   const [name] = args;
   const values = ZOptionInput.valuesOf(args, 1);
   const tail = args.slice(values.length + 1);

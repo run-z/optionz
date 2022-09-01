@@ -4,18 +4,13 @@
  * Can either contain {@link ZOptionMeta.Help help information}, be a reference to another option this one is an
  * {@link ZOptionMeta.Alias alias for}, or be {@link ZOptionMeta.Hidden hidden}.
  */
-export type ZOptionMeta =
-    | ZOptionMeta.Hidden
-    | ZOptionMeta.Alias
-    | ZOptionMeta.Help;
+export type ZOptionMeta = ZOptionMeta.Hidden | ZOptionMeta.Alias | ZOptionMeta.Help;
 
 export namespace ZOptionMeta {
-
   /**
    * Option help information.
    */
   export interface Help {
-
     readonly hidden?: false | undefined;
 
     /**
@@ -41,14 +36,12 @@ export namespace ZOptionMeta {
      * Used when sorting options.
      */
     readonly group?: string | undefined;
-
   }
 
   /**
    * A reference to alias option.
    */
   export interface Alias {
-
     readonly hidden?: false | undefined;
 
     /**
@@ -60,23 +53,19 @@ export namespace ZOptionMeta {
      * An option name this one is alias of.
      */
     readonly aliasOf: string;
-
   }
 
   /**
    * Hidden option.
    */
   export interface Hidden {
-
     readonly hidden: true;
-
   }
 
   /**
    * Option help information combined from multiple sources.
    */
   export interface Combined {
-
     /**
      * Option usage descriptions, including aliases usage.
      *
@@ -100,7 +89,6 @@ export namespace ZOptionMeta {
      * Used when sorting options.
      */
     readonly group?: string | undefined;
-
   }
 
   /**
@@ -109,5 +97,4 @@ export namespace ZOptionMeta {
    * A read-only array of key/meta tuples.
    */
   export type List = readonly (readonly [string, Combined])[];
-
 }

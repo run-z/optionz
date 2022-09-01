@@ -3,8 +3,15 @@ import { parseZOptions } from './parse-options';
 
 describe('parseZOptions', () => {
   it('recognizes all options by default', async () => {
-
-    const recognized = await parseZOptions(['some', '--test', 'val1', 'val2', '-tVALUE', '--test', 'val3']);
+    const recognized = await parseZOptions([
+      'some',
+      '--test',
+      'val1',
+      'val2',
+      '-tVALUE',
+      '--test',
+      'val3',
+    ]);
 
     expect(recognized).toEqual({
       some: [],
@@ -13,7 +20,6 @@ describe('parseZOptions', () => {
     });
   });
   it('recognizes all positional options', async () => {
-
     const recognized = await parseZOptions(['some', 'other', 'third', '--test', 'val1', 'val2']);
 
     expect(recognized).toEqual({
@@ -24,7 +30,6 @@ describe('parseZOptions', () => {
     });
   });
   it('recognizes `--name=value` syntax', async () => {
-
     const recognized = await parseZOptions(['--name=value']);
 
     expect(recognized).toEqual({
@@ -32,7 +37,6 @@ describe('parseZOptions', () => {
     });
   });
   it('recognizes `-name=value` syntax', async () => {
-
     const recognized = await parseZOptions(['-name=value', '-n=v']);
 
     expect(recognized).toEqual({
@@ -41,7 +45,6 @@ describe('parseZOptions', () => {
     });
   });
   it('recognizes short options syntax', async () => {
-
     const recognized = await parseZOptions(['-name', 'value', '-nop']);
 
     expect(recognized).toEqual({

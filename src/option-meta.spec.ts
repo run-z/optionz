@@ -5,7 +5,6 @@ import { simpleZOptionsParser } from './simple-options-parser';
 
 describe('ZOptionMeta', () => {
   it('is reported to option', async () => {
-
     let options: string[] | undefined;
     const parser = simpleZOptionsParser({
       options: {
@@ -26,7 +25,6 @@ describe('ZOptionMeta', () => {
     expect(options).toEqual(['--test', '--help']);
   });
   it('has default usage info', async () => {
-
     let help: ZOptionMeta.Combined | undefined;
     const parser = simpleZOptionsParser({
       options: {
@@ -42,7 +40,6 @@ describe('ZOptionMeta', () => {
     expect(help).toEqual({ usage: ['--help'] });
   });
   it('is combined from multiple specs', async () => {
-
     let help: ZOptionMeta.Combined | undefined;
     let test: ZOptionMeta.Combined | undefined;
     const parser = simpleZOptionsParser({
@@ -99,7 +96,6 @@ describe('ZOptionMeta', () => {
     });
   });
   it('is combined with aliases', async () => {
-
     let all: string[] | undefined;
     let help: ZOptionMeta.Combined | undefined;
     const parser = simpleZOptionsParser({
@@ -131,7 +127,6 @@ describe('ZOptionMeta', () => {
     });
   });
   it('is empty for unsupported option', async () => {
-
     let help: ZOptionMeta.Combined | undefined;
     const parser = simpleZOptionsParser({
       options: {
@@ -146,7 +141,6 @@ describe('ZOptionMeta', () => {
     expect(help).toEqual({ usage: [] });
   });
   it('is empty for hidden option', async () => {
-
     let all: string[] | undefined;
     let help: ZOptionMeta.Combined | undefined;
     const parser = simpleZOptionsParser({

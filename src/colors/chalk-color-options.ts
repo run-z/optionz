@@ -54,7 +54,6 @@ const chalkZColorModes: {
   },
 };
 
-
 /**
  * Accepts `--color`, `--no-color`, and `--no-colors` options.
  *
@@ -67,9 +66,8 @@ const chalkZColorModes: {
  * @returns Supported set of color options.
  */
 export function chalkZColorOptions<TOption extends ZOption>(
-    config: ChalkZColorConfig<TOption> = {},
+  config: ChalkZColorConfig<TOption> = {},
 ): SupportedZOptions<TOption> {
-
   const forceColors = config.forceColors ? config.forceColors.bind(config) : forceChalkZColors;
   const readColorOff = (option: TOption): void | PromiseLike<unknown> => {
     option.recognize();
@@ -91,7 +89,9 @@ export function chalkZColorOptions<TOption extends ZOption>(
           return `
 ${clz.param('MODE')} can be one of:
 
-${clz.bullet()} ${clz.usage('16m')}, ${clz.usage('full')}, or ${clz.usage('truecolor')} - enable TrueColor support;
+${clz.bullet()} ${clz.usage('16m')}, ${clz.usage('full')}, or ${clz.usage(
+            'truecolor',
+          )} - enable TrueColor support;
 ${clz.bullet()} ${clz.usage('256')} - enable 256 colors support;
 ${clz.bullet()} ${clz.usage('true')}, ${clz.usage('always')}, or none - enable basic colors support;
 ${clz.bullet()} ${clz.usage('false')}, ${clz.usage('never')} - disable colors.
@@ -101,7 +101,6 @@ ${clz.bullet()} ${clz.usage('false')}, ${clz.usage('never')} - disable colors.
     },
     '--color=*': {
       read(option) {
-
         const [value] = option.values();
         const level = chalkZColorLevels[value];
 
@@ -110,8 +109,8 @@ ${clz.bullet()} ${clz.usage('false')}, ${clz.usage('never')} - disable colors.
         }
 
         throw new ZOptionError(
-            option.optionLocation({ index: option.argIndex + 1 }),
-            `Unrecognized terminal color mode: "${value}"`,
+          option.optionLocation({ index: option.argIndex + 1 }),
+          `Unrecognized terminal color mode: "${value}"`,
         );
       },
       meta: {

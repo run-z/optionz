@@ -7,26 +7,24 @@ import type { SupportedZOptions } from './supported-options';
  * Simple command line options parser signature.
  */
 export type SimpleZOptionsParser =
-/**
- * @param args - Array of command line arguments
- * @param fromIndex - An index of command line argument to start processing from.
- * @param opts - Parser options.
- *
- * @returns A promise resolved to parse result.
- */
-    (
-        this: void,
-        args: readonly string[],
-        opts?: ZOptionsParser.Opts,
-    ) => Promise<SimpleZOptionsParser.Result>;
+  /**
+   * @param args - Array of command line arguments
+   * @param fromIndex - An index of command line argument to start processing from.
+   * @param opts - Parser options.
+   *
+   * @returns A promise resolved to parse result.
+   */
+  (
+    this: void,
+    args: readonly string[],
+    opts?: ZOptionsParser.Opts,
+  ) => Promise<SimpleZOptionsParser.Result>;
 
 export namespace SimpleZOptionsParser {
-
   /**
    * Simple command line options parser configuration.
    */
   export interface Config {
-
     /**
      * Supported command line options.
      *
@@ -40,21 +38,17 @@ export namespace SimpleZOptionsParser {
      * @default {@link ZOptionSyntax.default}
      */
     readonly syntax?: ZOptionSyntax | readonly ZOptionSyntax[] | undefined;
-
   }
 
   /**
    * A result returned by simple command line option parser.
    */
   export interface Result {
-
     /**
      * Maps recognized option name to array of its values.
      */
     readonly [name: string]: readonly string[];
-
   }
-
 }
 
 /**
@@ -82,16 +76,16 @@ function readAllZOptionValues(option: ZOption): void {
  *
  * @returns New options parser.
  */
-export function simpleZOptionsParser(config: SimpleZOptionsParser.Config = {}): SimpleZOptionsParser {
-
+export function simpleZOptionsParser(
+  config: SimpleZOptionsParser.Config = {},
+): SimpleZOptionsParser {
   const { options = defaultSimpleZOptions } = config;
   const parser: ZOptionsParser<ZOption, Record<string, string[]>> = customZOptionsParser({
     ...config,
     options,
     optionClass<TArgs extends any[]>(
-        base: ZOption.BaseClass<TArgs>,
+      base: ZOption.BaseClass<TArgs>,
     ): ZOption.ImplClass<ZOption, Record<string, string[]>, TArgs> {
-
       class SimpleZOption extends base {
 
         constructor(recognized: Record<string, string[]>, ...args: TArgs) {
@@ -105,7 +99,7 @@ export function simpleZOptionsParser(config: SimpleZOptionsParser.Config = {}): 
           });
         }
 
-      }
+}
 
       return SimpleZOption;
     },

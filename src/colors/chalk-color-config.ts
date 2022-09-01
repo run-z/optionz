@@ -7,7 +7,6 @@ import type { ZOption } from '../option';
  * @typeparam TOption  A type of color option.
  */
 export interface ChalkZColorConfig<TOption extends ZOption> {
-
   /**
    * Forces terminal colors support.
    *
@@ -20,5 +19,4 @@ export interface ChalkZColorConfig<TOption extends ZOption> {
    * support enabled asynchronously.
    */
   forceColors?(mode: ColorSupport, option: TOption): void | PromiseLike<unknown>;
-
 }

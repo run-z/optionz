@@ -12,12 +12,11 @@ import type { ZOptionReader } from './option-reader';
  * @typeparam TCtx  A type of option processing context required by parser.
  */
 export type SupportedZOptions<TOption extends ZOption = ZOption, TCtx = unknown> =
-    | SupportedZOptions.Map<TOption>
-    | SupportedZOptions.Provider<TOption, TCtx>
-    | readonly (SupportedZOptions.Map<TOption> | SupportedZOptions.Provider<TOption, TCtx>)[];
+  | SupportedZOptions.Map<TOption>
+  | SupportedZOptions.Provider<TOption, TCtx>
+  | readonly (SupportedZOptions.Map<TOption> | SupportedZOptions.Provider<TOption, TCtx>)[];
 
 export namespace SupportedZOptions {
-
   /**
    * A map of {@link ZOptionReader readers} corresponding to option keys or their wildcards.
    *
@@ -25,7 +24,6 @@ export namespace SupportedZOptions {
    * @typeparam TOption  A type of option representation.
    */
   export interface Map<TOption extends ZOption = ZOption> {
-
     /**
      * Option reader method corresponding to option key.
      *
@@ -67,7 +65,6 @@ export namespace SupportedZOptions {
      * Fallback option reader consulted when none of the readers the option in {@link ZOptionSyntax.any any syntax}.
      */
     readonly '*'?: ZOptionReader<TOption, this> | undefined;
-
   }
 
   /**
@@ -79,11 +76,10 @@ export namespace SupportedZOptions {
    * @typeparam TOption  A type of option representation.
    */
   export type Provider<TOption extends ZOption = ZOption, TCtx = unknown> =
-  /**
-   * @param context - Option processing context.
-   *
-   * @returns A {@link Map map of option readers}.
-   */
-      (this: void, context: TCtx) => Map<TOption>;
-
+    /**
+     * @param context - Option processing context.
+     *
+     * @returns A {@link Map map of option readers}.
+     */
+    (this: void, context: TCtx) => Map<TOption>;
 }

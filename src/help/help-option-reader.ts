@@ -13,9 +13,8 @@ import { ZHelpFormatter } from './help-formatter';
  * @returns New option reader.
  */
 export function helpZOptionReader<TOption extends ZOption>(
-    config: ZHelpConfig<TOption> = {},
+  config: ZHelpConfig<TOption> = {},
 ): ZOptionReader.Fn<TOption> {
-
   const brief = config.mode === 'brief';
   const compare = config.compare ? config.compare.bind(config) : compareZHelp;
   const display = displayZHelp(config);
@@ -35,11 +34,9 @@ export function helpZOptionReader<TOption extends ZOption>(
  * @internal
  */
 function buildZHelp(brief: boolean, option: ZOption): (readonly [string, ZOptionMeta.Combined])[] {
-
   const result: (readonly [string, ZOptionMeta.Combined])[] = [];
 
   for (const key of option.supportedOptions()) {
-
     const meta = option.optionMeta(key);
 
     if (!brief) {
@@ -56,7 +53,7 @@ function buildZHelp(brief: boolean, option: ZOption): (readonly [string, ZOption
  * @internal
  */
 function displayZHelp<TOption extends ZOption>(
-    config: ZHelpConfig<TOption>,
+  config: ZHelpConfig<TOption>,
 ): (this: void, options: ZOptionMeta.List, option: TOption) => void | PromiseLike<unknown> {
   if (config.display) {
     return config.display.bind(config);
@@ -71,10 +68,10 @@ function displayZHelp<TOption extends ZOption>(
  * @internal
  */
 function compareZHelp(
-    key1: string,
-    meta1: ZOptionMeta.Combined,
-    key2: string,
-    meta2: ZOptionMeta.Combined,
+  key1: string,
+  meta1: ZOptionMeta.Combined,
+  key2: string,
+  meta2: ZOptionMeta.Combined,
 ): number {
   return compareZStrings(meta1.group, meta2.group) || compareZStrings(key1, key2);
 }
@@ -90,5 +87,5 @@ function compareZStrings(str1: string | undefined, str2: string | undefined): nu
     return -1;
   }
 
-  return str1 > str2 ? 1 : (str1 < str2 ? -1 : 0);
+  return str1 > str2 ? 1 : str1 < str2 ? -1 : 0;
 }

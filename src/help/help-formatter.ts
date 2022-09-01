@@ -15,11 +15,8 @@ export class ZHelpFormatter {
    */
   usageWidth(options: ZOptionMeta.List): number {
     return options
-        .flatMap(([, { usage }]) => usage)
-        .reduce(
-            (prev, usage) => Math.max(prev, stringWidth(usage)),
-            0,
-        );
+      .flatMap(([, { usage }]) => usage)
+      .reduce((prev, usage) => Math.max(prev, stringWidth(usage)), 0);
   }
 
   /**
@@ -49,7 +46,6 @@ export class ZHelpFormatter {
    */
   // eslint-disable-next-line @typescript-eslint/require-await
   async help(options: ZOptionMeta.List): Promise<string> {
-
     let out = '';
     const usagePadding = this.usagePadding();
     const usageTop = emptyLines(usagePadding[0]);
@@ -65,7 +61,6 @@ export class ZHelpFormatter {
     const textRight = ' '.repeat(textPadding[1]);
 
     for (let optionIdx = 0; optionIdx < options.length; ++optionIdx) {
-
       const [, meta] = options[optionIdx];
       const usageLines = meta.usage.map(usage => clz.usage(usage));
       const { help, description = '' } = meta;
@@ -82,11 +77,13 @@ export class ZHelpFormatter {
       }
 
       const textLines = wrapLines(
-          text,
-          (process.stdout.columns || 80)
+        text,
+        (process.stdout.columns || 80)
           - usageWidth
-          - usagePadding[1] - usagePadding[3]
-          - textPadding[1] - textPadding[3],
+          - usagePadding[1]
+          - usagePadding[3]
+          - textPadding[1]
+          - textPadding[3],
       );
 
       if (optionIdx) {
@@ -107,8 +104,14 @@ export class ZHelpFormatter {
       const numLines = Math.max(numUsageLines, numTextLines);
 
       for (let lineIdx = 0; lineIdx < numLines; ++lineIdx) {
-        out += usageLeft + padLine(usageLines[lineIdx] || '', usageWidth) + usageRight
-            + textLeft + (textLines[lineIdx] || '') + textRight + '\n';
+        out
+          += usageLeft
+          + padLine(usageLines[lineIdx] || '', usageWidth)
+          + usageRight
+          + textLeft
+          + (textLines[lineIdx] || '')
+          + textRight
+          + '\n';
       }
     }
 
@@ -128,7 +131,6 @@ function wrapLines(text: string, columns: number): string[] {
  * @internal
  */
 function emptyLines(numLines: number): readonly string[] {
-
   const result: string[] = [];
 
   for (let i = 0; i < numLines; ++i) {

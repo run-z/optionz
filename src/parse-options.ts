@@ -4,7 +4,7 @@ import { SimpleZOptionsParser, simpleZOptionsParser } from './simple-options-par
 /**
  * @internal
  */
-const defaultZOptionsParser = (/*#__PURE__*/ simpleZOptionsParser());
+const defaultZOptionsParser = /*#__PURE__*/ simpleZOptionsParser();
 
 /**
  * Parses command line options.
@@ -15,8 +15,8 @@ const defaultZOptionsParser = (/*#__PURE__*/ simpleZOptionsParser());
  * @returns A promise resolved to a map of recognized option names to arrays of their values.
  */
 export function parseZOptions(
-    args: readonly string[],
-    opts?: ZOptionsParser.Opts,
+  args: readonly string[],
+  opts?: ZOptionsParser.Opts,
 ): Promise<SimpleZOptionsParser.Result> {
   return defaultZOptionsParser(args, opts);
 }

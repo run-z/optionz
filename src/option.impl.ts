@@ -27,9 +27,9 @@ export class ZOptionImpl<TOption extends ZOption> {
   private _whenRecognized: (option: TOption) => void = noop;
 
   constructor(
-      readonly optionsMeta: () => ReadonlyMap<string, ZOptionMeta.Combined>,
-      private _args: readonly string[],
-      readonly argIndex: number,
+    readonly optionsMeta: () => ReadonlyMap<string, ZOptionMeta.Combined>,
+    private _args: readonly string[],
+    readonly argIndex: number,
   ) {
     this._head = _args.slice(0, argIndex);
   }
@@ -51,14 +51,13 @@ export class ZOptionImpl<TOption extends ZOption> {
   }
 
   setInput(input: ZOptionInput): readonly string[] {
-
     const { name, key = name, values = [], tail = [] } = input;
 
     this._name = name;
     this._key = key;
     this._values = values;
 
-    return this._args = [...this._head, name, ...values, ...tail];
+    return (this._args = [...this._head, name, ...values, ...tail]);
   }
 
   async read(option: TOption, reader: ZOptionReader.Spec<TOption>): Promise<void> {
@@ -77,7 +76,6 @@ export class ZOptionImpl<TOption extends ZOption> {
         this._finalReason = this._reason;
       }
     } else {
-
       const actions = this._actions;
 
       if (actions.length) {
@@ -109,7 +107,10 @@ export class ZOptionImpl<TOption extends ZOption> {
     } else if (this._finalReason != null) {
       throw this._finalReason;
     } else {
-      throw new ZOptionError(this.optionLocation(), `Unrecognized command line option: "${this.name}"`);
+      throw new ZOptionError(
+        this.optionLocation(),
+        `Unrecognized command line option: "${this.name}"`,
+      );
     }
 
     return this._recognizedUpto;
@@ -121,14 +122,17 @@ export class ZOptionImpl<TOption extends ZOption> {
     }
     if (this.recognized) {
       return max != null && max < this.recognized.length
-          ? this.recognized.slice(0, max)
-          : this.recognized;
+        ? this.recognized.slice(0, max)
+        : this.recognized;
     }
 
     const fromIndex = this.argIndex + 1;
-    const toIndex = max != null
+    const toIndex
+      = max != null
         ? fromIndex + (rest ? max : Math.min(max, this._values.length))
-        : (rest ? this._args.length : fromIndex + this._values.length);
+        : rest
+        ? this._args.length
+        : fromIndex + this._values.length;
     const result = this.args.slice(fromIndex, toIndex);
 
     this._recognize(fromIndex + result.length);
@@ -170,7 +174,6 @@ export class ZOptionImpl<TOption extends ZOption> {
   }
 
   whenRecognized(receiver: (option: TOption) => void): void {
-
     const prevReceiver = this._whenRecognized;
 
     this._whenRecognized = values => {

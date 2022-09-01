@@ -5,7 +5,6 @@ import { ChalkZColors } from './chalk-colors';
  * Terminal color theme to use for text formatting.
  */
 export interface ZColors {
-
   /**
    * Formats option usage text.
    *
@@ -50,13 +49,12 @@ export interface ZColors {
    * @returns Formatted bullet.
    */
   bullet(sign?: string): string;
-
 }
 
 /**
  * @internal
  */
-let defaultZColors: () => ZColors = (/*#__PURE__*/ lazyValue(() => new ChalkZColors()));
+let defaultZColors: () => ZColors = /*#__PURE__*/ lazyValue(() => new ChalkZColors());
 
 /**
  * @internal
@@ -86,7 +84,6 @@ class DefaultZColors implements ZColors {
 }
 
 export const ZColors = {
-
   /**
    * Assigns terminal color theme to use {@link clz by default}.
    *
@@ -95,10 +92,9 @@ export const ZColors = {
   useByDefault(colors: ZColors): void {
     defaultZColors = valueProvider(colors);
   },
-
 };
 
 /**
  * Terminal color theme that delegates to {@link ZColors.useByDefault default one}.
  */
-export const clz: ZColors = (/*#__PURE__*/ new DefaultZColors());
+export const clz: ZColors = /*#__PURE__*/ new DefaultZColors();

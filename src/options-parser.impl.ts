@@ -38,7 +38,7 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
       return this._optionClass;
     }
 
-    return this._optionClass = this._config.optionClass(ZOptionBase as ZOption.BaseClass<any>);
+    return (this._optionClass = this._config.optionClass(ZOptionBase as ZOption.BaseClass<any>));
   }
 
   /**
@@ -51,7 +51,7 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
 
     const { syntax } = this._config;
 
-    return this._syntax = syntax ? ZOptionSyntax.by(syntax) : ZOptionSyntax.default;
+    return (this._syntax = syntax ? ZOptionSyntax.by(syntax) : ZOptionSyntax.default);
   }
 
   /**
@@ -65,27 +65,25 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
    * @returns A promise resolved to processing context when parsing completes.
    */
   async parseOptions(
-      context: TCtx,
-      args: readonly string[],
-      {
-        fromIndex = 0,
-        options,
-      }: {
-        fromIndex?: number | undefined;
-        options?: SupportedZOptions<TOption, TCtx> | undefined;
-      } = {},
+    context: TCtx,
+    args: readonly string[],
+    {
+      fromIndex = 0,
+      options,
+    }: {
+      fromIndex?: number | undefined;
+      options?: SupportedZOptions<TOption, TCtx> | undefined;
+    } = {},
   ): Promise<TCtx> {
-
     const allOptions = supportedZOptionsMap(
-        context,
-        arrayOfElements(this._config.options).concat(arrayOfElements(options)),
+      context,
+      arrayOfElements(this._config.options).concat(arrayOfElements(options)),
     );
     const optionMeta = lazyValue(() => supportedZOptionsMeta(allOptions));
     const optionClass = this.optionClass;
     const syntax = this.syntax;
 
     for (let argIndex = Math.max(0, fromIndex); argIndex < args.length;) {
-
       const impl = new ZOptionImpl<TOption>(optionMeta, args, argIndex);
       const option = new optionClass(context, impl);
 
@@ -126,17 +124,17 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
  * @internal
  */
 function supportedZOptionsMap<TOption extends ZOption, TCtx>(
-    context: TCtx,
-    supportedOptions: readonly (SupportedZOptions.Map<TOption> | SupportedZOptions.Provider<TOption, TCtx>)[],
+  context: TCtx,
+  supportedOptions: readonly (
+    | SupportedZOptions.Map<TOption>
+    | SupportedZOptions.Provider<TOption, TCtx>
+  )[],
 ): Map<string, ZOptionReader.Spec<TOption>[]> {
-
   const result = new Map<string, ZOptionReader.Spec<TOption>[]>();
 
   for (const supported of supportedOptions) {
-
-    const map: SupportedZOptions.Map<TOption> = typeof supported === 'function'
-        ? supported(context)
-        : supported;
+    const map: SupportedZOptions.Map<TOption>
+      = typeof supported === 'function' ? supported(context) : supported;
 
     for (const [option, reader] of Object.entries(map)) {
       if (!reader) {
@@ -170,9 +168,8 @@ function supportedZOptionsMap<TOption extends ZOption, TCtx>(
  * @internal
  */
 function supportedZOptionsMeta<TOption extends ZOption>(
-    options: ReadonlyMap<string, readonly ZOptionReader.Spec<TOption>[]>,
+  options: ReadonlyMap<string, readonly ZOptionReader.Spec<TOption>[]>,
 ): ReadonlyMap<string, ZOptionMeta.Combined> {
-
   interface CombinedZOptionMeta {
     usage: string[];
     help?: string | undefined;
@@ -183,7 +180,6 @@ function supportedZOptionsMeta<TOption extends ZOption>(
 
   for (const [readerKey, specs] of options) {
     for (const spec of specs) {
-
       const { meta = {} } = spec;
       let help: ZOptionMeta.Help;
       let canonicalKey: string;

@@ -5,7 +5,6 @@ import { simpleZOptionsParser } from '../simple-options-parser';
 import { helpZOptionReader } from './help-option-reader';
 
 describe('helpZOptionReader', () => {
-
   let logSpy: SpyInstance<(...args: unknown[]) => void>;
 
   beforeEach(() => {
@@ -17,7 +16,6 @@ describe('helpZOptionReader', () => {
   });
 
   it('prints detailed options help', async () => {
-
     const parser = simpleZOptionsParser({
       options: {
         '--test': {
@@ -39,7 +37,6 @@ describe('helpZOptionReader', () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('TEST DESCRIPTION'));
   });
   it('prints brief options help', async () => {
-
     const parser = simpleZOptionsParser({
       options: {
         '--test': {
@@ -61,7 +58,6 @@ describe('helpZOptionReader', () => {
     expect(logSpy).not.toHaveBeenCalledWith(expect.stringContaining('TEST DESCRIPTION'));
   });
   it('displays help with the given method', async () => {
-
     const display = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
@@ -75,16 +71,15 @@ describe('helpZOptionReader', () => {
     await parser(['--help']);
 
     expect(display).toHaveBeenCalledWith(
-        [
-          ['--help', { usage: ['--help'] }],
-          ['--test', { usage: ['--test'] }],
-        ],
-        expect.anything(),
+      [
+        ['--help', { usage: ['--help'] }],
+        ['--test', { usage: ['--test'] }],
+      ],
+      expect.anything(),
     );
     expect(logSpy).not.toHaveBeenCalled();
   });
   it('compares options by group first', async () => {
-
     const display = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
@@ -111,16 +106,15 @@ describe('helpZOptionReader', () => {
     await parser(['--help']);
 
     expect(display).toHaveBeenCalledWith(
-        [
-          ['--abc', { usage: ['--abc'], group: '1' }],
-          ['--test', { usage: ['--test'], group: '1' }],
-          ['--help', { usage: ['--help'] }],
-        ],
-        expect.anything(),
+      [
+        ['--abc', { usage: ['--abc'], group: '1' }],
+        ['--test', { usage: ['--test'], group: '1' }],
+        ['--help', { usage: ['--help'] }],
+      ],
+      expect.anything(),
     );
   });
   it('compares options by group and key', async () => {
-
     const display = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
@@ -150,16 +144,15 @@ describe('helpZOptionReader', () => {
     await parser(['--help']);
 
     expect(display).toHaveBeenCalledWith(
-        [
-          ['--help', { usage: ['--help'], group: '1' }],
-          ['--test', { usage: ['--test'], group: '1' }],
-          ['--abc', { usage: ['--abc'], group: '2' }],
-        ],
-        expect.anything(),
+      [
+        ['--help', { usage: ['--help'], group: '1' }],
+        ['--test', { usage: ['--test'], group: '1' }],
+        ['--abc', { usage: ['--abc'], group: '2' }],
+      ],
+      expect.anything(),
     );
   });
   it('compares options by custom method', async () => {
-
     const display = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
@@ -177,12 +170,12 @@ describe('helpZOptionReader', () => {
     await parser(['--help']);
 
     expect(display).toHaveBeenCalledWith(
-        [
-          ['--abc', { usage: ['--abc'] }],
-          ['--help', { usage: ['--help'] }],
-          ['--test-option', { usage: ['--test-option'] }],
-        ],
-        expect.anything(),
+      [
+        ['--abc', { usage: ['--abc'] }],
+        ['--help', { usage: ['--help'] }],
+        ['--test-option', { usage: ['--test-option'] }],
+      ],
+      expect.anything(),
     );
   });
 });
