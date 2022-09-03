@@ -133,8 +133,8 @@ function supportedZOptionsMap<TOption extends ZOption, TCtx>(
   const result = new Map<string, ZOptionReader.Spec<TOption>[]>();
 
   for (const supported of supportedOptions) {
-    const map: SupportedZOptions.Map<TOption>
-      = typeof supported === 'function' ? supported(context) : supported;
+    const map: SupportedZOptions.Map<TOption> =
+      typeof supported === 'function' ? supported(context) : supported;
 
     for (const [option, reader] of Object.entries(map)) {
       if (!reader) {

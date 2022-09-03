@@ -127,8 +127,8 @@ export class ZOptionImpl<TOption extends ZOption> {
     }
 
     const fromIndex = this.argIndex + 1;
-    const toIndex
-      = max != null
+    const toIndex =
+      max != null
         ? fromIndex + (rest ? max : Math.min(max, this._values.length))
         : rest
         ? this._args.length

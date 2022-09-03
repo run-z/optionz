@@ -104,8 +104,8 @@ export class ZHelpFormatter {
       const numLines = Math.max(numUsageLines, numTextLines);
 
       for (let lineIdx = 0; lineIdx < numLines; ++lineIdx) {
-        out
-          += usageLeft
+        out +=
+          usageLeft
           + padLine(usageLines[lineIdx] || '', usageWidth)
           + usageRight
           + textLeft
