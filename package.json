@@ -43,10 +43,10 @@
     "@run-z/eslint-config": "^3.2.2",
     "@run-z/prettier-config": "^2.0.0",
     "@run-z/rollup-helpers": "^2.0.0",
-    "@types/node": "^16.11.60",
+    "@types/node": "^16.11.62",
     "@types/wrap-ansi": "^8.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.38.0",
-    "@typescript-eslint/parser": "^5.38.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
     "chalk": "^5.0.1",
     "eslint": "^8.24.0",
     "eslint-plugin-jest": "^27.0.4",
@@ -66,7 +66,7 @@
     "ts-jest": "^29.0.2",
     "tslib": "^2.4.0",
     "typedoc": "^0.23.15",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.4"
   },
   "scripts": {
     "all": "run-z build,lint,test",
