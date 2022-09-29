@@ -5,11 +5,11 @@ describe('ZColors', () => {
   describe('useByDefault', () => {
     it('assigns default theme to use', () => {
       const colors = {
-        usage: jest.fn(() => ''),
-        param: jest.fn(() => ''),
-        sign: jest.fn(() => ''),
-        optional: jest.fn(() => ''),
-        bullet: jest.fn(() => ''),
+        usage: jest.fn<(...args: unknown[]) => string>(() => ''),
+        param: jest.fn<(...args: unknown[]) => string>(() => ''),
+        sign: jest.fn<(...args: unknown[]) => string>(() => ''),
+        optional: jest.fn<(...args: unknown[]) => string>(() => ''),
+        bullet: jest.fn<(...args: unknown[]) => string>(() => ''),
       };
 
       ZColors.useByDefault(colors);

@@ -2,9 +2,12 @@ import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals
 import { arrayOfElements, asis, noop } from '@proc7ts/primitives';
 import type { ColorSupportLevel } from 'chalk';
 import chalk from 'chalk';
+import type { MockInstance } from 'jest-mock';
 import { helpZOptionReader } from '../help';
 import { ZOptionError } from '../option-error';
+import type { ZOption } from '../option.js';
 import { simpleZOptionsParser, SimpleZOptionsParser } from '../simple-options-parser';
+import { type ChalkZColorConfig } from './chalk-color-config.js';
 import { chalkZColorOptions } from './chalk-color-options';
 
 describe('chalkZColorOptions', () => {
@@ -96,7 +99,7 @@ describe('chalkZColorOptions', () => {
   });
 
   it('forces color by custom method', async () => {
-    const forceColors = jest.fn(noop);
+    const forceColors = jest.fn<Required<ChalkZColorConfig<ZOption>>['forceColors']>(noop);
 
     parser = simpleZOptionsParser({
       options: chalkZColorOptions({
@@ -108,13 +111,14 @@ describe('chalkZColorOptions', () => {
 
     expect(forceColors).toHaveBeenCalledWith(
       { level: 2, hasBasic: true, has256: true, has16m: false },
-      expect.anything(),
+      expect.anything() as unknown as ZOption,
     );
   });
 
   it('has help', async () => {
     const options = [...arrayOfElements(chalkZColorOptions())];
-    const display = jest.fn(noop);
+    const display: MockInstance<(...args: unknown[]) => void> & ((...args: unknown[]) => void) =
+      jest.fn(noop);
 
     options.push({
       '-h': helpZOptionReader({ display }),
