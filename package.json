@@ -43,7 +43,7 @@
     "@run-z/eslint-config": "^3.2.2",
     "@run-z/prettier-config": "^2.0.0",
     "@run-z/rollup-helpers": "^2.0.0",
-    "@types/node": "^16.11.62",
+    "@types/node": "^16.11.63",
     "@types/wrap-ansi": "^8.0.1",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
