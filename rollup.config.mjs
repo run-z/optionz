@@ -2,7 +2,6 @@ import { externalModules } from '@run-z/rollup-helpers';
 import path from 'node:path';
 import { defineConfig } from 'rollup';
 import flatDts from 'rollup-plugin-flat-dts';
-import sourcemaps from 'rollup-plugin-sourcemaps';
 import ts from 'rollup-plugin-typescript2';
 import typescript from 'typescript';
 
@@ -19,25 +18,24 @@ export default defineConfig({
       cacheRoot: 'target/.rts2_cache',
       useTsconfigDeclarationDir: true,
     }),
-    sourcemaps(),
   ],
   external: externalModules(),
-  manualChunks(id) {
-    if (id.startsWith(path.resolve('src', 'colors') + path.sep)) {
-      return 'optionz.colors';
-    }
-    if (id.startsWith(path.resolve('src', 'help') + path.sep)) {
-      return 'optionz.help';
-    }
-
-    return 'optionz';
-  },
   output: {
     format: 'esm',
     sourcemap: true,
     dir: '.',
     entryFileNames: 'dist/[name].js',
     chunkFileNames: 'dist/_[name].js',
+    manualChunks(id) {
+      if (id.startsWith(path.resolve('src', 'colors') + path.sep)) {
+        return 'optionz.colors';
+      }
+      if (id.startsWith(path.resolve('src', 'help') + path.sep)) {
+        return 'optionz.help';
+      }
+
+      return 'optionz';
+    },
     hoistTransitiveImports: false,
     plugins: [
       flatDts({
