@@ -46,6 +46,7 @@
     "@types/wrap-ansi": "^8.0.1",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
+    "@types/node": "^18.11.8",
     "chalk": "^5.1.2",
     "eslint": "^8.26.0",
     "eslint-plugin-jest": "^27.1.3",

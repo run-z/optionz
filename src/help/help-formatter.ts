@@ -1,3 +1,4 @@
+import process from 'node:process';
 import stringWidth from 'string-width';
 import wrapAnsi from 'wrap-ansi';
 import { clz } from '../colors';
