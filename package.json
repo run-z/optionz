@@ -18,12 +18,30 @@
     "url": "https://github.com/run-z/optionz/issues"
   },
   "type": "module",
-  "main": "./dist/optionz.js",
-  "types": "./index.d.ts",
+  "types": "./dist/optionz.d.ts",
+  "typesVersions": {
+    "*": {
+      "colors": [
+        "./dist/optionz.colors.d.ts"
+      ],
+      "help": [
+        "./dist/optionz.help.d.ts"
+      ]
+    }
+  },
   "exports": {
-    ".": "./dist/optionz.js",
-    "./colors": "./dist/optionz.colors.js",
-    "./help": "./dist/optionz.help.js"
+    ".": {
+      "types": "./dist/optionz.d.ts",
+      "default": "./dist/optionz.js"
+    },
+    "./colors": {
+      "types": "./dist/optionz.colors.d.ts",
+      "default": "./dist/optionz.colors.js"
+    },
+    "./help": {
+      "types": "./dist/optionz.help.d.ts",
+      "default": "./dist/optionz.help.js"
+    }
   },
   "dependencies": {
     "@proc7ts/primitives": "^3.0.2",
@@ -40,9 +58,9 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.3.1",
+    "@rollup/plugin-typescript": "^11.0.0",
     "@run-z/eslint-config": "^3.3.1",
     "@run-z/prettier-config": "^2.0.0",
-    "@run-z/rollup-helpers": "^2.1.0",
     "@types/node": "^18.11.18",
     "@types/wrap-ansi": "^8.0.1",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
@@ -50,7 +68,7 @@
     "chalk": "^5.2.0",
     "eslint": "^8.32.0",
     "eslint-plugin-jest": "^27.2.1",
-    "gh-pages": "^4.0.0",
+    "gh-pages": "^5.0.0",
     "jest": "^29.3.1",
     "jest-junit": "^15.0.0",
     "jest-mock": "^29.3.1",
@@ -58,7 +76,7 @@
     "prettier-eslint-cli": "^7.1.0",
     "rollup": "^3.10.1",
     "rollup-plugin-flat-dts": "^2.0.1",
-    "rollup-plugin-typescript2": "^0.34.1",
+    "rollup-plugin-unbundle": "^0.2.0",
     "run-z": "1.10.1-bootstrap",
     "shx": "^0.3.4",
     "strip-ansi": "^7.0.1",

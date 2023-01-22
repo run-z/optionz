@@ -1,9 +1,11 @@
-import { externalModules } from '@run-z/rollup-helpers';
-import path from 'node:path';
+import ts from '@rollup/plugin-typescript';
 import { defineConfig } from 'rollup';
 import flatDts from 'rollup-plugin-flat-dts';
-import ts from 'rollup-plugin-typescript2';
+import unbundle from 'rollup-plugin-unbundle';
+import { resolveRootPackage } from 'rollup-plugin-unbundle/api';
 import typescript from 'typescript';
+
+const resolutionRoot = resolveRootPackage();
 
 export default defineConfig({
   input: {
@@ -12,14 +14,15 @@ export default defineConfig({
     'optionz.help': './src/help/index.ts',
   },
   plugins: [
+    unbundle({
+      resolutionRoot,
+    }),
     ts({
       typescript,
       tsconfig: 'tsconfig.main.json',
-      cacheRoot: 'target/.rts2_cache',
-      useTsconfigDeclarationDir: true,
+      cacheDir: 'target/.rts_cache',
     }),
   ],
-  external: externalModules(),
   output: {
     format: 'esm',
     sourcemap: true,
@@ -27,11 +30,18 @@ export default defineConfig({
     entryFileNames: 'dist/[name].js',
     chunkFileNames: 'dist/_[name].js',
     manualChunks(id) {
-      if (id.startsWith(path.resolve('src', 'colors') + path.sep)) {
-        return 'optionz.colors';
-      }
-      if (id.startsWith(path.resolve('src', 'help') + path.sep)) {
-        return 'optionz.help';
+      const module = resolutionRoot.resolveImport(id);
+      const host = module.host;
+
+      if (host?.name === '@run-z/optionz') {
+        const path = module.uri.slice(host.uri.length + 1);
+
+        if (path.startsWith('src/colors')) {
+          return 'optionz.colors';
+        }
+        if (path.startsWith('src/help')) {
+          return 'optionz.help';
+        }
       }
 
       return 'optionz';
@@ -41,15 +51,16 @@ export default defineConfig({
       flatDts({
         tsconfig: 'tsconfig.main.json',
         lib: true,
+        file: './dist/optionz.d.ts',
         compilerOptions: {
           declarationMap: true,
         },
         entries: {
           colors: {
-            file: 'colors/index.d.ts',
+            file: './dist/optionz.colors.d.ts',
           },
           help: {
-            file: 'help/index.d.ts',
+            file: './dist/optionz.help.d.ts',
           },
         },
       }),
