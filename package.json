@@ -46,7 +46,7 @@
   "dependencies": {
     "@proc7ts/primitives": "^3.0.2",
     "string-width": "^5.1.2",
-    "wrap-ansi": "^8.0.1"
+    "wrap-ansi": "^8.1.0"
   },
   "peerDependencies": {
     "chalk": "^5.0.0"
@@ -62,7 +62,6 @@
     "@run-z/eslint-config": "^3.3.1",
     "@run-z/prettier-config": "^2.0.0",
     "@types/node": "^18.11.18",
-    "@types/wrap-ansi": "^8.0.1",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
     "chalk": "^5.2.0",
