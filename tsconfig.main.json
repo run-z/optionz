@@ -1,5 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "files": ["./src/index.ts", "./src/colors/index.ts", "./src/help/index.ts"],
-  "include": []
-}
