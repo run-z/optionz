@@ -43,6 +43,7 @@
       "default": "./dist/optionz.help.js"
     }
   },
+  "sideEffects": false,
   "dependencies": {
     "@proc7ts/primitives": "^3.0.2",
     "string-width": "^6.1.0",
