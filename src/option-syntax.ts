@@ -1,5 +1,5 @@
 import { isArray } from '@proc7ts/primitives';
-import { ZOptionInput } from './option-input';
+import { ZOptionInput } from './option-input.js';
 
 /**
  * Supported command line syntax.

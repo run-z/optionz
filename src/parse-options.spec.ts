@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { parseZOptions } from './parse-options';
+import { parseZOptions } from './parse-options.js';
 
 describe('parseZOptions', () => {
   it('recognizes all options by default', async () => {

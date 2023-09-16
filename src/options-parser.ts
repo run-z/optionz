@@ -1,28 +1,25 @@
-import type { ZOption } from './option';
-import type { ZOptionSyntax } from './option-syntax';
-import { ZOptionsParser$ } from './options-parser.impl';
-import type { SupportedZOptions } from './supported-options';
+import type { ZOptionSyntax } from './option-syntax.js';
+import type { ZOption } from './option.js';
+import { ZOptionsParser$ } from './options-parser.impl.js';
+import type { SupportedZOptions } from './supported-options.js';
 
 /**
  * Command line options parser signature.
  *
  * @typeParam TOption  A type of option representation.
  * @typeParam TCtx  A type of option processing context required by parser.
+ * @param context - Options processing context. This context is supposed to receive the processing results.
+ * @param args - Array of command line arguments
+ * @param opts - Parser options.
+ *
+ * @returns A promise resolved to processing context when parsing completes.
  */
-export type ZOptionsParser<TOption extends ZOption, TCtx> =
-  /**
-   * @param context - Options processing context. This context is supposed to receive the processing results.
-   * @param args - Array of command line arguments
-   * @param opts - Parser options.
-   *
-   * @returns A promise resolved to processing context when parsing completes.
-   */
-  (
-    this: void,
-    context: TCtx,
-    args: readonly string[],
-    opts?: ZOptionsParser.Opts<TOption, TCtx>,
-  ) => Promise<TCtx>;
+export type ZOptionsParser<TOption extends ZOption, TCtx> = (
+  this: void,
+  context: TCtx,
+  args: readonly string[],
+  opts?: ZOptionsParser.Opts<TOption, TCtx>,
+) => Promise<TCtx>;
 
 export namespace ZOptionsParser {
   /**

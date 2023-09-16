@@ -1,5 +1,5 @@
 {
-  "entryPoints": ["src/index.ts", "src/colors/index.ts", "src/help/index.ts"],
+  "entryPoints": ["src/mod.ts", "src/colors/mod.ts", "src/help/mod.ts"],
   "name": "Command Line Options Parser",
   "out": "./target/typedoc"
 }

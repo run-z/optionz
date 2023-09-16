@@ -1,12 +1,12 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { asis, noop, valueProvider } from '@proc7ts/primitives';
 import type { Mock } from 'jest-mock';
-import { ZOptionError } from './option-error';
-import type { ZOptionLocation } from './option-location';
-import type { ZOptionReader } from './option-reader';
-import { ZOptionSyntax } from './option-syntax';
-import { SimpleZOptionsParser, simpleZOptionsParser } from './simple-options-parser';
-import type { SupportedZOptions } from './supported-options';
+import { ZOptionError } from './option-error.js';
+import type { ZOptionLocation } from './option-location.js';
+import type { ZOptionReader } from './option-reader.js';
+import { ZOptionSyntax } from './option-syntax.js';
+import { SimpleZOptionsParser, simpleZOptionsParser } from './simple-options-parser.js';
+import type { SupportedZOptions } from './supported-options.js';
 
 describe('ZOptionsParser', () => {
   it('recognizes option without values', async () => {

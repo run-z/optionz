@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from '@jest/globals';
 import stripAnsi from 'strip-ansi';
-import { ChalkZColors } from './chalk-colors';
+import { ChalkZColors } from './chalk-colors.js';
 
 describe('ChalkZColors', () => {
   let colors: ChalkZColors;

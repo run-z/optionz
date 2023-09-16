@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { ZOptionInput } from './option-input';
+import { ZOptionInput } from './option-input.js';
 
 describe('ZOptionInput', () => {
   describe('valuesOf', () => {

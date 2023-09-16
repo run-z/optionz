@@ -1,5 +1,5 @@
-import type { ZOption } from './option';
-import type { ZOptionMeta } from './option-meta';
+import type { ZOptionMeta } from './option-meta.js';
+import type { ZOption } from './option.js';
 
 /**
  * Option reader.
@@ -22,15 +22,15 @@ export namespace ZOptionReader {
    *
    * @typeParam TOption  A type of command line option representation expected by reader.
    * @typeParam TThis  A type of `this` parameter.
+   * @param option - Command line option to recognize.
+   *
+   * @returns Either nothing or promise-like instance resolved when the reader finishes option processing,
+   * either recognized or not.
    */
-  export type Fn<TOption extends ZOption = ZOption, TThis = unknown> =
-    /**
-     * @param option - Command line option to recognize.
-     *
-     * @returns Either nothing or promise-like instance resolved when the reader finishes option processing,
-     * either recognized or not.
-     */
-    (this: TThis, option: TOption) => void | PromiseLike<unknown>;
+  export type Fn<TOption extends ZOption = ZOption, TThis = unknown> = (
+    this: TThis,
+    option: TOption,
+  ) => void | PromiseLike<unknown>;
 
   /**
    * Option reader specifier.

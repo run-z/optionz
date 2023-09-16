@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import type { ZOption } from './option';
-import type { ZOptionReader } from './option-reader';
+import type { ZOptionReader } from './option-reader.js';
+import type { ZOption } from './option.js';
 
 /**
  * A set of options supported by {@link ZOptionsParser parser}.
@@ -74,12 +74,12 @@ export namespace SupportedZOptions {
    *
    * @typeParam TCtx  A type of option processing context required by parser.
    * @typeParam TOption  A type of option representation.
+   * @param context - Option processing context.
+   *
+   * @returns A {@link Map map of option readers}.
    */
-  export type Provider<TOption extends ZOption = ZOption, TCtx = unknown> =
-    /**
-     * @param context - Option processing context.
-     *
-     * @returns A {@link Map map of option readers}.
-     */
-    (this: void, context: TCtx) => Map<TOption>;
+  export type Provider<TOption extends ZOption = ZOption, TCtx = unknown> = (
+    this: void,
+    context: TCtx,
+  ) => Map<TOption>;
 }

@@ -1,6 +1,6 @@
-import type { ZOptionLocation } from './option-location';
-import type { ZOptionMeta } from './option-meta';
-import type { ZOptionReader } from './option-reader';
+import type { ZOptionLocation } from './option-location.js';
+import type { ZOptionMeta } from './option-meta.js';
+import type { ZOptionReader } from './option-reader.js';
 
 /**
  * Base representation of command line option passed to its {@link ZOptionReader reader} in order to be recognized.

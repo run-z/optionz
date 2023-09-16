@@ -1,10 +1,10 @@
 import type { ColorSupport, ColorSupportLevel } from 'chalk';
 import chalk from 'chalk';
-import type { ZOption } from '../option';
-import { ZOptionError } from '../option-error';
-import type { SupportedZOptions } from '../supported-options';
-import type { ChalkZColorConfig } from './chalk-color-config';
-import { clz } from './colors';
+import { ZOptionError } from '../option-error.js';
+import type { ZOption } from '../option.js';
+import type { SupportedZOptions } from '../supported-options.js';
+import type { ChalkZColorConfig } from './chalk-color-config.js';
+import { clz } from './colors.js';
 
 /**
  * @internal

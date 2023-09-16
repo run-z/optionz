@@ -1,12 +1,12 @@
 import { asArray, lazyValue } from '@proc7ts/primitives';
-import type { ZOption } from './option';
-import { ZOptionBase } from './option-base.impl';
-import type { ZOptionMeta } from './option-meta';
-import type { ZOptionReader } from './option-reader';
-import { ZOptionSyntax } from './option-syntax';
-import { ZOptionImpl } from './option.impl';
-import type { ZOptionsParser } from './options-parser';
-import type { SupportedZOptions } from './supported-options';
+import { ZOptionBase } from './option-base.impl.js';
+import type { ZOptionMeta } from './option-meta.js';
+import type { ZOptionReader } from './option-reader.js';
+import { ZOptionSyntax } from './option-syntax.js';
+import { ZOptionImpl } from './option.impl.js';
+import type { ZOption } from './option.js';
+import type { ZOptionsParser } from './options-parser.js';
+import type { SupportedZOptions } from './supported-options.js';
 
 /**
  * Command line options parser.
@@ -17,9 +17,9 @@ import type { SupportedZOptions } from './supported-options';
  */
 export class ZOptionsParser$<TOption extends ZOption, TCtx> {
 
-  private readonly _config: ZOptionsParser.Config<TOption, TCtx>;
-  private _syntax?: ZOptionSyntax | undefined;
-  private _optionClass?: ZOption.ImplClass<TOption, TCtx, [ZOptionImpl<TOption>]> | undefined;
+  readonly #config: ZOptionsParser.Config<TOption, TCtx>;
+  #syntax?: ZOptionSyntax | undefined;
+  #optionClass?: ZOption.ImplClass<TOption, TCtx, [ZOptionImpl<TOption>]> | undefined;
 
   /**
    * Constructs command line options parser.
@@ -27,31 +27,31 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
    * @param config - Command line options configuration.
    */
   constructor(config: ZOptionsParser.Config<TOption, TCtx>) {
-    this._config = config;
+    this.#config = config;
   }
 
   /**
    * Command line option representation class constructor.
    */
   get optionClass(): ZOption.ImplClass<TOption, TCtx, [ZOptionImpl<TOption>]> {
-    if (this._optionClass) {
-      return this._optionClass;
+    if (this.#optionClass) {
+      return this.#optionClass;
     }
 
-    return (this._optionClass = this._config.optionClass(ZOptionBase as ZOption.BaseClass<any>));
+    return (this.#optionClass = this.#config.optionClass(ZOptionBase as ZOption.BaseClass<any>));
   }
 
   /**
    * Command line options syntax.
    */
   get syntax(): ZOptionSyntax {
-    if (this._syntax) {
-      return this._syntax;
+    if (this.#syntax) {
+      return this.#syntax;
     }
 
-    const { syntax } = this._config;
+    const { syntax } = this.#config;
 
-    return (this._syntax = syntax ? ZOptionSyntax.by(syntax) : ZOptionSyntax.default);
+    return (this.#syntax = syntax ? ZOptionSyntax.by(syntax) : ZOptionSyntax.default);
   }
 
   /**
@@ -77,7 +77,7 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
   ): Promise<TCtx> {
     const allOptions = supportedZOptionsMap(
       context,
-      asArray(this._config.options).concat(asArray(options)),
+      asArray(this.#config.options).concat(asArray(options)),
     );
     const optionMeta = lazyValue(() => supportedZOptionsMeta(allOptions));
     const optionClass = this.optionClass;

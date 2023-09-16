@@ -1,49 +1,51 @@
 import { noop } from '@proc7ts/primitives';
-import type { ZOption } from './option';
-import { ZOptionError } from './option-error';
-import type { ZOptionInput } from './option-input';
-import { ZOptionLocation } from './option-location';
-import type { ZOptionMeta } from './option-meta';
-import type { ZOptionReader } from './option-reader';
+import { ZOptionError } from './option-error.js';
+import type { ZOptionInput } from './option-input.js';
+import { ZOptionLocation } from './option-location.js';
+import type { ZOptionMeta } from './option-meta.js';
+import type { ZOptionReader } from './option-reader.js';
+import type { ZOption } from './option.js';
 
 /**
  * @internal
  */
 export class ZOptionImpl<TOption extends ZOption> {
 
-  private readonly _head: readonly string[];
-  private _name!: string;
-  private _key!: string;
-  private _values!: readonly string[];
+  #args: readonly string[];
+  readonly #head: readonly string[];
+  #name!: string;
+  #key!: string;
+  #values!: readonly string[];
 
-  private _recognizedUpto!: number;
-  private _actions: ((this: void) => void)[] = [];
-  private _deferred?: ZOptionReader.Fn<TOption> | undefined;
-  private readonly _allDeferred: ZOptionReader.Fn<TOption>[] = [];
-  private _reason: unknown;
-  private _finalReason: unknown;
+  #recognizedUpto!: number;
+  #actions: ((this: void) => void)[] = [];
+  #deferred?: ZOptionReader.Fn<TOption> | undefined;
+  readonly #allDeferred: ZOptionReader.Fn<TOption>[] = [];
+  #reason: unknown;
+  #finalReason: unknown;
 
   recognized?: readonly string[] | undefined;
-  private _whenRecognized: (option: TOption) => void = noop;
+  #whenRecognized: (option: TOption) => void = noop;
 
   constructor(
     readonly optionsMeta: () => ReadonlyMap<string, ZOptionMeta.Combined>,
-    private _args: readonly string[],
+    args: readonly string[],
     readonly argIndex: number,
   ) {
-    this._head = _args.slice(0, argIndex);
+    this.#args = args;
+    this.#head = args.slice(0, argIndex);
   }
 
   get args(): readonly string[] {
-    return this._args;
+    return this.#args;
   }
 
   get name(): string {
-    return this._name;
+    return this.#name;
   }
 
   get key(): string {
-    return this._key;
+    return this.#key;
   }
 
   get tail(): readonly [string, ...string[]] {
@@ -53,30 +55,30 @@ export class ZOptionImpl<TOption extends ZOption> {
   setInput(input: ZOptionInput): readonly string[] {
     const { name, key = name, values = [], tail = [] } = input;
 
-    this._name = name;
-    this._key = key;
-    this._values = values;
+    this.#name = name;
+    this.#key = key;
+    this.#values = values;
 
-    return (this._args = [...this._head, name, ...values, ...tail]);
+    return (this.#args = [...this.#head, name, ...values, ...tail]);
   }
 
   async read(option: TOption, reader: ZOptionReader.Spec<TOption>): Promise<void> {
-    this._actions = [];
-    this._reason = undefined;
+    this.#actions = [];
+    this.#reason = undefined;
     if (!this.recognized) {
-      this._recognizedUpto = -1;
-      this._deferred = undefined;
+      this.#recognizedUpto = -1;
+      this.#deferred = undefined;
     }
 
     await reader.read(option);
 
-    if (this._deferred) {
-      this._allDeferred.push(this._deferred);
-      if (this._finalReason == null) {
-        this._finalReason = this._reason;
+    if (this.#deferred) {
+      this.#allDeferred.push(this.#deferred);
+      if (this.#finalReason == null) {
+        this.#finalReason = this.#reason;
       }
     } else {
-      const actions = this._actions;
+      const actions = this.#actions;
 
       if (actions.length) {
         this.whenRecognized(() => {
@@ -85,27 +87,27 @@ export class ZOptionImpl<TOption extends ZOption> {
           }
         });
       }
-      if (!this.recognized && this._recognizedUpto >= 0) {
-        this.recognized = this.args.slice(this.argIndex + 1, this._recognizedUpto);
+      if (!this.recognized && this.#recognizedUpto >= 0) {
+        this.recognized = this.args.slice(this.argIndex + 1, this.#recognizedUpto);
       }
     }
   }
 
   async done(option: TOption): Promise<number> {
     if (this.recognized) {
-      this._actions = [];
+      this.#actions = [];
 
-      for (const deferred of this._allDeferred) {
+      for (const deferred of this.#allDeferred) {
         await deferred(option);
       }
-      this._whenRecognized(option);
+      this.#whenRecognized(option);
 
       // Perform actions registered by deferred callbacks
-      for (const action of this._actions) {
+      for (const action of this.#actions) {
         action();
       }
-    } else if (this._finalReason != null) {
-      throw this._finalReason;
+    } else if (this.#finalReason != null) {
+      throw this.#finalReason;
     } else {
       throw new ZOptionError(
         this.optionLocation(),
@@ -113,7 +115,7 @@ export class ZOptionImpl<TOption extends ZOption> {
       );
     }
 
-    return this._recognizedUpto;
+    return this.#recognizedUpto;
   }
 
   values(rest: boolean, max?: number): readonly string[] {
@@ -129,54 +131,54 @@ export class ZOptionImpl<TOption extends ZOption> {
     const fromIndex = this.argIndex + 1;
     const toIndex =
       max != null
-        ? fromIndex + (rest ? max : Math.min(max, this._values.length))
+        ? fromIndex + (rest ? max : Math.min(max, this.#values.length))
         : rest
-        ? this._args.length
-        : fromIndex + this._values.length;
+        ? this.#args.length
+        : fromIndex + this.#values.length;
     const result = this.args.slice(fromIndex, toIndex);
 
-    this._recognize(fromIndex + result.length);
+    this.#recognize(fromIndex + result.length);
 
     return result;
   }
 
   recognize(action?: (this: void) => void): void {
-    if (this._recognizedUpto < 0) {
-      this._recognize(this.argIndex + 1);
+    if (this.#recognizedUpto < 0) {
+      this.#recognize(this.argIndex + 1);
     }
     if (action) {
-      this._actions.push(action);
+      this.#actions.push(action);
     }
   }
 
-  private _recognize(upto: number): void {
-    this._recognizedUpto = upto;
-    this._deferred = undefined;
-    this._reason = undefined;
+  #recognize(upto: number): void {
+    this.#recognizedUpto = upto;
+    this.#deferred = undefined;
+    this.#reason = undefined;
   }
 
   defer(whenRecognized: ZOptionReader.Fn<TOption> = noop): void {
-    this._deferred = whenRecognized;
+    this.#deferred = whenRecognized;
   }
 
   unrecognize(reason?: unknown): void {
     if (this.recognized) {
       return;
     }
-    if (!this._deferred) {
-      this._deferred = noop;
+    if (!this.#deferred) {
+      this.#deferred = noop;
     }
     if (reason != null) {
-      this._reason = reason;
+      this.#reason = reason;
     }
-    this._recognizedUpto = -1;
-    this._actions.length = 0;
+    this.#recognizedUpto = -1;
+    this.#actions.length = 0;
   }
 
   whenRecognized(receiver: (option: TOption) => void): void {
-    const prevReceiver = this._whenRecognized;
+    const prevReceiver = this.#whenRecognized;
 
-    this._whenRecognized = values => {
+    this.#whenRecognized = values => {
       prevReceiver(values);
       receiver(values);
     };

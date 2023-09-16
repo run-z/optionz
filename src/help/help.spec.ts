@@ -1,14 +1,14 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { noop } from '@proc7ts/primitives';
-import type { MockInstance, SpyInstance } from 'jest-mock';
-import { simpleZOptionsParser } from '../simple-options-parser';
-import { helpZOptionReader } from './help-option-reader';
+import type { MockedFunction, SpiedFunction } from 'jest-mock';
+import { simpleZOptionsParser } from '../simple-options-parser.js';
+import { helpZOptionReader } from './help-option-reader.js';
 
 describe('helpZOptionReader', () => {
-  let logSpy: SpyInstance<(...args: unknown[]) => void> & ((...args: unknown[]) => void);
+  let logSpy: SpiedFunction<(...args: unknown[]) => void>;
 
   beforeEach(() => {
-    logSpy = jest.spyOn(console, 'log') as typeof logSpy;
+    logSpy = jest.spyOn(console, 'log');
     logSpy.mockImplementation(noop);
   });
   afterEach(() => {
@@ -58,8 +58,7 @@ describe('helpZOptionReader', () => {
     expect(logSpy).not.toHaveBeenCalledWith(expect.stringContaining('TEST DESCRIPTION'));
   });
   it('displays help with the given method', async () => {
-    const display: MockInstance<(...args: unknown[]) => void> & ((...args: unknown[]) => void) =
-      jest.fn(noop);
+    const display: MockedFunction<(...args: unknown[]) => void> = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
         '--test': noop,
@@ -81,8 +80,7 @@ describe('helpZOptionReader', () => {
     expect(logSpy).not.toHaveBeenCalled();
   });
   it('compares options by group first', async () => {
-    const display: MockInstance<(...args: unknown[]) => void> & ((...args: unknown[]) => void) =
-      jest.fn(noop);
+    const display: MockedFunction<(...args: unknown[]) => void> = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
         '--test': {
@@ -117,8 +115,7 @@ describe('helpZOptionReader', () => {
     );
   });
   it('compares options by group and key', async () => {
-    const display: MockInstance<(...args: unknown[]) => void> & ((...args: unknown[]) => void) =
-      jest.fn(noop);
+    const display: MockedFunction<(...args: unknown[]) => void> = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
         '--test': {
@@ -156,8 +153,7 @@ describe('helpZOptionReader', () => {
     );
   });
   it('compares options by custom method', async () => {
-    const display: MockInstance<(...args: unknown[]) => void> & ((...args: unknown[]) => void) =
-      jest.fn(noop);
+    const display: MockedFunction<(...args: unknown[]) => void> = jest.fn(noop);
     const parser = simpleZOptionsParser({
       options: {
         '--test-option': noop,

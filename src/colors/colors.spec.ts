@@ -1,5 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
-import { clz, ZColors } from './colors';
+import { ZColors, clz } from './colors.js';
 
 describe('ZColors', () => {
   describe('useByDefault', () => {

@@ -1,8 +1,8 @@
-import type { ZOption } from '../option';
-import type { ZOptionMeta } from '../option-meta';
-import type { ZOptionReader } from '../option-reader';
-import type { ZHelpConfig } from './help-config';
-import { ZHelpFormatter } from './help-formatter';
+import type { ZOption } from '../option.js';
+import type { ZOptionMeta } from '../option-meta.js';
+import type { ZOptionReader } from '../option-reader.js';
+import type { ZHelpConfig } from './help-config.js';
+import { ZHelpFormatter } from './help-formatter.js';
 
 /**
  * Creates option reader able to build and print help info.

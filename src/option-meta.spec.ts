@@ -1,7 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { noop } from '@proc7ts/primitives';
-import type { ZOptionMeta } from './option-meta';
-import { simpleZOptionsParser } from './simple-options-parser';
+import type { ZOptionMeta } from './option-meta.js';
+import { simpleZOptionsParser } from './simple-options-parser.js';
 
 describe('ZOptionMeta', () => {
   it('is reported to option', async () => {

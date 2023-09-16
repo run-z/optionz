@@ -1,5 +1,5 @@
 import type { ColorSupport } from 'chalk';
-import type { ZOption } from '../option';
+import type { ZOption } from '../option.js';
 
 /**
  * Chalk color options configuration.

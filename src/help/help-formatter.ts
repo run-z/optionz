@@ -1,8 +1,8 @@
 import process from 'node:process';
 import stringWidth from 'string-width';
 import wrapAnsi from 'wrap-ansi';
-import { clz } from '../colors';
-import type { ZOptionMeta } from '../option-meta';
+import { clz } from '../colors/colors.js';
+import type { ZOptionMeta } from '../option-meta.js';
 
 /**
  * Options help printer used {@link ZHelpConfig.display by default}.

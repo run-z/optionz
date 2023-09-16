@@ -1,5 +1,5 @@
-import type { ZOption } from '../option';
-import type { ZOptionMeta } from '../option-meta';
+import type { ZOption } from '../option.js';
+import type { ZOptionMeta } from '../option-meta.js';
 
 /**
  * Configuration for {@link helpZOptionReader help option reader}.

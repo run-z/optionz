@@ -1,3 +1,5 @@
+import { arraysAreEqual } from '@proc7ts/primitives';
+
 /**
  * Command line option input.
  *
@@ -105,15 +107,8 @@ export const ZOptionInput = {
       name1 === name2
       && key1 === key2
       && retry1 === retry2
-      && arraysEqual(values1, values2)
-      && arraysEqual(tail1, tail2)
+      && arraysAreEqual(values1, values2)
+      && arraysAreEqual(tail1, tail2)
     );
   },
 };
-
-/**
- * @internal
- */
-function arraysEqual<T>(first: readonly T[], second: readonly T[]): boolean {
-  return first.length === second.length && first.every((v, i) => v === second[i]);
-}

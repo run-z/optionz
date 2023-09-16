@@ -1,5 +1,5 @@
 import { lazyValue, valueProvider } from '@proc7ts/primitives';
-import { ChalkZColors } from './chalk-colors';
+import { ChalkZColors } from './chalk-colors.js';
 
 /**
  * Terminal color theme to use for text formatting.

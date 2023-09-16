@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { ZOptionError } from './option-error';
+import { ZOptionError } from './option-error.js';
 
 describe('ZOptionError', () => {
   it('has default message', () => {

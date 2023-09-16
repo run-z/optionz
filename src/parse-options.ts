@@ -1,5 +1,5 @@
-import type { ZOptionsParser } from './options-parser';
-import { SimpleZOptionsParser, simpleZOptionsParser } from './simple-options-parser';
+import type { ZOptionsParser } from './options-parser.js';
+import { SimpleZOptionsParser, simpleZOptionsParser } from './simple-options-parser.js';
 
 /**
  * @internal

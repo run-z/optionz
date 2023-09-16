@@ -1,4 +1,4 @@
-import { ZOptionLocation } from './option-location';
+import { ZOptionLocation } from './option-location.js';
 
 /**
  * An error thrown by {@link ZOptionsParser command line options parser} when it encounters unrecognized or malformed
@@ -6,10 +6,7 @@ import { ZOptionLocation } from './option-location';
  */
 export class ZOptionError extends Error {
 
-  /**
-   * Erroneous option location.
-   */
-  readonly optionLocation: Required<ZOptionLocation>;
+  readonly #optionLocation: Required<ZOptionLocation>;
 
   /**
    * Constructs option error.
@@ -19,7 +16,15 @@ export class ZOptionError extends Error {
    */
   constructor(optionLocation: ZOptionLocation, message = `Unrecognized command line option`) {
     super(message);
-    this.optionLocation = ZOptionLocation.by(optionLocation);
+    this.name = 'ZOptionError';
+    this.#optionLocation = ZOptionLocation.by(optionLocation);
+  }
+
+  /**
+   * Erroneous option location.
+   */
+  get optionLocation(): Required<ZOptionLocation> {
+    return this.#optionLocation;
   }
 
 }

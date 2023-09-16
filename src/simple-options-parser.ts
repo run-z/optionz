@@ -1,7 +1,7 @@
-import type { ZOption } from './option';
-import type { ZOptionSyntax } from './option-syntax';
-import { customZOptionsParser, ZOptionsParser } from './options-parser';
-import type { SupportedZOptions } from './supported-options';
+import type { ZOption } from './option.js';
+import type { ZOptionSyntax } from './option-syntax.js';
+import { customZOptionsParser, ZOptionsParser } from './options-parser.js';
+import type { SupportedZOptions } from './supported-options.js';
 
 /**
  * Simple command line options parser signature.

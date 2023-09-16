@@ -1,7 +1,7 @@
 import { valueProvider } from '@proc7ts/primitives';
 import type { ChalkInstance } from 'chalk';
 import chalk from 'chalk';
-import type { ZColors } from './colors';
+import type { ZColors } from './colors.js';
 
 /**
  * Terminal color theme relying on [chalk](https://www.npmjs.com/package/chalk).
