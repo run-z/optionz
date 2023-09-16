@@ -8,8 +8,8 @@ import type { ZOptionReader } from './option-reader';
  * This is either a {@link SupportedZOptions.Map map of option readers}, its {@link SupportedZOptions.Provider provider
  * function}, or an array of the above. Multiple readers may be specified per option key with the latter.
  *
- * @typeparam TOption  A type of option representation.
- * @typeparam TCtx  A type of option processing context required by parser.
+ * @typeParam TOption  A type of option representation.
+ * @typeParam TCtx  A type of option processing context required by parser.
  */
 export type SupportedZOptions<TOption extends ZOption = ZOption, TCtx = unknown> =
   | SupportedZOptions.Map<TOption>
@@ -20,8 +20,8 @@ export namespace SupportedZOptions {
   /**
    * A map of {@link ZOptionReader readers} corresponding to option keys or their wildcards.
    *
-   * @typeparam TCtx  A type of option processing context required by parser.
-   * @typeparam TOption  A type of option representation.
+   * @typeParam TCtx  A type of option processing context required by parser.
+   * @typeParam TOption  A type of option representation.
    */
   export interface Map<TOption extends ZOption = ZOption> {
     /**
@@ -72,8 +72,8 @@ export namespace SupportedZOptions {
    *
    * The provider is called at most once per {@link ZOptionsParser parser call}.
    *
-   * @typeparam TCtx  A type of option processing context required by parser.
-   * @typeparam TOption  A type of option representation.
+   * @typeParam TCtx  A type of option processing context required by parser.
+   * @typeParam TOption  A type of option representation.
    */
   export type Provider<TOption extends ZOption = ZOption, TCtx = unknown> =
     /**

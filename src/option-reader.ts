@@ -6,8 +6,8 @@ import type { ZOptionMeta } from './option-meta';
  *
  * This can be either a {@link ZOptionReader.Fn reader function}, or its {@link ZOptionReader.Spec full specifier}.
  *
- * @typeparam TOption  A type of command line option representation expected by reader.
- * @typeparam TThis  A type of `this` parameter.
+ * @typeParam TOption  A type of command line option representation expected by reader.
+ * @typeParam TThis  A type of `this` parameter.
  */
 export type ZOptionReader<TOption extends ZOption = ZOption, TThis = void> =
   | ZOptionReader.Fn<TOption, TThis>
@@ -20,8 +20,8 @@ export namespace ZOptionReader {
    * A reader function accepts a {@link ZOption command line option} corresponding to the key the reader is
    * {@link SupportedZOptions.Map registered for} and tries to recognize it.
    *
-   * @typeparam TOption  A type of command line option representation expected by reader.
-   * @typeparam TThis  A type of `this` parameter.
+   * @typeParam TOption  A type of command line option representation expected by reader.
+   * @typeParam TThis  A type of `this` parameter.
    */
   export type Fn<TOption extends ZOption = ZOption, TThis = unknown> =
     /**
@@ -37,7 +37,7 @@ export namespace ZOptionReader {
    *
    * Contains option reader function along with meta information.
    *
-   * @typeparam TOption  A type of command line option representation expected by reader.
+   * @typeParam TOption  A type of command line option representation expected by reader.
    */
   export interface Spec<TOption extends ZOption = ZOption> {
     /**

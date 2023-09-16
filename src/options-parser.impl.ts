@@ -1,4 +1,4 @@
-import { arrayOfElements, lazyValue } from '@proc7ts/primitives';
+import { asArray, lazyValue } from '@proc7ts/primitives';
 import type { ZOption } from './option';
 import { ZOptionBase } from './option-base.impl';
 import type { ZOptionMeta } from './option-meta';
@@ -12,8 +12,8 @@ import type { SupportedZOptions } from './supported-options';
  * Command line options parser.
  *
  * @internal
- * @typeparam TCtx  A type of option processing context required by parser.
- * @typeparam TOption  A type of option representation.
+ * @typeParam TCtx  A type of option processing context required by parser.
+ * @typeParam TOption  A type of option representation.
  */
 export class ZOptionsParser$<TOption extends ZOption, TCtx> {
 
@@ -77,7 +77,7 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
   ): Promise<TCtx> {
     const allOptions = supportedZOptionsMap(
       context,
-      arrayOfElements(this._config.options).concat(arrayOfElements(options)),
+      asArray(this._config.options).concat(asArray(options)),
     );
     const optionMeta = lazyValue(() => supportedZOptionsMeta(allOptions));
     const optionClass = this.optionClass;
@@ -195,7 +195,7 @@ function supportedZOptionsMeta<TOption extends ZOption>(
         help = meta;
       }
 
-      const usage = Array.from(arrayOfElements(help.usage));
+      const usage = Array.from(asArray(help.usage));
       const existing = result.get(canonicalKey);
 
       if (existing) {

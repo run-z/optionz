@@ -1,12 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals';
-import { arrayOfElements, asis, noop } from '@proc7ts/primitives';
+import { asArray, asis, noop } from '@proc7ts/primitives';
 import type { ColorSupportLevel } from 'chalk';
 import chalk from 'chalk';
 import type { MockInstance } from 'jest-mock';
 import { helpZOptionReader } from '../help';
 import { ZOptionError } from '../option-error';
 import type { ZOption } from '../option.js';
-import { simpleZOptionsParser, SimpleZOptionsParser } from '../simple-options-parser';
+import { SimpleZOptionsParser, simpleZOptionsParser } from '../simple-options-parser';
 import { type ChalkZColorConfig } from './chalk-color-config.js';
 import { chalkZColorOptions } from './chalk-color-options';
 
@@ -116,7 +116,7 @@ describe('chalkZColorOptions', () => {
   });
 
   it('has help', async () => {
-    const options = [...arrayOfElements(chalkZColorOptions())];
+    const options = [...asArray(chalkZColorOptions())];
     const display: MockInstance<(...args: unknown[]) => void> & ((...args: unknown[]) => void) =
       jest.fn(noop);
 

@@ -4,7 +4,7 @@ import type { ZOption } from '../option';
 /**
  * Chalk color options configuration.
  *
- * @typeparam TOption  A type of color option.
+ * @typeParam TOption  A type of color option.
  */
 export interface ChalkZColorConfig<TOption extends ZOption> {
   /**

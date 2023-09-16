@@ -1,6 +1,6 @@
 {
   "name": "@run-z/optionz",
-  "version": "2.4.1",
+  "version": "3.0.0-pre.0",
   "description": "Run-z command line options parser",
   "keywords": [
     "cli",
@@ -21,10 +21,10 @@
   "types": "./dist/optionz.d.ts",
   "typesVersions": {
     "*": {
-      "colors": [
+      "colors.js": [
         "./dist/optionz.colors.d.ts"
       ],
-      "help": [
+      "help.js": [
         "./dist/optionz.help.d.ts"
       ]
     }
@@ -34,23 +34,23 @@
       "types": "./dist/optionz.d.ts",
       "default": "./dist/optionz.js"
     },
-    "./colors": {
+    "./colors.js": {
       "types": "./dist/optionz.colors.d.ts",
       "default": "./dist/optionz.colors.js"
     },
-    "./help": {
+    "./help.js": {
       "types": "./dist/optionz.help.d.ts",
       "default": "./dist/optionz.help.js"
     }
   },
   "sideEffects": false,
   "dependencies": {
-    "@proc7ts/primitives": "^3.0.2",
+    "@proc7ts/primitives": "^4.0.1",
     "string-width": "^6.1.0",
     "wrap-ansi": "^8.1.0"
   },
   "peerDependencies": {
-    "chalk": "^5.0.0"
+    "chalk": "^5.3.0"
   },
   "peerDependenciesMeta": {
     "chalk": {

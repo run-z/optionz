@@ -1,4 +1,4 @@
-import { isArrayOfElements } from '@proc7ts/primitives';
+import { isArray } from '@proc7ts/primitives';
 import { ZOptionInput } from './option-input';
 
 /**
@@ -103,7 +103,7 @@ export const ZOptionSyntax = {
  * @internal
  */
 function zOptionSyntaxBy(syntax: ZOptionSyntax | readonly ZOptionSyntax[]): ZOptionSyntax {
-  if (!isArrayOfElements(syntax)) {
+  if (!isArray(syntax)) {
     return syntax;
   }
 

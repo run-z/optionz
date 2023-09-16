@@ -4,7 +4,7 @@ import type { ZOptionMeta } from '../option-meta';
 /**
  * Configuration for {@link helpZOptionReader help option reader}.
  *
- * @typeparam TOption  A type of help option.
+ * @typeParam TOption  A type of help option.
  */
 export interface ZHelpConfig<TOption extends ZOption = ZOption> {
   /**

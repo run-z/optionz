@@ -6,8 +6,8 @@ import type { SupportedZOptions } from './supported-options';
 /**
  * Command line options parser signature.
  *
- * @typeparam TOption  A type of option representation.
- * @typeparam TCtx  A type of option processing context required by parser.
+ * @typeParam TOption  A type of option representation.
+ * @typeParam TCtx  A type of option processing context required by parser.
  */
 export type ZOptionsParser<TOption extends ZOption, TCtx> =
   /**
@@ -28,8 +28,8 @@ export namespace ZOptionsParser {
   /**
    * Command line options parser configuration.
    *
-   * @typeparam TOption  A type of option representation.
-   * @typeparam TCtx  Option processing context required by parser.
+   * @typeParam TOption  A type of option representation.
+   * @typeParam TCtx  Option processing context required by parser.
    */
   export interface Config<TOption extends ZOption, TCtx> {
     /**
@@ -59,8 +59,8 @@ export namespace ZOptionsParser {
   /**
    * Additional options for command line options parser.
    *
-   * @typeparam TOption  A type of option representation.
-   * @typeparam TCtx  A type of option processing context required by parser.
+   * @typeParam TOption  A type of option representation.
+   * @typeParam TCtx  A type of option processing context required by parser.
    */
   export interface Opts<TOption extends ZOption = ZOption, TCtx = unknown> {
     /**
@@ -78,8 +78,8 @@ export namespace ZOptionsParser {
 /**
  * Builds custom command line options parser.
  *
- * @typeparam TOption  A type of option representation.
- * @typeparam TCtx  A type of option processing context required by parser.
+ * @typeParam TOption  A type of option representation.
+ * @typeParam TCtx  A type of option processing context required by parser.
  * @param config - Parser configuration.
  *
  * @returns New options parser.

@@ -158,7 +158,7 @@ export namespace ZOption {
    *
    * This is a class to extend by {@link ZOptionsParser.Config.optionClass options parser}.
    *
-   * @typeparam TArgs  A type of constructor arguments.
+   * @typeParam TArgs  A type of constructor arguments.
    */
   export interface BaseClass<TArgs extends any[]> {
     prototype: ZOption;
@@ -169,9 +169,9 @@ export namespace ZOption {
   /**
    * A class constructor representing a parser-specific implementation of the command line option.
    *
-   * @typeparam TOption  Parser-specific command line option interface implemented by this class.
-   * @typeparam TCtx  A type of option processing context required by parser.
-   * @typeparam TArgs  A type of arguments to pass to the {@link BaseClass base constructor}.
+   * @typeParam TOption  Parser-specific command line option interface implemented by this class.
+   * @typeParam TCtx  A type of option processing context required by parser.
+   * @typeParam TArgs  A type of arguments to pass to the {@link BaseClass base constructor}.
    */
   export interface ImplClass<TOption extends ZOption, TCtx, TArgs extends any[]> {
     prototype: TOption;
