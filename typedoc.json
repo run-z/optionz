@@ -1,5 +1,6 @@
 {
   "entryPoints": ["src/mod.ts", "src/colors/mod.ts", "src/help/mod.ts"],
   "name": "Command Line Options Parser",
+  "sort": ["static-first", "visibility", "enum-value-ascending", "alphabetical", "kind"],
   "out": "./target/typedoc"
 }
