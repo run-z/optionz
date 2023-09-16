@@ -8,14 +8,15 @@ import { ZOptionInput } from './option-input.js';
  * to be recognized by {@link ZOptionReader option readers}.
  *
  * A syntax should be {@link ZOptionsParser.Config.syntax registered} for options parser to respect it.
+ *
+ * @param args - An array of command line arguments to process.
+ *
+ * @returns A read-only array of option inputs. May be empty if the command line argument has another syntax.
  */
-export type ZOptionSyntax =
-  /**
-   * @param args - An array of command line arguments to process.
-   *
-   * @returns A read-only array of option inputs. May be empty if the command line argument has another syntax.
-   */
-  (this: void, args: readonly [string, ...string[]]) => readonly ZOptionInput[];
+export type ZOptionSyntax = (
+  this: void,
+  args: readonly [string, ...string[]],
+) => readonly ZOptionInput[];
 
 /**
  * @internal

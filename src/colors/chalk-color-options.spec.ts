@@ -7,6 +7,7 @@ import { helpZOptionReader } from '../help/help-option-reader.js';
 import { ZOptionError } from '../option-error.js';
 import type { ZOption } from '../option.js';
 import { SimpleZOptionsParser, simpleZOptionsParser } from '../simple-options-parser.js';
+import { SupportedZOptions } from '../supported-options.js';
 import { type ChalkZColorConfig } from './chalk-color-config.js';
 import { chalkZColorOptions } from './chalk-color-options.js';
 
@@ -116,7 +117,9 @@ describe('chalkZColorOptions', () => {
   });
 
   it('has help', async () => {
-    const options = [...asArray(chalkZColorOptions())];
+    const options = [
+      ...asArray<SupportedZOptions.Map | SupportedZOptions.Provider>(chalkZColorOptions()),
+    ];
     const display: MockedFunction<(...args: unknown[]) => void> = jest.fn(noop);
 
     options.push({

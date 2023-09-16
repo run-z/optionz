@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
-import type { ZOptionInput } from './option-input';
-import { ZOptionSyntax } from './option-syntax';
+import type { ZOptionInput } from './option-input.js';
+import { ZOptionSyntax } from './option-syntax.js';
 
 describe('ZOptionSyntax', () => {
   describe('by', () => {

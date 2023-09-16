@@ -1,5 +1,5 @@
-import type { ZOption } from '../option.js';
 import type { ZOptionMeta } from '../option-meta.js';
+import type { ZOption } from '../option.js';
 
 /**
  * Configuration for {@link helpZOptionReader help option reader}.
@@ -22,7 +22,8 @@ export interface ZHelpConfig<TOption extends ZOption = ZOption> {
   /**
    * Compares two options meta.
    *
-   * By default sorts options by their {@link ZOptionMeta.group group} first, and then - by their keys.
+   * By default sorts options by their {@link @run-z/optionz!ZOptionMeta.Help#group group} first, and then - by their
+   * keys.
    *
    * @param key1 - First option key.
    * @param meta1 - First option meta.

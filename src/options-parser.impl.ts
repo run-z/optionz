@@ -77,7 +77,13 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
   ): Promise<TCtx> {
     const allOptions = supportedZOptionsMap(
       context,
-      asArray(this.#config.options).concat(asArray(options)),
+      asArray<SupportedZOptions.Map<TOption> | SupportedZOptions.Provider<TOption, TCtx>>(
+        this.#config.options,
+      ).concat(
+        asArray<SupportedZOptions.Map<TOption> | SupportedZOptions.Provider<TOption, TCtx>>(
+          options,
+        ),
+      ),
     );
     const optionMeta = lazyValue(() => supportedZOptionsMeta(allOptions));
     const optionClass = this.optionClass;

@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { ZOptionLocation } from './option-location';
+import { ZOptionLocation } from './option-location.js';
 
 describe('ZOptionLocation', () => {
   describe('by', () => {

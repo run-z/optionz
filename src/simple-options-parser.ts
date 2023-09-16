@@ -1,24 +1,22 @@
-import type { ZOption } from './option.js';
 import type { ZOptionSyntax } from './option-syntax.js';
+import type { ZOption } from './option.js';
 import { customZOptionsParser, ZOptionsParser } from './options-parser.js';
 import type { SupportedZOptions } from './supported-options.js';
 
 /**
  * Simple command line options parser signature.
+ *
+ * @param args - Array of command line arguments
+ * @param fromIndex - An index of command line argument to start processing from.
+ * @param opts - Parser options.
+ *
+ * @returns A promise resolved to parse result.
  */
-export type SimpleZOptionsParser =
-  /**
-   * @param args - Array of command line arguments
-   * @param fromIndex - An index of command line argument to start processing from.
-   * @param opts - Parser options.
-   *
-   * @returns A promise resolved to parse result.
-   */
-  (
-    this: void,
-    args: readonly string[],
-    opts?: ZOptionsParser.Opts,
-  ) => Promise<SimpleZOptionsParser.Result>;
+export type SimpleZOptionsParser = (
+  this: void,
+  args: readonly string[],
+  opts?: ZOptionsParser.Opts,
+) => Promise<SimpleZOptionsParser.Result>;
 
 export namespace SimpleZOptionsParser {
   /**
