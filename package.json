@@ -45,7 +45,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@proc7ts/primitives": "@proc7ts/primitives@^4.0.0",
+    "@proc7ts/primitives": "^4.0.0",
     "string-width": "^6.1.0",
     "wrap-ansi": "^8.1.0"
   },
