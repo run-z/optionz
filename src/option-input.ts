@@ -104,11 +104,11 @@ export const ZOptionInput = {
     } = second;
 
     return (
-      name1 === name2
-      && key1 === key2
-      && retry1 === retry2
-      && arraysAreEqual(values1, values2)
-      && arraysAreEqual(tail1, tail2)
+      name1 === name2 &&
+      key1 === key2 &&
+      retry1 === retry2 &&
+      arraysAreEqual(values1, values2) &&
+      arraysAreEqual(tail1, tail2)
     );
   },
 };

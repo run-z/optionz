@@ -9,7 +9,6 @@ import type { ZColors } from './colors.js';
  * This theme is used {@link ZColors.useByDefault by default}.
  */
 export class ChalkZColors implements ZColors {
-
   /**
    * Chalk instance to use.
    */
@@ -36,5 +35,4 @@ export class ChalkZColors implements ZColors {
   bullet(sign = '\u2023'): string {
     return `  ${sign}`;
   }
-
 }

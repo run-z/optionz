@@ -1,6 +1,5 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { asis, noop, valueProvider } from '@proc7ts/primitives';
-import type { Mock } from 'jest-mock';
 import { ZOptionError } from './option-error.js';
 import type { ZOptionLocation } from './option-location.js';
 import type { ZOptionReader } from './option-reader.js';
@@ -538,7 +537,8 @@ describe('ZOptionsParser', () => {
           },
         ],
         syntax: [
-          ([name]) => name === '--test'
+          ([name]) =>
+            name === '--test'
               ? [{ name: '--replaced', values: ['r'], tail: ['t'], retry: true }]
               : [],
           ZOptionSyntax.longOptions,
@@ -575,13 +575,13 @@ describe('ZOptionsParser', () => {
   });
 
   describe('fallback reader', () => {
-    let readShort: Mock<ZOptionReader.Fn>;
+    let readShort: jest.Mock<ZOptionReader.Fn>;
     let defaultShort: string | undefined;
 
-    let readLong: Mock<ZOptionReader.Fn>;
+    let readLong: jest.Mock<ZOptionReader.Fn>;
     let defaultLong: string | undefined;
 
-    let readPositional: Mock<ZOptionReader.Fn>;
+    let readPositional: jest.Mock<ZOptionReader.Fn>;
     let defaultPositional: string | undefined;
 
     let fallbackKey: string | undefined;

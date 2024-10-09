@@ -5,7 +5,6 @@ import { ZOptionLocation } from './option-location.js';
  * option.
  */
 export class ZOptionError extends Error {
-
   readonly #optionLocation: Required<ZOptionLocation>;
 
   /**
@@ -26,5 +25,4 @@ export class ZOptionError extends Error {
   get optionLocation(): Required<ZOptionLocation> {
     return this.#optionLocation;
   }
-
 }

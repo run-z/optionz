@@ -2,7 +2,6 @@ import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals
 import { asArray, asis, noop } from '@proc7ts/primitives';
 import type { ColorSupportLevel } from 'chalk';
 import chalk from 'chalk';
-import { MockedFunction } from 'jest-mock';
 import { helpZOptionReader } from '../help/help-option-reader.js';
 import { ZOptionError } from '../option-error.js';
 import type { ZOption } from '../option.js';
@@ -120,7 +119,7 @@ describe('chalkZColorOptions', () => {
     const options = [
       ...asArray<SupportedZOptions.Map | SupportedZOptions.Provider>(chalkZColorOptions()),
     ];
-    const display: MockedFunction<(...args: unknown[]) => void> = jest.fn(noop);
+    const display: jest.MockedFunction<(...args: unknown[]) => void> = jest.fn(noop);
 
     options.push({
       '-h': helpZOptionReader({ display }),

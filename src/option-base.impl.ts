@@ -8,7 +8,6 @@ import type { ZOption } from './option.js';
  * @internal
  */
 export class ZOptionBase<TOption extends ZOption> implements ZOption {
-
   readonly #impl: ZOptionImpl<TOption>;
 
   constructor(impl: ZOptionImpl<TOption>) {
@@ -71,5 +70,4 @@ export class ZOptionBase<TOption extends ZOption> implements ZOption {
   optionMeta(key: string): ZOptionMeta.Combined {
     return this.#impl.optionsMeta().get(key) || { usage: [] };
   }
-
 }

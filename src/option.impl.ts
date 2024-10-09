@@ -10,7 +10,6 @@ import type { ZOption } from './option.js';
  * @internal
  */
 export class ZOptionImpl<TOption extends ZOption> {
-
   #args: readonly string[];
   readonly #head: readonly string[];
   #name!: string;
@@ -133,8 +132,8 @@ export class ZOptionImpl<TOption extends ZOption> {
       max != null
         ? fromIndex + (rest ? max : Math.min(max, this.#values.length))
         : rest
-        ? this.#args.length
-        : fromIndex + this.#values.length;
+          ? this.#args.length
+          : fromIndex + this.#values.length;
     const result = this.args.slice(fromIndex, toIndex);
 
     this.#recognize(fromIndex + result.length);
@@ -191,5 +190,4 @@ export class ZOptionImpl<TOption extends ZOption> {
       args: this.args,
     });
   }
-
 }

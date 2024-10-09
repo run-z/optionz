@@ -85,7 +85,6 @@ export function simpleZOptionsParser(
       base: ZOption.BaseClass<TArgs>,
     ): ZOption.ImplClass<ZOption, Record<string, string[]>, TArgs> {
       class SimpleZOption extends base {
-
         constructor(recognized: Record<string, string[]>, ...args: TArgs) {
           super(...args);
           this.whenRecognized(option => {
@@ -96,8 +95,7 @@ export function simpleZOptionsParser(
             }
           });
         }
-
-}
+      }
 
       return SimpleZOption;
     },

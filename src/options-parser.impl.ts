@@ -16,7 +16,6 @@ import type { SupportedZOptions } from './supported-options.js';
  * @typeParam TOption  A type of option representation.
  */
 export class ZOptionsParser$<TOption extends ZOption, TCtx> {
-
   readonly #config: ZOptionsParser.Config<TOption, TCtx>;
   #syntax?: ZOptionSyntax | undefined;
   #optionClass?: ZOption.ImplClass<TOption, TCtx, [ZOptionImpl<TOption>]> | undefined;
@@ -89,7 +88,7 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
     const optionClass = this.optionClass;
     const syntax = this.syntax;
 
-    for (let argIndex = Math.max(0, fromIndex); argIndex < args.length;) {
+    for (let argIndex = Math.max(0, fromIndex); argIndex < args.length; ) {
       const impl = new ZOptionImpl<TOption>(optionMeta, args, argIndex);
       const option = new optionClass(context, impl);
 
@@ -123,7 +122,6 @@ export class ZOptionsParser$<TOption extends ZOption, TCtx> {
 
     return context;
   }
-
 }
 
 /**

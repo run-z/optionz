@@ -8,7 +8,6 @@ import type { ZOptionMeta } from '../option-meta.js';
  * Options help printer used {@link ZHelpConfig.display by default}.
  */
 export class ZHelpFormatter {
-
   /**
    * Detects usage column width.
    *
@@ -79,12 +78,12 @@ export class ZHelpFormatter {
 
       const textLines = wrapLines(
         text,
-        (process.stdout.columns || 80)
-          - usageWidth
-          - usagePadding[1]
-          - usagePadding[3]
-          - textPadding[1]
-          - textPadding[3],
+        (process.stdout.columns || 80) -
+          usageWidth -
+          usagePadding[1] -
+          usagePadding[3] -
+          textPadding[1] -
+          textPadding[3],
       );
 
       if (optionIdx) {
@@ -106,19 +105,18 @@ export class ZHelpFormatter {
 
       for (let lineIdx = 0; lineIdx < numLines; ++lineIdx) {
         out +=
-          usageLeft
-          + padLine(usageLines[lineIdx] || '', usageWidth)
-          + usageRight
-          + textLeft
-          + (textLines[lineIdx] || '')
-          + textRight
-          + '\n';
+          usageLeft +
+          padLine(usageLines[lineIdx] || '', usageWidth) +
+          usageRight +
+          textLeft +
+          (textLines[lineIdx] || '') +
+          textRight +
+          '\n';
       }
     }
 
     return out;
   }
-
 }
 
 /**

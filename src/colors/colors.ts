@@ -60,7 +60,6 @@ let defaultZColors: () => ZColors = /*#__PURE__*/ lazyValue(() => new ChalkZColo
  * @internal
  */
 class DefaultZColors implements ZColors {
-
   usage(text: string): string {
     return defaultZColors().usage(text);
   }
@@ -80,7 +79,6 @@ class DefaultZColors implements ZColors {
   bullet(sign?: string): string {
     return defaultZColors().bullet(sign);
   }
-
 }
 
 export const ZColors = {
